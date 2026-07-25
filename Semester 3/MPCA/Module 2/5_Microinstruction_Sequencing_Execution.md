@@ -1,4 +1,4 @@
-# Topic: Microinstruction Sequencing and Execution
+﻿# Topic: Microinstruction Sequencing and Execution
 
 **Q. Explain the concepts of Microinstruction Sequencing and Execution in a Microprogrammed Control Unit. What is Control Memory?**
 
@@ -27,7 +27,7 @@ The Sequencer determines the next address using:
 4. **Subroutines:** Microprograms can call subroutines and return using a Micro-Program Counter (Micro-PC).
 
 ### 4. Workflow Loop
-1. Map Machine Instruction Opcode $\rightarrow$ Control Memory starting address.
+1. Map Machine Instruction Opcode → Control Memory starting address.
 2. Sequencer fetches Microinstruction.
 3. Execution logic generates control signals.
 4. Sequencer determines next address.
@@ -48,3 +48,4 @@ The Sequencer determines the next address using:
 
 > ⚡ **Quick Recall**
 > `Microprogram (steps for 1 instruction) → Control Memory (ROM storing steps) → Execution (bits turn into hardware signals) → Sequencing (finding next step via Opcode/Next Field/Branching)`
+

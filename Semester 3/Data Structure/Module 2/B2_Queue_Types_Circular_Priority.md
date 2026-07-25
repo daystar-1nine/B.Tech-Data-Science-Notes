@@ -1,4 +1,4 @@
-# Topic: Types of Queue – Circular Queue, Priority Queue
+﻿# Topic: Types of Queue – Circular Queue, Priority Queue
 
 **Q. Explain the limitations of a simple linear queue. How do a Circular Queue and a Priority Queue overcome specific challenges? Describe their working principles.**
 
@@ -38,7 +38,7 @@ In a standard linear array queue, once the `rear` pointer reaches the maximum in
 * **Working Principle:** 
   * Elements are dequeued based on **highest priority**, not arrival time.
   * If two elements have the *same* priority, they are served based on arrival (FIFO).
-* **Implementation:** Best implemented using **Heaps** (Min-Heap or Max-Heap) which provide highly efficient $O(\log n)$ insertion and deletion times.
+* **Implementation:** Best implemented using **Heaps** (Min-Heap or Max-Heap) which provide highly efficient O(log n) insertion and deletion times.
 * **Applications:** CPU task scheduling (interrupt handling), Dijkstra's Shortest Path algorithm in graphs.
 
 ---
@@ -49,10 +49,11 @@ In a standard linear array queue, once the `rear` pointer reaches the maximum in
 > 3. Circular Queue perfectly reuses freed memory space. It is full when `(rear + 1) % SIZE == front`.
 > 4. **Priority Queue:** Elements are removed based on a **priority value**, not strict FIFO.
 > 5. In Priority Queues, if priorities tie, FIFO determines the order.
-> 6. Priority Queues are optimally implemented using **Heaps (Min/Max)** for $O(\log n)$ efficiency.
+> 6. Priority Queues are optimally implemented using **Heaps (Min/Max)** for O(log n) efficiency.
 > 7. Circular Q used in round-robin scheduling; Priority Q used in CPU interrupt handling.
 
 ---
 
 > ⚡ **Quick Recall**
 > `Linear Q wastes memory → Circular Q wraps around ((rear+1)%SIZE), reuses space → Priority Q breaks FIFO for urgent tasks, served by highest priority → implemented via Heaps`
+

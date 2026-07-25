@@ -1,4 +1,4 @@
-# Topic: Interrupt Structure and its Servicing — Self-Learning
+﻿# Topic: Interrupt Structure and its Servicing — Self-Learning
 
 **Q. Discuss the Interrupt structure of the 8086 microprocessor. Differentiate between Hardware and Software interrupts, and explain the sequence of steps the CPU follows to service an interrupt.**
 
@@ -37,10 +37,11 @@ When a valid interrupt is acknowledged, the 8086 performs the following strict s
 > 3. **Software Interrupts**: Triggered by `INT n` instructions or exceptions (divide-by-zero).
 > 4. **Interrupt Vector Table (IVT)**: Occupies the lowest 1KB of memory (00000H-003FFH).
 > 5. IVT holds 256 entries. Each entry is 4 bytes (CS and IP for the ISR).
-> 6. **Servicing Sequence**: Push Flags $\rightarrow$ Clear IF/TF $\rightarrow$ Push CS and IP $\rightarrow$ Load new CS/IP from IVT $\rightarrow$ Execute ISR.
+> 6. **Servicing Sequence**: Push Flags → Clear IF/TF → Push CS and IP → Load new CS/IP from IVT → Execute ISR.
 > 7. The ISR must end with **IRET** to pop the IP, CS, and Flags from the stack and resume the program.
 
 ---
 
 > ⚡ **Quick Recall**
 > `Interrupts → Hardware (INTR/NMI) vs Software (INT n) → IVT (Lowest memory, 256 types, 4 bytes each for CS:IP) → Sequence: Push Flags → Clear IF/TF → Push CS:IP → Fetch ISR from IVT → Run ISR → IRET (Pop all back)`
+

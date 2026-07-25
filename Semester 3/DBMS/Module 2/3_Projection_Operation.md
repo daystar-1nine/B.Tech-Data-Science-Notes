@@ -1,21 +1,21 @@
-# Topic: Projection Operation
+﻿# Topic: Projection Operation
 
 **Q. Discuss the Projection operation in Relational Algebra. Describe its syntax and explain its behavior regarding duplicate elimination, using suitable examples.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The **Projection Operation** (denoted by $\pi$) is a **unary operation** in relational algebra that filters specific **columns (attributes)** from a relation while discarding the rest. It performs **vertical filtering** and automatically **eliminates duplicate rows** in the result. It is equivalent to the `SELECT column_name` in SQL.
+> The **Projection Operation** (denoted by π) is a **unary operation** in relational algebra that filters specific **columns (attributes)** from a relation while discarding the rest. It performs **vertical filtering** and automatically **eliminates duplicate rows** in the result. It is equivalent to the `SELECT column_name` in SQL.
 
 ---
 
-### 1. Projection Operator ($\pi$ — Pi)
+### 1. Projection Operator (π — Pi)
 * Operates on a **single table** (unary).
 * Filters **vertically** — returns all rows, but only selected columns.
 * **Key Property:** Automatically **eliminates duplicate rows** from the output (because a relation is a mathematical set — no duplicates allowed).
 
 ### 2. Syntax of Projection
-$$\pi_{<attribute\_list>}(Relation\_Name)$$
+$π_{<attribute_list>}(Relation_Name)$
 
 * **attribute_list:** Comma-separated column names to retain.
 
@@ -32,20 +32,20 @@ $$\pi_{<attribute\_list>}(Relation\_Name)$$
 
 #### Example 1: Simple Projection
 **Query:** Get names and majors of all students.
-$$\pi_{Name, Major}(STUDENT)$$
+$π_{Name, Major}(STUDENT)$
 **Result:** 4 rows, 2 columns (Name, Major).
 
 #### Example 2: Duplicate Elimination
 **Query:** List all unique majors.
-$$\pi_{Major}(STUDENT)$$
+$π_{Major}(STUDENT)$
 **Result:** CS, Math, Physics — *only 3 rows* (CS appeared twice in the original table but appears once in the result after duplicate elimination).
 
 #### Example 3: Composition — Selection + Projection
 **Query:** Find names of CS major students.
-$$\pi_{Name}(\sigma_{Major = 'CS'}(STUDENT))$$
+$π_{Name}(σ_{Major = 'CS'}(STUDENT))$
 **Execution:**
-1. **Step 1:** $\sigma_{Major='CS'}$ filters rows → John and Luke.
-2. **Step 2:** $\pi_{Name}$ extracts the Name column → John, Luke.
+1. **Step 1:** σ_{Major='CS'} filters rows → John and Luke.
+2. **Step 2:** π_{Name} extracts the Name column → John, Luke.
 
 ---
 
@@ -62,3 +62,4 @@ $$\pi_{Name}(\sigma_{Major = 'CS'}(STUDENT))$$
 
 > ⚡ **Quick Recall**
 > `π (Pi) → Unary → Vertical Filtering (columns) → Duplicate Elimination (set) → Equivalent to SQL SELECT → Composable with σ`
+

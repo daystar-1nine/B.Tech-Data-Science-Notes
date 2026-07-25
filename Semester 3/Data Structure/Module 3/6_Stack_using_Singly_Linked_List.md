@@ -1,4 +1,4 @@
-# Topic: Stack using Singly Linked List
+﻿# Topic: Stack using Singly Linked List
 
 **Q. Explain how a Stack can be implemented using a Singly Linked List. Provide the logic for the Push and Pop operations.**
 
@@ -10,7 +10,7 @@
 ---
 
 ### 1. Conceptual Mapping: Linked List to Stack
-To maintain $O(1)$ time complexity for both Push and Pop operations, all insertions and deletions must occur at the **beginning (head)** of the linked list.
+To maintain O(1) time complexity for both Push and Pop operations, all insertions and deletions must occur at the **beginning (head)** of the linked list.
 
 | Stack Operation | Linked List Equivalent |
 | :--- | :--- |
@@ -46,7 +46,7 @@ Removes and returns the item from the top of the stack.
 ### 4. Advantages of Linked List Implementation
 * **Dynamic Size:** The stack can grow and shrink dynamically. It is limited only by system memory, unlike an array which has a fixed pre-defined size.
 * **No Memory Wastage:** Memory is allocated precisely when a new element is pushed.
-* **Efficiency:** Both Push and Pop operate in constant time **$O(1)$**.
+* **Efficiency:** Both Push and Pop operate in constant time **O(1)**.
 
 ---
 
@@ -63,3 +63,4 @@ Removes and returns the item from the top of the stack.
 
 > ⚡ **Quick Recall**
 > `Stack via Linked List → Dynamic Size (no array limits) → Head = Top → Push = Insert at Head (O(1)) → Pop = Delete from Head (O(1))`
+

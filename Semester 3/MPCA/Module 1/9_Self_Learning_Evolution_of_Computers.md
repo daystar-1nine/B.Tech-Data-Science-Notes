@@ -1,11 +1,11 @@
-# Topic: Evolution of Computers — Self-Learning
+﻿# Topic: Evolution of Computers — Self-Learning
 
 **Q. Trace the evolution of computers through their five generations. Highlight the key technological advancements and characteristics of each generation.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The **Evolution of Computers** is divided into five **"Generations"**, each marked by a major technological breakthrough that made computers smaller, cheaper, faster, and more reliable. The progression moved from Vacuum Tubes $\rightarrow$ Transistors $\rightarrow$ Integrated Circuits $\rightarrow$ Microprocessors $\rightarrow$ Artificial Intelligence.
+> The **Evolution of Computers** is divided into five **"Generations"**, each marked by a major technological breakthrough that made computers smaller, cheaper, faster, and more reliable. The progression moved from Vacuum Tubes → Transistors → Integrated Circuits → Microprocessors → Artificial Intelligence.
 
 ---
 
@@ -34,3 +34,4 @@
 
 > ⚡ **Quick Recall**
 > `Generations: 1st (Vacuum Tubes, Room size) → 2nd (Transistors, Assembly Lang) → 3rd (Integrated Circuits, OS) → 4th (Microprocessors/VLSI, PCs/Internet) → 5th (AI, Machine Learning)`
+

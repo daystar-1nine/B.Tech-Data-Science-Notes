@@ -1,4 +1,4 @@
-# Topic: Linked List vs Array
+﻿# Topic: Linked List vs Array
 
 **Q. Compare and contrast Linked Lists and Arrays. Discuss the primary advantages and disadvantages of using a Linked List over an Array.**
 
@@ -27,7 +27,7 @@
 
 ### 3. Disadvantages of Linked List
 * **Memory Overhead:** Every node requires extra space to store the memory address (pointer) of the next node.
-* **No Random Access:** To access the $n^{th}$ element, you must traverse sequentially from the `head` to $n$. Binary Search cannot be efficiently applied.
+* **No Random Access:** To access the nth element, you must traverse sequentially from the `head` to n. Binary Search cannot be efficiently applied.
 * **Cache Unfriendly:** Because nodes are scattered in memory, CPU caching is less efficient compared to contiguous arrays.
 
 ---
@@ -45,3 +45,4 @@
 
 > ⚡ **Quick Recall**
 > `Array (Static, Contiguous, Fixed size, O(1) Access, Slow Insert/Delete) vs Linked List (Dynamic, Scattered, Variable size, O(n) Access, Fast Insert/Delete, Pointer Overhead)`
+

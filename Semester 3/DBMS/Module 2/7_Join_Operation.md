@@ -1,26 +1,26 @@
-# Topic: Join Operation
+﻿# Topic: Join Operation
 
 **Q. Explain the Join operation in Relational Algebra. Describe the different types of Joins including Theta Join, Equi Join, Natural Join, and the Outer Joins.**
 
 ---
 
 > 📌 **Definition to Remember**
-> A **Join Operation** ($\bowtie$) combines related tuples from two relations into a single relation based on a common condition. It is fundamentally a **Cartesian Product followed by a Selection** ($\sigma$). Joins are the most important and frequently used operations in normalized relational databases.
+> A **Join Operation** (⋈) combines related tuples from two relations into a single relation based on a common condition. It is fundamentally a **Cartesian Product followed by a Selection** (σ). Joins are the most important and frequently used operations in normalized relational databases.
 
 ---
 
 ### 1. Types of Inner Joins
 *(Return only rows with a matching counterpart in both tables)*
 
-#### A. Theta Join ($\bowtie_{\theta}$)
-* Joins two relations where tuples satisfy a condition $\theta$ (can use **any** comparison operator: $=, <, >, \neq$).
-* **Syntax:** $A \bowtie_{\theta} B$
+#### A. Theta Join (⋈_{θ})
+* Joins two relations where tuples satisfy a condition θ (can use **any** comparison operator: =, <, >, ≠).
+* **Syntax:** A ⋈_{θ} B
 
 #### B. Equi Join
-* A **special case of Theta Join** where $\theta$ uses **only equality (=)**.
+* A **special case of Theta Join** where θ uses **only equality (=)**.
 * The joining attribute appears **twice** in the output (once from each table).
 
-#### C. Natural Join ($\bowtie$)
+#### C. Natural Join (⋈)
 * An **enhanced Equi Join** that automatically joins on all attributes with the **exact same name** in both tables.
 * The duplicate joining column is **automatically removed** — it appears only once.
 
@@ -71,3 +71,4 @@
 
 > ⚡ **Quick Recall**
 > `Join = Cross Product + Selection → Theta (any condition) → Equi (= only, duplicate col) → Natural (same name, no duplicate) → Left/Right/Full Outer (NULLs for unmatched)`
+

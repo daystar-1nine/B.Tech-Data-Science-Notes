@@ -1,11 +1,11 @@
-# Topic: 8086 in Minimum Mode
+﻿# Topic: 8086 in Minimum Mode
 
 **Q. Discuss the configuration and functioning of the 8086 microprocessor in Minimum Mode. Detail the generation and purpose of key control signals.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The 8086 operates in **Minimum Mode** when the **MN/MX'** pin (Pin 33) is tied to $+5V$ (Logic High). In this mode, the 8086 is designed for small, **single-processor systems** and directly generates all memory and I/O control signals itself without an external bus controller.
+> The 8086 operates in **Minimum Mode** when the **MN/MX'** pin (Pin 33) is tied to +5V (Logic High). In this mode, the 8086 is designed for small, **single-processor systems** and directly generates all memory and I/O control signals itself without an external bus controller.
 
 ---
 
@@ -51,3 +51,4 @@ Because the 8086 outputs generic `M/IO'`, `RD'`, and `WR'` signals, they must be
 
 > ⚡ **Quick Recall**
 > `Minimum Mode → MN/MX' = +5V → Single Processor → CPU generates own signals (ALE, RD, WR, M/IO) → Combine M/IO+RD/WR to get MEMR/MEMW/IOR/IOW → Uses DT/R and DEN for transceivers`
+

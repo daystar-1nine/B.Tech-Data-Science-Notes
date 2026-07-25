@@ -1,4 +1,4 @@
-# Topic: Operations on Doubly Linked List
+﻿# Topic: Operations on Doubly Linked List
 
 **Q. Discuss the various operations (Traversal, Insertion, Deletion, Searching) on a Doubly Linked List. How does the presence of a 'previous' pointer change these operations compared to a Singly Linked List?**
 
@@ -36,7 +36,7 @@ Deleting is highly efficient (O(1)) if a pointer to the target node (`del_node`)
 
 | | Detail |
 | :--- | :--- |
-| **Advantages** | Bidirectional traversal; Deletion is $O(1)$ if node pointer is known; Easy to insert before a node. |
+| **Advantages** | Bidirectional traversal; Deletion is O(1) if node pointer is known; Easy to insert before a node. |
 | **Disadvantages** | Extra memory required for `prev` pointer in every node; More pointer operations required for insert/delete. |
 
 ---
@@ -54,3 +54,4 @@ Deleting is highly efficient (O(1)) if a pointer to the target node (`del_node`)
 
 > ⚡ **Quick Recall**
 > `Doubly Linked List → prev + data + next → Bidirectional Traversal → Fast O(1) Deletion (no need to find previous node) → Costs extra memory → Update both prev and next during insert/delete`
+

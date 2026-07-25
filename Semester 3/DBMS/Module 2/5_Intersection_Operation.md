@@ -1,19 +1,19 @@
-# Topic: Intersection Operation
+﻿# Topic: Intersection Operation
 
 **Q. Describe the Intersection operation in Relational Algebra. What are the required conditions for applying it? Illustrate its use with a suitable example.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The **Intersection Operation** ($\cap$) is a **binary set operation** in relational algebra that returns only those tuples (rows) that are **common to both** input relations. It is a **derived operator** (can be expressed as $A \cap B = A - (A - B)$) and requires both relations to be **Union Compatible**.
+> The **Intersection Operation** (∩) is a **binary set operation** in relational algebra that returns only those tuples (rows) that are **common to both** input relations. It is a **derived operator** (can be expressed as A ∩ B = A - (A - B)) and requires both relations to be **Union Compatible**.
 
 ---
 
-### 1. Intersection Operator ($\cap$)
+### 1. Intersection Operator (∩)
 * **Binary operation** — operates on two tables.
-* **Syntax:** $Relation\_A \cap Relation\_B$
+* **Syntax:** Relation_A ∩ Relation_B
 * Returns only tuples that appear in **both** relations simultaneously.
-* It is a **derived operator**: $A \cap B = A - (A - B)$
+* It is a **derived operator**: A ∩ B = A - (A - B)
 * Equivalent to `INTERSECT` in SQL.
 
 ### 2. Required Conditions (Union Compatibility)
@@ -40,7 +40,7 @@ Both relations must be **Union Compatible**:
 | 101 | John | B |
 
 **Query:** Find students with **identical records** (same Roll_No, Name, and Grade) in both tables.
-$$TOP\_IN\_MATH \cap TOP\_IN\_SCIENCE$$
+$TOP_IN_MATH ∩ TOP_IN_SCIENCE$
 
 **Result:** Only **Emma (102, A)** — her entire tuple (Roll_No=102, Name=Emma, Grade=A) is identical in both tables.
 
@@ -50,7 +50,7 @@ $$TOP\_IN\_MATH \cap TOP\_IN\_SCIENCE$$
 
 > ⭐ **Must-Write Points (for 10 marks)**
 > 1. Intersection (∩) returns only rows that are **identical in both** relations.
-> 2. It is a **derived operator**: $A \cap B = A - (A - B)$.
+> 2. It is a **derived operator**: A ∩ B = A - (A - B).
 > 3. **Union Compatibility** required: same number of columns AND matching data types.
 > 4. The **entire tuple** must be identical — not just one column — for a row to be included.
 > 5. If |A| = m and |B| = n, result size ≤ min(m, n).
@@ -61,3 +61,4 @@ $$TOP\_IN\_MATH \cap TOP\_IN\_SCIENCE$$
 
 > ⚡ **Quick Recall**
 > `∩ (Intersection) → Binary → Returns Common Rows Only → Derived from Set Difference → Union Compatibility → SQL INTERSECT`
+

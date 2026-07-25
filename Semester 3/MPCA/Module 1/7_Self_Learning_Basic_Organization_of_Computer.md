@@ -1,4 +1,4 @@
-# Topic: Basic Organization of Computer — Self-Learning
+﻿# Topic: Basic Organization of Computer — Self-Learning
 
 **Q. Discuss the basic organization of a computer system. Explain the primary functions of the Input, Output, Memory, ALU, and Control Units.**
 
@@ -26,7 +26,7 @@ The CPU is the "brain" of the computer. It is physically made up of:
 * **Registers** (small, extremely fast internal memory).
 
 ### 3. Basic Data Flow
-1. User types data $\rightarrow$ **Input Unit** $\rightarrow$ translates to binary.
+1. User types data → **Input Unit** → translates to binary.
 2. Data is stored in **Memory Unit** (RAM).
 3. **Control Unit** fetches instructions and directs data to the **ALU**.
 4. **ALU** processes the data and sends results back to Memory.
@@ -47,3 +47,4 @@ The CPU is the "brain" of the computer. It is physically made up of:
 
 > ⚡ **Quick Recall**
 > `Computer Org → Input (data in) → Memory (storage) → CU (manager) → ALU (processor) → Output (data out) → CPU = CU + ALU + Registers`
+

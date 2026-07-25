@@ -1,23 +1,23 @@
-# Topic: Selection Operation
+﻿# Topic: Selection Operation
 
 **Q. Explain the Selection operation in Relational Algebra. Write its syntax and provide examples demonstrating how it filters tuples.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The **Selection Operation** (denoted by $\sigma$) is a **unary operation** in relational algebra that filters and returns specific **rows (tuples)** from a relation that satisfy a given logical condition (predicate). It is equivalent to the `WHERE` clause in SQL.
+> The **Selection Operation** (denoted by σ) is a **unary operation** in relational algebra that filters and returns specific **rows (tuples)** from a relation that satisfy a given logical condition (predicate). It is equivalent to the `WHERE` clause in SQL.
 
 ---
 
-### 1. Selection Operator ($\sigma$ — Sigma)
+### 1. Selection Operator (σ — Sigma)
 * Operates on a **single table** (unary).
 * Filters **horizontally** — returns same columns, but only matching rows.
 * Output automatically eliminates duplicate rows (set behavior).
 
 ### 2. Syntax of Selection
-$$\sigma_{<predicate>}(Relation\_Name)$$
+$σ_{<predicate>}(Relation_Name)$
 
-* **Predicate:** Uses comparison operators ($=, \neq, <, \leq, >, \geq$) and logical operators ($\land$ AND, $\lor$ OR, $\neg$ NOT).
+* **Predicate:** Uses comparison operators (=, ≠, <, ≤, >, ≥) and logical operators (AND AND, OR OR, NOT NOT).
 
 ### 3. Examples
 
@@ -32,17 +32,17 @@ $$\sigma_{<predicate>}(Relation\_Name)$$
 
 #### Example 1: Simple Condition
 **Query:** Find all IT department employees.
-$$\sigma_{Department = 'IT'}(EMPLOYEE)$$
+$σ_{Department = 'IT'}(EMPLOYEE)$
 **Result:** Returns rows for Alice (ID 1) and Charlie (ID 3).
 
-#### Example 2: AND Condition ($\land$)
+#### Example 2: AND Condition (AND)
 **Query:** IT employees with salary > 55000.
-$$\sigma_{Department = 'IT' \land Salary > 55000}(EMPLOYEE)$$
+$σ_{Department = 'IT' AND Salary > 55000}(EMPLOYEE)$
 **Result:** Returns only Charlie (IT, 60000).
 
-#### Example 3: OR Condition ($\lor$)
+#### Example 3: OR Condition (OR)
 **Query:** Employees in HR or Sales.
-$$\sigma_{Department = 'HR' \lor Department = 'Sales'}(EMPLOYEE)$$
+$σ_{Department = 'HR' OR Department = 'Sales'}(EMPLOYEE)$
 **Result:** Returns Bob (HR) and David (Sales).
 
 ---
@@ -60,3 +60,4 @@ $$\sigma_{Department = 'HR' \lor Department = 'Sales'}(EMPLOYEE)$$
 
 > ⚡ **Quick Recall**
 > `σ (Sigma) → Unary → Horizontal Filtering (rows) → Predicate (=, ≠, ∧, ∨) → Equivalent to SQL WHERE → Can be nested`
+

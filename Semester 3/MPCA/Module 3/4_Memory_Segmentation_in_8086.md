@@ -1,4 +1,4 @@
-# Topic: Memory Segmentation in 8086
+﻿# Topic: Memory Segmentation in 8086
 
 **Q. Explain the concept of Memory Segmentation in the 8086 microprocessor. How is a 20-bit physical address calculated using a 16-bit segment register and a 16-bit offset?**
 
@@ -48,10 +48,11 @@ The Bus Interface Unit (BIU) performs this calculation:
 > 3. Four Segment Registers: **CS (Code), DS (Data), SS (Stack), ES (Extra)**.
 > 4. Physical Address is calculated by the BIU combining a Segment Base and an Offset.
 > 5. **Formula**: `Physical Addr = (Segment Value × 10H) + Offset`.
-> 6. Provide the calculation example (e.g., CS=2000H, IP=1234H $\rightarrow$ Base=20000H $\rightarrow$ Result=21234H).
+> 6. Provide the calculation example (e.g., CS=2000H, IP=1234H → Base=20000H → Result=21234H).
 > 7. **Advantages**: Easy program relocation and separation of code/data/stack.
 
 ---
 
 > ⚡ **Quick Recall**
 > `Segmentation → 1 MB Memory / 16-bit registers → Divides into 64KB blocks (CS, DS, SS, ES) → Physical Addr = (Segment × 10H) + Offset → Pros: Relocation, Code/Data separation`
+

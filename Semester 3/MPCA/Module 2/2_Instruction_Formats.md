@@ -1,4 +1,4 @@
-# Topic: Instruction Formats
+﻿# Topic: Instruction Formats
 
 **Q. What is an Instruction Format? Explain the different types of instruction formats based on the number of addresses (Zero, One, Two, and Three-Address instructions) with examples.**
 
@@ -13,13 +13,13 @@
 Used in **Stack-based architectures**. The operands are implicitly located at the top of the stack.
 * **Format:** `[ Opcode ]`
 * **Example:** `ADD` (Pops the top two stack elements, adds them, and pushes result back).
-* **Expression ($Z = X + Y$):** `PUSH X`, `PUSH Y`, `ADD`, `POP Z`.
+* **Expression (Z = X + Y):** `PUSH X`, `PUSH Y`, `ADD`, `POP Z`.
 
 ### 2. One-Address Instruction
 Used in **Accumulator-based architectures**. One operand is specified; the second operand and the destination are implicitly the Accumulator register.
 * **Format:** `[ Opcode | Address 1 ]`
 * **Example:** `ADD B` (Meaning: `ACC = ACC + M[B]`).
-* **Expression ($Z = X + Y$):** `LOAD X`, `ADD Y`, `STORE Z`.
+* **Expression (Z = X + Y):** `LOAD X`, `ADD Y`, `STORE Z`.
 
 ### 3. Two-Address Instruction
 Used in **General Purpose Register architectures** (like Intel x86). It specifies two addresses, where one usually acts as both a source and the destination.
@@ -46,3 +46,4 @@ Used in modern **RISC architectures** (like ARM, MIPS). It specifies three disti
 
 > ⚡ **Quick Recall**
 > `Instruction = Opcode + Operand → Zero (Stack: ADD) → One (Accumulator: ADD B) → Two (x86: ADD R1, R2) → Three (RISC: ADD R1, R2, R3)`
+

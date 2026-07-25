@@ -1,4 +1,4 @@
-# Topic: Basic Instruction Cycle with Interrupt Processing
+﻿# Topic: Basic Instruction Cycle with Interrupt Processing
 
 **Q. Describe the phases of a Basic Instruction Cycle. Explain how the CPU handles interrupts by modifying the standard instruction cycle.**
 
@@ -33,7 +33,7 @@ An **Interrupt** breaks the normal sequential flow. To handle it, the CPU adds a
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. Standard cycle: **Fetch $\rightarrow$ Decode $\rightarrow$ Execute**.
+> 1. Standard cycle: **Fetch → Decode → Execute**.
 > 2. **Fetch**: Gets instruction via PC, stores in IR, increments PC.
 > 3. **Decode**: Control unit translates the Opcode.
 > 4. **Execute**: ALU performs the task.
@@ -45,3 +45,4 @@ An **Interrupt** breaks the normal sequential flow. To handle it, the CPU adds a
 
 > ⚡ **Quick Recall**
 > `Cycle: Fetch (PC to IR) → Decode (CU) → Execute (ALU) → Check Interrupt → Save PC to Stack → Run ISR → IRET (Pop PC) → Resume`
+

@@ -1,4 +1,4 @@
-# Topic: Recursive Queries
+﻿# Topic: Recursive Queries
 
 **Q. What are Recursive Queries in SQL? Explain the concept of Common Table Expressions (CTE) and how a Recursive CTE works with an example.**
 
@@ -33,11 +33,11 @@ A recursive CTE has exactly **3 components**:
 ```
 
 ### 3. Working of a Recursive Query
-1. **Anchor Member** executes first → produces base result set $R_0$.
-2. **Recursive Member** uses $R_0$ as input → produces $R_1$.
-3. Recursive Member uses $R_1$ → produces $R_2$.
+1. **Anchor Member** executes first → produces base result set R_0.
+2. **Recursive Member** uses R_0 as input → produces R_1.
+3. Recursive Member uses R_1 → produces R_2.
 4. Repeats until the Recursive Member returns an **empty set** (termination).
-5. Final result = `UNION ALL` of all sets: $R_0 + R_1 + R_2 + ...$
+5. Final result = `UNION ALL` of all sets: R_0 + R_1 + R_2 + ...
 
 ### 4. Example — Organizational Hierarchy
 **Table:** `Employee (EmpID, Name, ManagerID)` — Find all levels of management.
@@ -78,3 +78,4 @@ SELECT * FROM OrgChart ORDER BY Level;
 
 > ⚡ **Quick Recall**
 > `Recursive Query → Hierarchical Data → WITH RECURSIVE → Anchor (base R₀) → UNION ALL → Recursive Member (R₁, R₂...) → Terminates when empty → Apps: Org Charts, BoM, Routing`
+

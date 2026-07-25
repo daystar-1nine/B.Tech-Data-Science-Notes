@@ -1,4 +1,4 @@
-# Topic: Queue using Singly Linked List
+﻿# Topic: Queue using Singly Linked List
 
 **Q. Describe the implementation of a Queue using a Singly Linked List. Detail the logic for the Enqueue and Dequeue operations.**
 
@@ -10,7 +10,7 @@
 ---
 
 ### 1. Conceptual Mapping: Linked List to Queue
-To achieve $O(1)$ time complexity for both Enqueue and Dequeue, we must maintain references to both ends of the list.
+To achieve O(1) time complexity for both Enqueue and Dequeue, we must maintain references to both ends of the list.
 
 | Queue Pointer | Linked List Equivalent | Used For |
 | :--- | :--- | :--- |
@@ -66,3 +66,4 @@ Removes the element from the front of the queue.
 
 > ⚡ **Quick Recall**
 > `Queue via Linked List → Dynamic Size → front (Head) for Dequeue (O(1)) → rear (Tail) for Enqueue (O(1)) → If empty: front = rear = new_node`
+

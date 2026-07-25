@@ -1,17 +1,17 @@
-# Topic: Union Operation
+﻿# Topic: Union Operation
 
 **Q. Explain the Union operation in Relational Algebra. What is Union Compatibility? Provide an example to illustrate how the Union operator works.**
 
 ---
 
 > 📌 **Definition to Remember**
-> The **Union Operation** ($\cup$) is a **binary set operation** in relational algebra that combines all tuples (rows) from two relations into a single result, automatically **eliminating duplicate rows**. The two relations must be **Union Compatible** (same number of columns and matching data types).
+> The **Union Operation** (∪) is a **binary set operation** in relational algebra that combines all tuples (rows) from two relations into a single result, automatically **eliminating duplicate rows**. The two relations must be **Union Compatible** (same number of columns and matching data types).
 
 ---
 
-### 1. Union Operator ($\cup$)
+### 1. Union Operator (∪)
 * **Binary operation** — operates on two tables.
-* **Syntax:** $Relation\_A \cup Relation\_B$
+* **Syntax:** Relation_A ∪ Relation_B
 * **Duplicate Elimination:** If a tuple exists in both A and B, it appears only **once** in the output.
 * Equivalent to the `UNION` keyword in SQL.
 
@@ -42,7 +42,7 @@ For Union (and also Intersection and Set Difference) to be valid, both relations
 | 5 | Eve |
 
 **Query:** Find all students who play Cricket OR Football or both.
-$$CRICKET\_TEAM \cup FOOTBALL\_TEAM$$
+$CRICKET_TEAM ∪ FOOTBALL_TEAM$
 
 **Result:** Alice, Bob, Charlie, David, Eve — **5 rows** *(Charlie appeared in both tables but appears only once — duplicate eliminated).*
 
@@ -61,3 +61,4 @@ $$CRICKET\_TEAM \cup FOOTBALL\_TEAM$$
 
 > ⚡ **Quick Recall**
 > `∪ (Union) → Binary → Combines All Rows → Removes Duplicates → Union Compatibility (same degree + same domain) → SQL UNION`
+
