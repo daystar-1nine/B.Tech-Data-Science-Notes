@@ -7,9 +7,10 @@ A comprehensive, well-structured repository containing semester-wise notes for B
 The repository is organized by semesters and subjects:
 
 ```text
-📁 Semester 3
+📁 Semester 3 (Markdown Notes)
  ├── 📁 DBMS
  │    ├── 📁 Module 1
+ │    │    └── 📁 Module_1_QA
  │    ├── 📁 Module 2
  │    └── 📁 Module 3
  ├── 📁 Data Structure
@@ -18,8 +19,16 @@ The repository is organized by semesters and subjects:
  │    └── 📁 Module 3
  └── 📁 MPCA
       ├── 📁 Module 1
+      │    └── 📁 Module_1_QA
       ├── 📁 Module 2
+      │    └── 📁 Module_2_QA
       └── 📁 Module 3
+
+📁 PDF_Notes (Publication-Ready PDF Copies)
+ └── 📁 Semester 3
+      ├── 📁 DBMS
+      ├── 📁 Data Structure
+      └── 📁 MPCA
 ```
 
 ## Features
