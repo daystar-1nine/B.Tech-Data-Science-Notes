@@ -51,11 +51,12 @@
         <span class="shortcut-kbd">Ctrl+K</span>
       </button>
 
-      <!-- Semester Selector -->
-      <select id="semSelect" class="sem-select">
+      <!-- Desktop Semester Selector -->
+      <select id="semSelect" class="sem-select sem-select-desktop">
         <option value="All">All Semesters</option>
       </select>
 
+      <!-- Theme Toggle Button (Always visible on Header) -->
       <button class="theme-toggle" id="themeToggle" title="Toggle Theme"></button>
       
       <!-- Mobile Hamburger Button -->
@@ -82,6 +83,13 @@
     <div class="nav-item" onclick="switchView('about'); toggleMobileMenu();">
       <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
       <span>About Developer</span>
+    </div>
+
+    <div class="mobile-drawer-controls">
+      <select id="semSelectMobile" class="sem-select" style="width: 70%;">
+        <option value="All">All Semesters</option>
+      </select>
+      <button class="theme-toggle" id="themeToggleMobile" title="Toggle Theme" style="width: 36px;"></button>
     </div>
   </div>
 
@@ -311,7 +319,7 @@
               <div>🧠 <strong>Student of consistency, growth & code</strong></div>
             </div>
 
-            <!-- GitHub Projects Showcase (Updated with User Specified Projects) -->
+            <!-- GitHub Projects Showcase -->
             <div class="projects-section">
               <div class="projects-title">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
