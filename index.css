@@ -135,7 +135,7 @@ body {
 .icon-xl { width: 28px; height: 28px; }
 
 /* ==========================================================================
-   Header Navbar Layout (Responsive for All Phones)
+   Header Navbar Layout (Responsive for All Phones & iOS Safari)
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -151,7 +151,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 14px;
+  padding: 0 12px;
 }
 
 .nav-brand {
@@ -181,6 +181,10 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.02em;
   white-space: nowrap;
+}
+
+.brand-title-short {
+  display: none;
 }
 
 .nav-links {
@@ -1115,26 +1119,32 @@ body {
 }
 
 /* ==========================================================================
-   PHONE NAVBAR BREAKPOINTS (PERFECT ALIGNMENT)
+   SMARTPHONE RESPONSIVE MEDIA QUERIES (FORCED HIDE FOR DESKTOP DROPDOWN)
    ========================================================================== */
-@media (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .nav-links {
-    display: none;
+    display: none !important;
   }
   .sem-select-desktop {
-    display: none;
+    display: none !important;
   }
-  .brand-title {
-    font-size: 0.95rem;
+  .brand-title-full {
+    display: none !important;
+  }
+  .brand-title-short {
+    display: inline-block !important;
   }
   .spotlight-trigger {
-    padding: 0 8px;
+    padding: 0 8px !important;
   }
   .spotlight-trigger span, .shortcut-kbd {
-    display: none;
+    display: none !important;
+  }
+  .theme-toggle {
+    display: flex !important;
   }
   .mobile-menu-btn {
-    display: flex;
+    display: flex !important;
   }
   .hero-title {
     font-size: 1.9rem;
