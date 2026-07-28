@@ -1,0 +1,520 @@
+/* ==========================================================================
+   DataSci Notes Studio - Main Application Logic
+   ========================================================================== */
+
+(function () {
+  'use strict';
+
+  // Global State
+  let selectedSemester = 'All';
+  let selectedSubject = 'All';
+  let searchQuery = '';
+  let activeTopicId = null;
+  let openSubjects = {};
+  let openModules = {};
+
+  // Flashcards State
+  let flashcardSubject = 'All';
+  let flashcardIndex = 0;
+  let flashcardList = [];
+
+  // SVG Icons Palette
+  const ICONS = {
+    book: `<svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>`,
+    fileText: `<svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>`,
+    chevronDown: `<svg class="icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>`,
+    chevronRight: `<svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>`,
+    copy: `<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
+    check: `<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`
+  };
+
+  // DOM Elements
+  const themeToggle = document.getElementById('themeToggle');
+  const semSelect = document.getElementById('semSelect');
+  const treeView = document.getElementById('treeView');
+  const searchInput = document.getElementById('searchInput');
+  const readerArticle = document.getElementById('readerArticle');
+  const pdfDownloadBtn = document.getElementById('pdfDownloadBtn');
+  const readerSidebar = document.getElementById('readerSidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+  const mobileNavDrawer = document.getElementById('mobileNavDrawer');
+  const sidebarSubTabs = document.getElementById('sidebarSubTabs');
+  const progressBar = document.getElementById('scrollProgressBar');
+  const readerContainer = document.querySelector('.reader-container');
+
+  // Theme Management
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeBtn(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    updateThemeBtn(next);
+  });
+
+  function updateThemeBtn(theme) {
+    themeToggle.innerHTML = theme === 'dark' ? 
+      `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>` : 
+      `<svg class="icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+  }
+
+  // Reading Progress Bar
+  if (readerContainer && progressBar) {
+    readerContainer.addEventListener('scroll', () => {
+      const scrollTop = readerContainer.scrollTop;
+      const scrollHeight = readerContainer.scrollHeight - readerContainer.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = `${progress}%`;
+    });
+  }
+
+  // Mobile Navigation Drawer Toggle
+  window.toggleMobileMenu = function () {
+    if (mobileNavDrawer) {
+      mobileNavDrawer.classList.toggle('active');
+    }
+  };
+
+  // Populate Semester Selector
+  function initSemesters() {
+    if (!window.NOTES_DATA) return;
+    const semesters = Array.from(new Set(window.NOTES_DATA.map(i => i.semester))).sort();
+    
+    let html = `<option value="All">All Semesters</option>`;
+    semesters.forEach(s => {
+      html += `<option value="${s}">${s}</option>`;
+    });
+    semSelect.innerHTML = html;
+
+    semSelect.addEventListener('change', (e) => {
+      selectedSemester = e.target.value;
+      renderSidebarTabs();
+      renderSidebarTree();
+    });
+  }
+
+  // View Navigation
+  window.switchView = function (viewId, subject = null, topicId = null) {
+    document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+    const activeSec = document.getElementById(`view-${viewId}`);
+    if (activeSec) activeSec.classList.add('active');
+
+    const activeNav = document.querySelectorAll(`.nav-item[onclick*="'${viewId}'"]`);
+    activeNav.forEach(n => n.classList.add('active'));
+
+    if (subject) {
+      selectedSubject = subject;
+      openSubjects[subject] = true;
+    }
+
+    if (viewId === 'reader') {
+      renderSidebarTabs();
+      renderSidebarTree();
+      if (topicId) {
+        selectTopic(topicId);
+      } else if (!activeTopicId && window.NOTES_DATA && window.NOTES_DATA.length > 0) {
+        selectTopic(window.NOTES_DATA[0].id);
+      }
+    } else if (viewId === 'flashcards') {
+      initFlashcardSubjectBar();
+      initFlashcards();
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Toggle Reader Sidebar Drawer (Desktop & Mobile Responsive)
+  window.toggleSidebar = function () {
+    if (!readerSidebar) return;
+    if (window.innerWidth <= 860) {
+      readerSidebar.classList.toggle('open-mobile');
+      if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+    } else {
+      readerSidebar.classList.toggle('collapsed');
+    }
+  };
+
+  function closeMobileSidebar() {
+    if (window.innerWidth <= 860 && readerSidebar) {
+      readerSidebar.classList.remove('open-mobile');
+      if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+    }
+  }
+
+  // Sidebar Subject Tabs
+  function renderSidebarTabs() {
+    if (!sidebarSubTabs || !window.NOTES_DATA) return;
+    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    
+    let html = '';
+    subjects.forEach(s => {
+      const active = selectedSubject === s ? 'active' : '';
+      html += `<div class="sub-tab ${active}" onclick="window.setSidebarSubject('${s}')">${s}</div>`;
+    });
+    sidebarSubTabs.innerHTML = html;
+  }
+
+  window.setSidebarSubject = function (sub) {
+    selectedSubject = sub;
+    if (sub !== 'All') openSubjects[sub] = true;
+    renderSidebarTabs();
+    renderSidebarTree();
+  };
+
+  // Render 2-Level Accordion Tree View (Collapsible Subject & Collapsible Module)
+  function renderSidebarTree() {
+    if (!window.NOTES_DATA || !treeView) return;
+
+    let filtered = window.NOTES_DATA.filter(item => {
+      const matchSem = selectedSemester === 'All' || item.semester === selectedSemester;
+      const matchSub = selectedSubject === 'All' || item.subject === selectedSubject;
+      const q = (searchQuery || '').toLowerCase();
+      const matchSearch = !q || item.title.toLowerCase().includes(q) || item.content.toLowerCase().includes(q);
+      return matchSem && matchSub && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      treeView.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 20px 10px; font-size: 0.82rem;">No matching notes found.</div>`;
+      return;
+    }
+
+    // Group by Subject -> Module
+    const grouped = {};
+    filtered.forEach(item => {
+      if (!grouped[item.subject]) grouped[item.subject] = {};
+      if (!grouped[item.subject][item.module]) grouped[item.subject][item.module] = [];
+      grouped[item.subject][item.module].push(item);
+    });
+
+    let html = '';
+    for (const [sub, modules] of Object.entries(grouped)) {
+      let isSubOpen;
+      if (openSubjects[sub] !== undefined) {
+        isSubOpen = openSubjects[sub];
+      } else {
+        isSubOpen = searchQuery !== '' || selectedSubject === sub;
+      }
+
+      const subOpenClass = isSubOpen ? 'open' : '';
+      const subChevron = isSubOpen ? ICONS.chevronDown : ICONS.chevronRight;
+      
+      let totalCount = 0;
+      Object.values(modules).forEach(m => totalCount += m.length);
+
+      html += `<div class="acc-subject ${subOpenClass}">
+        <div class="acc-subject-btn" onclick="window.toggleAccordionSubject('${sub}')">
+          <span>${sub} (${totalCount})</span>
+          ${subChevron}
+        </div>
+        <div class="acc-subject-body">`;
+
+      for (const [mod, items] of Object.entries(modules)) {
+        const modKey = `${sub}-${mod}`;
+        
+        let isModOpen;
+        if (openModules[modKey] !== undefined) {
+          isModOpen = openModules[modKey];
+        } else {
+          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId));
+        }
+
+        const modOpenClass = isModOpen ? 'open' : '';
+        const modChevron = isModOpen ? ICONS.chevronDown : ICONS.chevronRight;
+
+        html += `<div class="acc-module ${modOpenClass}">
+          <div class="acc-module-btn" onclick="window.toggleAccordionModule('${modKey}')">
+            <span>${mod} (${items.length})</span>
+            ${modChevron}
+          </div>
+          <div class="acc-module-body">`;
+
+        items.forEach(item => {
+          const isActive = item.id === activeTopicId ? 'active' : '';
+          html += `<div class="tree-link ${isActive}" onclick="window.selectTopic('${item.id}')">
+            ${ICONS.fileText}
+            <span>${item.title}</span>
+          </div>`;
+        });
+
+        html += `</div></div>`;
+      }
+
+      html += `</div></div>`;
+    }
+
+    treeView.innerHTML = html;
+  }
+
+  window.toggleAccordionSubject = function (sub) {
+    const currentState = openSubjects[sub];
+    openSubjects[sub] = currentState === undefined ? false : !currentState;
+    renderSidebarTree();
+  };
+
+  window.toggleAccordionModule = function (modKey) {
+    const currentState = openModules[modKey];
+    openModules[modKey] = currentState === undefined ? false : !currentState;
+    renderSidebarTree();
+  };
+
+  function calculateReadTime(text) {
+    const words = text ? text.trim().split(/\s+/).length : 0;
+    const minutes = Math.ceil(words / 180);
+    return minutes < 1 ? 1 : minutes;
+  }
+
+  // Select Topic in Reader
+  window.selectTopic = function (id) {
+    if (!window.NOTES_DATA) return;
+    const topic = window.NOTES_DATA.find(t => t.id === id);
+    if (!topic) return;
+
+    activeTopicId = id;
+    closeMobileSidebar();
+    
+    // PDF Button
+    if (topic.pdfPath) {
+      pdfDownloadBtn.style.display = 'inline-flex';
+      pdfDownloadBtn.href = topic.pdfPath;
+      pdfDownloadBtn.setAttribute('download', '');
+    } else {
+      pdfDownloadBtn.style.display = 'none';
+    }
+
+    const readTime = calculateReadTime(topic.content);
+
+    // Find Previous & Next Topics for sequential reading
+    const currentIndex = window.NOTES_DATA.findIndex(t => t.id === id);
+    const prevTopic = currentIndex > 0 ? window.NOTES_DATA[currentIndex - 1] : null;
+    const nextTopic = currentIndex < window.NOTES_DATA.length - 1 ? window.NOTES_DATA[currentIndex + 1] : null;
+
+    let paginationHtml = `<div class="topic-pagination">`;
+    if (prevTopic) {
+      paginationHtml += `<button class="btn-secondary" onclick="window.selectTopic('${prevTopic.id}')">&larr; ${prevTopic.title}</button>`;
+    } else {
+      paginationHtml += `<div></div>`;
+    }
+    if (nextTopic) {
+      paginationHtml += `<button class="btn-primary" onclick="window.selectTopic('${nextTopic.id}')">${nextTopic.title} &rarr;</button>`;
+    }
+    paginationHtml += `</div>`;
+
+    // Article Content
+    readerArticle.innerHTML = `
+      <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+        <span>${topic.semester} &rsaquo; ${topic.subject} &rsaquo; ${topic.module}</span>
+        <span>${ICONS.clock} ${readTime} min read</span>
+      </div>
+      ${topic.html}
+      ${paginationHtml}
+    `;
+
+    // Attach Copy Code Buttons
+    attachCopyCodeButtons();
+
+    renderSidebarTree();
+    
+    if (readerContainer) readerContainer.scrollTop = 0;
+  };
+
+  function attachCopyCodeButtons() {
+    const pres = readerArticle.querySelectorAll('pre');
+    pres.forEach(pre => {
+      if (pre.querySelector('.copy-code-btn')) return;
+      const btn = document.createElement('button');
+      btn.className = 'copy-code-btn';
+      btn.style.cssText = 'position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 4px;';
+      btn.innerHTML = `${ICONS.copy} Copy`;
+      
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.innerHTML = `${ICONS.check} Copied!`;
+          setTimeout(() => { btn.innerHTML = `${ICONS.copy} Copy`; }, 2000);
+        });
+      });
+      pre.style.position = 'relative';
+      pre.appendChild(btn);
+    });
+  }
+
+  // Search Filter Input
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderSidebarTree();
+    });
+  }
+
+  // Spotlight Search Modal (Ctrl+K)
+  const spotlightModal = document.getElementById('spotlightModal');
+  const spotlightInput = document.getElementById('spotlightInput');
+  const spotlightResults = document.getElementById('spotlightResults');
+
+  window.openSpotlight = function () {
+    if (spotlightModal) {
+      spotlightModal.classList.add('active');
+      if (spotlightInput) {
+        spotlightInput.value = '';
+        spotlightInput.focus();
+        renderSpotlightResults('');
+      }
+    }
+  };
+
+  window.closeSpotlight = function () {
+    if (spotlightModal) spotlightModal.classList.remove('active');
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      openSpotlight();
+    } else if (e.key === 'Escape') {
+      closeSpotlight();
+    }
+  });
+
+  if (spotlightInput) {
+    spotlightInput.addEventListener('input', (e) => {
+      renderSpotlightResults(e.target.value);
+    });
+  }
+
+  function renderSpotlightResults(q) {
+    if (!window.NOTES_DATA || !spotlightResults) return;
+    const query = q.toLowerCase().trim();
+    
+    let filtered = window.NOTES_DATA;
+    if (query) {
+      filtered = window.NOTES_DATA.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.subject.toLowerCase().includes(query) || 
+        item.content.toLowerCase().includes(query)
+      );
+    }
+    
+    filtered = filtered.slice(0, 10);
+
+    if (filtered.length === 0) {
+      spotlightResults.innerHTML = `<div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.88rem;">No matching notes found.</div>`;
+      return;
+    }
+
+    let html = '';
+    filtered.forEach(item => {
+      html += `<div class="spotlight-item" onclick="window.selectSpotlightTopic('${item.id}')">
+        <div>
+          <strong style="font-size: 0.92rem;">${item.title}</strong>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">${item.semester} &bull; ${item.subject} &bull; ${item.module}</div>
+        </div>
+        <span style="font-size: 0.8rem; color: var(--accent-primary);">Jump &rarr;</span>
+      </div>`;
+    });
+
+    spotlightResults.innerHTML = html;
+  }
+
+  window.selectSpotlightTopic = function (id) {
+    closeSpotlight();
+    switchView('reader', null, id);
+  };
+
+  // Flashcards Module with Subject Selector Bar
+  function initFlashcardSubjectBar() {
+    const container = document.getElementById('flashSubjectBar');
+    if (!container || !window.NOTES_DATA) return;
+
+    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    let html = '';
+    subjects.forEach(s => {
+      const active = flashcardSubject === s ? 'active' : '';
+      html += `<div class="flash-chip ${active}" onclick="window.setFlashcardSubject('${s}')">${s}</div>`;
+    });
+    container.innerHTML = html;
+  }
+
+  window.setFlashcardSubject = function (subject) {
+    flashcardSubject = subject;
+    initFlashcardSubjectBar();
+    initFlashcards();
+  };
+
+  function initFlashcards() {
+    if (!window.NOTES_DATA) return;
+    
+    flashcardList = window.NOTES_DATA.filter(item => {
+      const matchSub = flashcardSubject === 'All' || item.subject === flashcardSubject;
+      return matchSub && (item.definition || item.mustWrite.length > 0);
+    });
+
+    flashcardIndex = 0;
+    renderFlashcard();
+  }
+
+  function renderFlashcard() {
+    const cardEl = document.getElementById('flashcardCard');
+    const counterEl = document.getElementById('flashCounter');
+    if (!cardEl) return;
+
+    if (flashcardList.length === 0) {
+      cardEl.innerHTML = `<div class="flashcard-body">No flashcards available for selected subject.</div>`;
+      counterEl.textContent = `0 of 0`;
+      return;
+    }
+
+    const item = flashcardList[flashcardIndex];
+    
+    let backHtml = `<div class="flashcard-tag">${item.subject} • ${item.module}</div>
+      <div class="flashcard-title">${item.title}</div>`;
+
+    if (item.mustWrite && item.mustWrite.length > 0) {
+      backHtml += `<div style="text-align: left; font-size: 0.88rem; margin-top: 10px;">
+        <strong style="color: var(--accent-primary);">⭐ Must-Write Points:</strong>
+        <ul style="margin-top: 6px; padding-left: 18px; color: var(--text-secondary);">`;
+      item.mustWrite.forEach(pt => {
+        backHtml += `<li style="margin-bottom: 3px;">${pt}</li>`;
+      });
+      backHtml += `</ul></div>`;
+    }
+
+    if (item.quickRecall) {
+      backHtml += `<div style="margin-top: 12px; padding: 8px 12px; background: var(--callout-quick-bg); border-left: 3px solid var(--callout-quick-border); font-size: 0.82rem; color: var(--text-primary); text-align: left; border-radius: 4px;">
+        ⚡ <strong>Quick Recall:</strong> ${item.quickRecall}
+      </div>`;
+    }
+
+    if (!item.mustWrite.length && !item.quickRecall) {
+      backHtml += `<div class="flashcard-body">${item.definition || 'Key concept review'}</div>`;
+    }
+
+    cardEl.innerHTML = backHtml;
+    counterEl.textContent = `Card ${flashcardIndex + 1} of ${flashcardList.length}`;
+  }
+
+  window.nextCard = function () {
+    if (flashcardList.length === 0) return;
+    flashcardIndex = (flashcardIndex + 1) % flashcardList.length;
+    renderFlashcard();
+  };
+
+  window.prevCard = function () {
+    if (flashcardList.length === 0) return;
+    flashcardIndex = (flashcardIndex - 1 + flashcardList.length) % flashcardList.length;
+    renderFlashcard();
+  };
+
+  // Init on DOM Load
+  document.addEventListener('DOMContentLoaded', () => {
+    initSemesters();
+    if (window.NOTES_DATA && window.NOTES_DATA.length > 0) {
+      activeTopicId = window.NOTES_DATA[0].id;
+    }
+  });
+
+})();

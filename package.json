@@ -1,0 +1,23 @@
+{
+  "name": "btech-data-science-notes",
+  "version": "1.0.0",
+  "description": "High-Performance Academic Study Portal & Solved Question Banks for B.Tech Data Science",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "build:data": "python build_site_data.py",
+    "build:pdf": "python convert_md_to_pdf.py"
+  },
+  "keywords": [
+    "btech",
+    "data-science",
+    "dbms",
+    "data-structures",
+    "mpca",
+    "exam-notes",
+    "flashcards"
+  ],
+  "author": "Suraj Sawant <surajonenine@gmail.com> (https://suraj1nine.vercel.app/)",
+  "license": "MIT",
+  "homepage": "https://daystar-1nine.github.io/B.Tech-Data-Science-Notes"
+}

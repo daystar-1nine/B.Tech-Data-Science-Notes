@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>DataSci Notes Studio — High-Performance B.Tech Data Science Notes Portal</title>
+  <meta name="description" content="Comprehensive multi-semester B.Tech Data Science study notes, 10-mark answers, must-write points, quick recall flows, and PDF downloads.">
+  <!-- Favicon Logo Link -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Top Scroll Reading Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Top Navbar Header -->
+  <header class="navbar">
+    <div class="nav-brand" onclick="switchView('home')">
+      <div class="brand-icon">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      </div>
+      <div class="brand-title">DataSci Notes Studio</div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="nav-links">
+      <li class="nav-item active" onclick="switchView('home')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Home</span>
+      </li>
+      <li class="nav-item" onclick="switchView('reader')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        <span>Notes Reader</span>
+      </li>
+      <li class="nav-item" onclick="switchView('flashcards')">
+        <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <span>Rapid Revision</span>
+      </li>
+      <li class="nav-item" onclick="switchView('about')">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>About</span>
+      </li>
+    </ul>
+
+    <div class="nav-controls">
+      <!-- Quick Search Spotlight Button -->
+      <button class="spotlight-trigger" onclick="openSpotlight()" title="Search Topics (Ctrl+K)">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>Search</span>
+        <span class="shortcut-kbd">Ctrl+K</span>
+      </button>
+
+      <!-- Semester Selector -->
+      <select id="semSelect" class="sem-select">
+        <option value="All">All Semesters</option>
+      </select>
+
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme"></button>
+      
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Toggle Navigation Menu">
+        <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-out Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="nav-item active" onclick="switchView('home'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home</span>
+    </div>
+    <div class="nav-item" onclick="switchView('reader'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      <span>Notes Reader</span>
+    </div>
+    <div class="nav-item" onclick="switchView('flashcards'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      <span>Rapid Revision</span>
+    </div>
+    <div class="nav-item" onclick="switchView('about'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      <span>About Developer</span>
+    </div>
+  </div>
+
+  <main class="main-content">
+
+    <!-- ===================================================================
+         VIEW 1: LANDING PAGE (HOME)
+         =================================================================== -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-section">
+        <div class="hero-badge">
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Multi-Semester Academic Notes & Solved Question Banks
+        </div>
+        <h1 class="hero-title">
+          Master Your B.Tech Data Science Exams with <span>Precision Notes</span>
+        </h1>
+        <p class="hero-subtitle">
+          Structured 10-mark answers, memory keywords, mandatory must-write points, quick recall flows, and 1-click PDF downloads.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="switchView('reader')">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            Start Reading Notes
+          </button>
+          <button class="btn-secondary" onclick="switchView('flashcards')">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Rapid Flashcard Mode
+          </button>
+          <a href="https://github.com/daystar-1nine/B.Tech-Data-Science-Notes" target="_blank" class="btn-secondary">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub Repository
+          </a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">98+</div>
+            <div class="stat-label">Exam Topics Covered</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3+</div>
+            <div class="stat-label">Core Subjects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">200+</div>
+            <div class="stat-label">Solved Questions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">PDF Downloads Available</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Subjects Explorer -->
+      <div class="section-container">
+        <h2 class="section-title">Core Data Science Subjects</h2>
+        <p class="section-desc">Select a subject to open the notes reader and PDF download links.</p>
+
+        <div class="subject-grid">
+          <!-- DBMS Card -->
+          <div class="subject-card" onclick="switchView('reader', 'DBMS')">
+            <div class="subject-header">
+              <div class="subject-logo">
+                <svg class="icon icon-lg" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+              </div>
+              <div class="subject-name">Database Management Systems</div>
+            </div>
+            <p class="subject-desc">
+              DBMS Architecture, 3-Level Abstraction, ER & EER Modeling, Relational Algebra (σ, π, ∪, ⋈), Relational Calculus, SQL Standards, Triggers & Procedures.
+            </p>
+            <div class="subject-footer">
+              <span>3 Modules + Solved Q&A Bank</span>
+              <span>Read Notes →</span>
+            </div>
+          </div>
+
+          <!-- Data Structures Card -->
+          <div class="subject-card" onclick="switchView('reader', 'Data Structure')">
+            <div class="subject-header">
+              <div class="subject-logo">
+                <svg class="icon icon-lg" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <div class="subject-name">Data Structures & Algorithms</div>
+            </div>
+            <p class="subject-desc">
+              ADT Concepts, Arrays, Multidimensional Pointers, Stacks, Queues, Circular Queues, Deques, Singly/Doubly Linked Lists, Polynomial Addition.
+            </p>
+            <div class="subject-footer">
+              <span>3 Modules</span>
+              <span>Read Notes →</span>
+            </div>
+          </div>
+
+          <!-- MPCA Card -->
+          <div class="subject-card" onclick="switchView('reader', 'MPCA')">
+            <div class="subject-header">
+              <div class="subject-logo">
+                <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="15" x2="23" y2="15"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="15" x2="4" y2="15"></line></svg>
+              </div>
+              <div class="subject-name">Microprocessors & Architecture</div>
+            </div>
+            <p class="subject-desc">
+              Computer Org vs Architecture, Von Neumann Model, 8086 CPU Architecture, Addressing Modes, Instruction Formats, Pipelining & Flynn's Classification.
+            </p>
+            <div class="subject-footer">
+              <span>3 Modules + Solved Q&A Bank</span>
+              <span>Read Notes →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 2: CLEAN MINIMALIST ACCORDION NOTES READER
+         =================================================================== -->
+    <section id="view-reader" class="view-section">
+      <div class="reader-layout">
+        
+        <!-- Mobile Sidebar Overlay Backdrop -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+        <!-- Minimalist Accordion Sidebar -->
+        <aside class="reader-sidebar" id="readerSidebar">
+          <div class="sidebar-top">
+            <span class="sidebar-title">Course Explorer</span>
+            <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="Collapse Sidebar">
+              <svg class="icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- Subject Filter Pills -->
+          <div class="sidebar-sub-tabs" id="sidebarSubTabs">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="sidebar-search-box">
+            <div class="search-input-wrap">
+              <svg class="icon search-icon-pos" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="searchInput" placeholder="Filter topics...">
+            </div>
+          </div>
+
+          <div class="tree-view" id="treeView">
+            <!-- Accordion Tree Generated dynamically by JS -->
+          </div>
+        </aside>
+
+        <!-- Reader Main Panel -->
+        <main class="reader-container">
+          <div class="reader-nav-bar">
+            <button class="toggle-sidebar-btn" onclick="toggleSidebar()">
+              <svg class="icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+              <span>Sidebar</span>
+            </button>
+
+            <div class="reader-actions">
+              <a id="pdfDownloadBtn" class="reader-btn pdf-btn" href="#" download style="display:none;">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>PDF</span>
+              </a>
+              <button class="reader-btn" onclick="switchView('flashcards')">
+                <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <span>Revise</span>
+              </button>
+            </div>
+          </div>
+
+          <article class="reader-article" id="readerArticle">
+            <!-- Markdown Content Rendered Here -->
+          </article>
+        </main>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 3: RAPID REVISION FLASHCARDS
+         =================================================================== -->
+    <section id="view-flashcards" class="view-section">
+      <div class="flash-section-header">
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 6px;">Rapid Revision Flashcards</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 18px; font-size: 0.9rem;">Filter by subject below to rapidly revise definitions, must-write points, and quick recall sequences.</p>
+      </div>
+
+      <div class="flash-subject-bar" id="flashSubjectBar">
+        <!-- Subject Chips Populated dynamically by JS -->
+      </div>
+
+      <div class="flashcard-stage">
+        <div class="flashcard-card" id="flashcardCard">
+          <!-- Card Content Rendered Here -->
+        </div>
+
+        <div class="flashcard-actions">
+          <button class="btn-secondary" onclick="prevCard()">← Previous</button>
+          <span id="flashCounter" style="font-weight: 700; color: var(--text-secondary);">Card 1 of 98</span>
+          <button class="btn-primary" onclick="nextCard()">Next Card →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VIEW 4: ABOUT & DEVELOPER PROFILE
+         =================================================================== -->
+    <section id="view-about" class="view-section">
+      <div class="about-wrapper">
+
+        <!-- Developer Profile Card -->
+        <div class="profile-card-wrapper">
+          <div class="profile-card">
+            <div class="profile-avatar-wrap">
+              <img src="suraj_avatar.jpg" alt="Suraj" class="profile-avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Suraj&background=A90E02&color=FFFBD4&size=128'">
+            </div>
+
+            <h3 class="profile-name">Suraj</h3>
+            <div class="profile-tag">Data Science Student</div>
+
+            <!-- Bullet Bio -->
+            <div class="profile-bio-bullets">
+              <div>🎓 <strong>B.Tech DS | GATE 2028 CSE & DS</strong></div>
+              <div>💡 <strong>Building core CS skills: DSA, AI and ML</strong></div>
+              <div>🔧 <strong>Python, C & C++ in progress</strong></div>
+              <div>🧠 <strong>Student of consistency, growth & code</strong></div>
+            </div>
+
+            <!-- GitHub Projects Showcase (Updated with User Specified Projects) -->
+            <div class="projects-section">
+              <div class="projects-title">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                Featured GitHub Projects
+              </div>
+
+              <!-- Project 1: SuRaksha UPI Fraud Detection -->
+              <div class="project-item">
+                <div class="project-item-title">
+                  <span>🛡️ SuRaksha - UPI Fraud Detection System</span>
+                  <a href="https://github.com/daystar-1nine/SuRaksha-UPI-Fraud-Detection-System" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.8rem;">View Repo &rarr;</a>
+                </div>
+                <div class="project-item-desc">
+                  AI/ML powered real-time UPI transaction fraud detection system designed to identify transactional anomalies and secure digital payments.
+                </div>
+              </div>
+
+              <!-- Project 2: 200 Days Of Python -->
+              <div class="project-item">
+                <div class="project-item-title">
+                  <span>🐍 200 Days Of Python</span>
+                  <a href="https://github.com/daystar-1nine/200DaysOfPython" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.8rem;">View Repo &rarr;</a>
+                </div>
+                <div class="project-item-desc">
+                  Comprehensive 200-day Python learning trajectory covering core programming, algorithms, data science modules, and automation scripts.
+                </div>
+              </div>
+
+              <!-- Project 3: ScadenzaAI -->
+              <div class="project-item">
+                <div class="project-item-title">
+                  <span>🤖 ScadenzaAI</span>
+                  <a href="https://github.com/daystar-1nine/ScadenzaAI" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.8rem;">View Repo &rarr;</a>
+                </div>
+                <div class="project-item-desc">
+                  AI-driven intelligent expiry tracking & smart notification platform empowering users to manage subscriptions, products, and deadlines.
+                </div>
+              </div>
+
+              <!-- Project 4: Scientific Calculator Python -->
+              <div class="project-item">
+                <div class="project-item-title">
+                  <span>🧮 Scientific Calculator (Python)</span>
+                  <a href="https://github.com/daystar-1nine/scientific-calculator-python" target="_blank" style="color: var(--accent-primary); text-decoration: none; font-size: 0.8rem;">View Repo &rarr;</a>
+                </div>
+                <div class="project-item-desc">
+                  Feature-packed GUI scientific calculator supporting advanced mathematical functions, trigonometry, logarithmic operations, and precision calculations.
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-socials" style="margin-top: 24px;">
+              <!-- Personal Portfolio Website -->
+              <a href="https://suraj1nine.vercel.app/" target="_blank" class="social-circle-btn" title="Personal Website / Portfolio">
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </a>
+              <!-- GitHub -->
+              <a href="https://github.com/daystar-1nine" target="_blank" class="social-circle-btn" title="GitHub Profile">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/surajsawant19062005/" target="_blank" class="social-circle-btn" title="LinkedIn">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://www.instagram.com/daystar.drafts/" target="_blank" class="social-circle-btn" title="Instagram (@daystar.drafts)">
+                <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <!-- LeetCode -->
+              <a href="https://leetcode.com/u/daystar-onenine/" target="_blank" class="social-circle-btn" title="LeetCode Profile">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </a>
+              <!-- Facebook -->
+              <a href="https://www.facebook.com/profile.php?id=100042762615551" target="_blank" class="social-circle-btn" title="Facebook Profile">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </a>
+              <!-- Email -->
+              <a href="mailto:surajonenine@gmail.com" class="social-circle-btn" title="Email (surajonenine@gmail.com)">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-box">
+          <h2>
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            About DataSci Notes Studio
+          </h2>
+          <p>
+            <strong>DataSci Notes Studio</strong> is an open-source academic study portal built for B.Tech Data Science students. It hosts comprehensive lecture notes, exam-ready answers, and downloadable PDFs.
+          </p>
+          <p>
+            The platform supports multiple semesters and features a 5-tier exam formulation to help students maximize university exam scores:
+          </p>
+          <ul style="padding-left: 20px; color: var(--text-secondary); line-height: 1.8; margin-top: 10px;">
+            <li><strong>Definitions to Remember:</strong> Concise technical statements for rapid understanding.</li>
+            <li><strong>Structured Exam Answers:</strong> 10-mark and 5-mark complete explanations.</li>
+            <li><strong>Memory Keywords:</strong> Bolded core technical terminology.</li>
+            <li><strong>Must-Write Points:</strong> 5–7 essential scoring bullet points.</li>
+            <li><strong>Quick Recall:</strong> One-line memory flows for rapid recall before exams.</li>
+          </ul>
+        </div>
+
+        <div class="about-box">
+          <h2>
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            Open Source & Contribution
+          </h2>
+          <p>
+            Students and educators can fork the repository, add new semester notes, or update existing question banks.
+          </p>
+          <div style="margin-top: 16px;">
+            <a href="https://github.com/daystar-1nine/B.Tech-Data-Science-Notes" target="_blank" class="btn-primary">
+              Visit GitHub Repository →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Spotlight Quick Search Modal Overlay (Ctrl+K) -->
+  <div class="spotlight-modal" id="spotlightModal" onclick="closeSpotlight()">
+    <div class="spotlight-card" onclick="event.stopPropagation()">
+      <div class="spotlight-input-box">
+        <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="spotlightInput" placeholder="Search any topic, keyword, or question..." autocomplete="off">
+        <span class="shortcut-kbd">ESC</span>
+      </div>
+      <div class="spotlight-results" id="spotlightResults">
+        <!-- Results rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Notes Database and Application Logic -->
+  <script src="notes_data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
