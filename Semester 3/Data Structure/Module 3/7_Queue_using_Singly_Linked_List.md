@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Conceptual Mapping: Linked List to Queue
+# Conceptual Mapping: Linked List to Queue
 To achieve O(1) time complexity for both Enqueue and Dequeue, we must maintain references to both ends of the list.
 
 | Queue Pointer | Linked List Equivalent | Used For |

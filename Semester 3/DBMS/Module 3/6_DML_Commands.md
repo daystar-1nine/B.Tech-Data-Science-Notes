@@ -1,4 +1,4 @@
-# Topic: Data Manipulation Language (DML) Commands
+# Data Manipulation Language (DML) Commands
 
 **Q. Discuss Data Manipulation Language (DML) commands in SQL. Write the syntax and examples for SELECT, INSERT, UPDATE, and DELETE.**
 

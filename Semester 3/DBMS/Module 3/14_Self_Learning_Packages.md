@@ -1,4 +1,4 @@
-# Topic: Packages — Self-Learning
+# Packages (Self-Learning)
 
 **Q. Discuss the concept of Packages in database programming (such as PL/SQL). Explain the difference between a Package Specification and a Package Body, and list their advantages.**
 

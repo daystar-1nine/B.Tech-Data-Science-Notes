@@ -1,4 +1,4 @@
-# Topic: Set Operations in SQL
+# Set Operations in SQL
 
 **Q. Discuss the SQL Set Operations. Explain UNION, UNION ALL, INTERSECT, and EXCEPT with examples, and list the strict rules required to use them.**
 

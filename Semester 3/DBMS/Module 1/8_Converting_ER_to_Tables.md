@@ -1,4 +1,4 @@
-# Topic: Converting ER Model to Tables (Relational Database)
+# Converting ER Model to Tables (Relational Database)
 
 **Q. How is an ER Diagram mapped into a Relational Database schema? Explain the rules for converting Entities, Attributes, and the various Relationships (1:1, 1:N, M:N) into database tables.**
 

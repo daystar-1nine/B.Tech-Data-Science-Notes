@@ -1,4 +1,4 @@
-# Topic: Concepts of Nano Programming — Self-Learning
+# Concepts of Nano Programming (Self-Learning)
 
 **Q. Discuss the concepts of Nano Programming in computer architecture. What are Nano Instructions and Nano Memory, and how do they optimize microprogramming?**
 

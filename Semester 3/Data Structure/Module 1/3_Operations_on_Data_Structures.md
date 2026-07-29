@@ -1,4 +1,4 @@
-# Topic: Operations on Data Structures
+# Operations on Data Structures
 
 **Q. Discuss the various fundamental operations that can be performed on data structures, explaining each with a suitable example.**
 

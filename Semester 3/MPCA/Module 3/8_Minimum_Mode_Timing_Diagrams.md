@@ -9,7 +9,7 @@
 
 ---
 
-### 1. General T-State Roles
+# General T-State Roles
 * **T1:** Address is generated and latched.
 * **T2:** Multiplexed bus switches from Address to Data mode. Control signals asserted.
 * **T3:** Actual data transfer occurs. (Wait states T_W inserted here if memory is slow).

@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Polynomial Representation
+# Polynomial Representation
 Each node in the linked list represents one term and is divided into three parts:
 1. **Coefficient:** The multiplier (e.g., the '3' in 3x^4).
 2. **Exponent:** The power (e.g., the '4' in 3x^4).

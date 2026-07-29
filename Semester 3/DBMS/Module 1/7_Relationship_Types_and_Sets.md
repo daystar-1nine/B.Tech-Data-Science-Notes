@@ -1,4 +1,4 @@
-# Topic: Relationship Types and Relationship Sets
+# Relationship Types and Relationship Sets
 
 **Q. Explain the concepts of Relationship Types and Relationship Sets. Discuss the Degree of Relationship and Mapping Cardinalities (1:1, 1:N, M:N) with examples.**
 

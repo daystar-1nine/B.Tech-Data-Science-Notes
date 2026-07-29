@@ -1,4 +1,4 @@
-# Topic: Maximum Mode Timing Diagrams
+# Maximum Mode Timing Diagrams
 
 **Q. Discuss the Memory Read and Write timing diagrams for the 8086 microprocessor operating in Maximum Mode. How does it differ from Minimum Mode?**
 

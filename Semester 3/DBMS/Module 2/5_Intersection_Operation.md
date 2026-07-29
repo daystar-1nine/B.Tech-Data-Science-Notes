@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Intersection Operator (∩)
+# Intersection Operator (∩)
 * **Binary operation** — operates on two tables.
 * **Syntax:** Relation_A ∩ Relation_B
 * Returns only tuples that appear in **both** relations simultaneously.

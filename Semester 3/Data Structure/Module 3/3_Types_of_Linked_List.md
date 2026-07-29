@@ -1,4 +1,4 @@
-# Topic: Types of Linked List
+# Types of Linked List
 
 **Q. Elaborate on the different types of Linked Lists. Explain Singly, Circular, and Doubly Linked Lists with their structures and diagrams.**
 

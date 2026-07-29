@@ -1,4 +1,4 @@
-# Topic: Data Abstraction
+# Data Abstraction
 
 **Q. What is Data Abstraction in a DBMS? Explain the three levels of data abstraction with a suitable example.**
 

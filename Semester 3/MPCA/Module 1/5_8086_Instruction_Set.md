@@ -1,4 +1,4 @@
-# Topic: 8086 Instruction Set
+# 8086 Instruction Set
 
 **Q. Classify the Instruction Set of the 8086 microprocessor. Briefly explain Data Transfer, Arithmetic, Logical, Branch, String, and Processor Control instructions with one example each.**
 

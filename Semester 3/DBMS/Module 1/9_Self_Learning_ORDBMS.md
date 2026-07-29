@@ -1,4 +1,4 @@
-# Topic: Object-Relational Database Management System (ORDBMS) — Self-Learning
+# Object-Relational Database Management System (ORDBMS) (Self-Learning)
 
 **Q. Write a detailed note on Object-Relational Database Management System (ORDBMS). Highlight its features, advantages, and how it differs from a traditional RDBMS.**
 

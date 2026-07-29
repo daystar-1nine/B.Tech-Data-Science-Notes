@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Limitation of Linear Queue
+# Limitation of Linear Queue
 In a standard linear array queue, once the `rear` pointer reaches the maximum index (`SIZE - 1`), no new elements can be enqueued. This happens **even if spaces are empty at the front** due to earlier dequeue operations, leading to severe **memory wastage**.
 
 ### 2. Circular Queue

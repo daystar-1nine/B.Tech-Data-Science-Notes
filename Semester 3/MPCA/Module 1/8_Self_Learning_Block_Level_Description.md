@@ -1,4 +1,4 @@
-# Topic: Block-Level Description of Functional Units — Self-Learning
+# Block-Level Description of Functional Units (Self-Learning)
 
 **Q. Draw a block-level diagram of a computer system. Describe how the functional units are interconnected and how data and control signals flow between them.**
 

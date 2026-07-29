@@ -1,4 +1,4 @@
-# Topic: Programmer's Model of 8086
+# Programmer's Model of 8086
 
 **Q. Describe the programmer's model of the 8086 microprocessor. Detail the General Purpose Registers, Segment Registers, Pointer/Index Registers, and the Flag Register.**
 

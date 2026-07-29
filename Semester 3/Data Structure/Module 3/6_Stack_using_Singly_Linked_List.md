@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Conceptual Mapping: Linked List to Stack
+# Conceptual Mapping: Linked List to Stack
 To maintain O(1) time complexity for both Push and Pop operations, all insertions and deletions must occur at the **beginning (head)** of the linked list.
 
 | Stack Operation | Linked List Equivalent |

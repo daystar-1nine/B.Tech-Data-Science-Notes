@@ -1,4 +1,4 @@
-# Topic: Data Control Language (DCL) Commands
+# Data Control Language (DCL) Commands
 
 **Q. What is Data Control Language (DCL)? Explain the concept of user privileges and demonstrate the use of GRANT and REVOKE commands.**
 

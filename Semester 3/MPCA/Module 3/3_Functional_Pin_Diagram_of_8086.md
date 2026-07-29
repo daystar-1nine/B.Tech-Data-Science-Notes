@@ -1,4 +1,4 @@
-# Topic: Functional Pin Diagram of 8086
+# Functional Pin Diagram of 8086
 
 **Q. Discuss the functional pin diagram of the 8086 microprocessor. Explain the significance of the multiplexed Address/Data bus and the pins specific to Minimum and Maximum modes.**
 

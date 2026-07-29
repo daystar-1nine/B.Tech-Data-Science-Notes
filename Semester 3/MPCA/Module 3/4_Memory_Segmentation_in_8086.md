@@ -9,7 +9,7 @@
 
 ---
 
-### 1. The Four Segments
+# The Four Segments
 The CPU manages these memory blocks using four specialized 16-bit Segment Registers:
 1. **Code Segment (CS):** Points to the executing program instructions. Paired with Instruction Pointer (IP).
 2. **Data Segment (DS):** Points to program variables. Paired with BX, SI, or direct addresses.

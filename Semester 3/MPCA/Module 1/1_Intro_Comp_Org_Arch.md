@@ -1,4 +1,4 @@
-# Topic: Introduction to Computer Organization and Architecture
+# Introduction to Computer Organization and Architecture
 
 **Q. Define Computer Organization and Computer Architecture. Clearly distinguish between the two concepts using suitable examples.**
 

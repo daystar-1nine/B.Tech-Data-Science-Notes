@@ -1,4 +1,4 @@
-# Topic: Attributes and Keys
+# Attributes and Keys
 
 **Q. Discuss the different types of Attributes in the ER model. Explain the concepts of Super Key, Candidate Key, Primary Key, and Foreign Key with examples.**
 

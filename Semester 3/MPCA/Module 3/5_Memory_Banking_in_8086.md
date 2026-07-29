@@ -1,4 +1,4 @@
-# Topic: Memory Banking in 8086
+# Memory Banking in 8086
 
 **Q. What is Memory Banking in the 8086 microprocessor? Explain the roles of the A0 and BHE' signals in accessing Even and Odd memory banks for byte and word transfers.**
 

@@ -9,7 +9,7 @@
 
 ---
 
-### 1. The Five Functional Units
+# The Five Functional Units
 
 | Unit | Primary Function | Examples |
 | :--- | :--- | :--- |

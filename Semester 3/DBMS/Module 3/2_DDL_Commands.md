@@ -1,4 +1,4 @@
-# Topic: Data Definition Language (DDL) Commands
+# Data Definition Language (DDL) Commands
 
 **Q. Explain the various Data Definition Language (DDL) commands in SQL. Provide the syntax and a clear example for CREATE, ALTER, DROP, TRUNCATE, and RENAME.**
 

@@ -1,4 +1,4 @@
-# Topic: Stack and Queue Implementation using Structure — Self-Learning
+# Stack and Queue Implementation using Structure (Self-Learning)
 
 **Q. Why is it advantageous to implement Stacks and Queues using Structures in C? Provide a C program demonstrating the implementation of a Stack and a Queue where their components are encapsulated within a structure.**
 

@@ -9,7 +9,7 @@
 
 ---
 
-### 1. CPU Execution Time
+# CPU Execution Time
 The actual time the CPU spends computing a specific task (excludes I/O wait time).
 **Formulas:**
 * CPU Execution Time = CPU Clock Cycles × Clock Cycle Time

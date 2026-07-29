@@ -1,4 +1,4 @@
-# Topic: Entity Relationship (ER) Model
+# Entity Relationship (ER) Model
 
 **Q. What is the Entity-Relationship (ER) Model? Discuss its basic concepts and the various symbols used in drawing an ER Diagram.**
 

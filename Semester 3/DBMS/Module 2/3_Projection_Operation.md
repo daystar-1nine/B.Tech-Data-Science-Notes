@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Projection Operator (π — Pi)
+# Projection Operator (π — Pi)
 * Operates on a **single table** (unary).
 * Filters **vertically** — returns all rows, but only selected columns.
 * **Key Property:** Automatically **eliminates duplicate rows** from the output (because a relation is a mathematical set — no duplicates allowed).

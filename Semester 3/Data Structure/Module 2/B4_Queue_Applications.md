@@ -1,4 +1,4 @@
-# Topic: Applications of Queue
+# Applications of Queue
 
 **Q. Discuss the significance of Queues in computer science. Elaborate on various real-world and system-level applications where the Queue data structure is essential.**
 

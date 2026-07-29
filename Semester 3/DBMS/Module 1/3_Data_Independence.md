@@ -1,4 +1,4 @@
-# Topic: Data Independence
+# Data Independence
 
 **Q. Define Data Independence. Explain the concepts of Logical and Physical Data Independence and highlight the key differences between them.**
 

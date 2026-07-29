@@ -1,4 +1,4 @@
-# Topic: Entity Types and Entity Sets
+# Entity Types and Entity Sets
 
 **Q. Define Entity, Entity Type, and Entity Set. Clearly differentiate between a Strong Entity and a Weak Entity with examples.**
 

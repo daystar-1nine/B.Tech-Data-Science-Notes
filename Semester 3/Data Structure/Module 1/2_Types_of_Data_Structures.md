@@ -1,4 +1,4 @@
-# Topic: Types of Data Structures — Linear and Non-Linear
+# Types of Data Structures — Linear and Non-Linear
 
 **Q. Classify Data Structures into Linear and Non-Linear types. Differentiate between them and provide examples of each.**
 

@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Minimum Mode Configuration
+# Minimum Mode Configuration
 * Acts as the sole controller of the system bus.
 * Directly generates all necessary control signals (like read, write, memory/IO).
 * No external bus controller chip is required, making the circuit design simpler and cheaper.

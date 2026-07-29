@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Types of Relational Calculus
+# Types of Relational Calculus
 
 #### A. Tuple Relational Calculus (TRC)
 * Variables range over **entire tuples (rows)**.

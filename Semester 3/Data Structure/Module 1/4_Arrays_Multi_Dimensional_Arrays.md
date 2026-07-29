@@ -1,4 +1,4 @@
-# Topic: Arrays, Multidimensional Arrays, Array of Pointers
+# Arrays, Multidimensional Arrays, Array of Pointers
 
 **Q. Define Arrays. Explain one-dimensional arrays, multi-dimensional arrays, and the concept of an array of pointers with syntax and examples.**
 

@@ -1,4 +1,4 @@
-# Topic: Parallel Processing Concepts
+# Parallel Processing Concepts
 
 **Q. What is Parallel Processing? Discuss the need for parallel processing, its types, and its primary advantages in computer architecture.**
 

@@ -1,4 +1,4 @@
-# Topic: Nested Queries (Subqueries)
+# Nested Queries (Subqueries)
 
 **Q. What are Nested Queries (Subqueries) in SQL? Differentiate between Single-Row, Multiple-Row, and Correlated subqueries with examples.**
 

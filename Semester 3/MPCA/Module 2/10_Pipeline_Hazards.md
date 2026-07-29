@@ -1,4 +1,4 @@
-# Topic: Pipeline Hazards
+# Pipeline Hazards
 
 **Q. Define Pipeline Hazards. Classify and explain the three main types of pipeline hazards (Structural, Data, and Control) and briefly mention methods to handle them.**
 

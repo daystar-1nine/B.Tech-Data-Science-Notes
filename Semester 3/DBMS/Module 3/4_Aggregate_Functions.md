@@ -1,4 +1,4 @@
-# Topic: Aggregate Functions
+# Aggregate Functions
 
 **Q. What are Aggregate Functions in SQL? Explain the functions COUNT(), SUM(), AVG(), MAX(), and MIN() with syntax and appropriate examples.**
 

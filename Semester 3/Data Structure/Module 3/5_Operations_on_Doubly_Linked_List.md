@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Traversal & Searching
+# Traversal & Searching
 * **Forward Traversal:** Start at `head`, loop using `temp = temp->next`.
 * **Backward Traversal:** Start at the last node (`tail`), loop using `temp = temp->prev`.
 * **Searching:** Similar to a Singly Linked List, but if the location is known to be near the end, you can search backwards from the tail to save time.

@@ -1,4 +1,4 @@
-# Topic: Operations on Singly Linked List
+# Operations on Singly Linked List
 
 **Q. Describe the fundamental operations performed on a Singly Linked List: Traversal, Insertion, Deletion, and Searching, detailing the logic behind each.**
 

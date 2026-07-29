@@ -1,4 +1,4 @@
-# Topic: 8086 CPU Architecture
+# 8086 CPU Architecture
 
 **Q. Explain the internal architecture of the 8086 microprocessor. Describe the functions of the Bus Interface Unit (BIU) and the Execution Unit (EU).**
 

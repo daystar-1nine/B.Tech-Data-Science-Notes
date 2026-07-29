@@ -1,4 +1,4 @@
-# Topic: Control Unit
+# Control Unit
 
 **Q. What is the role of the Control Unit? Differentiate between Hardwired Control Unit and Microprogrammed Control Unit.**
 

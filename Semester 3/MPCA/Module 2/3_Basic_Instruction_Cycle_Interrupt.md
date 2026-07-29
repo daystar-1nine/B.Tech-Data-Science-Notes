@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Standard Instruction Cycle Phases
+# Standard Instruction Cycle Phases
 1. **Fetch Cycle:**
    * CPU fetches the instruction from memory using the address in the Program Counter (PC).
    * Instruction is placed in the Instruction Register (IR).

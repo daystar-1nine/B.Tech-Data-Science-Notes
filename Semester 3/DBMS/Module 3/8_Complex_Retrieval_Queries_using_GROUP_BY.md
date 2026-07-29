@@ -1,4 +1,4 @@
-# Topic: Complex Retrieval Queries using GROUP BY
+# Complex Retrieval Queries using GROUP BY
 
 **Q. Explain the use of the GROUP BY clause in complex queries. Differentiate between WHERE and HAVING, and demonstrate the order of execution when combining GROUP BY, HAVING, and ORDER BY.**
 

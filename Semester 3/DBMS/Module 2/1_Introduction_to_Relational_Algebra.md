@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Basic Concepts
+# Basic Concepts
 
 | Concept | Explanation |
 | :--- | :--- |

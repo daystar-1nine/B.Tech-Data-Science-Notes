@@ -1,4 +1,4 @@
-# Topic: De-multiplexing of Address/Data Bus — Self-Learning
+# De-multiplexing of Address/Data Bus (Self-Learning)
 
 **Q. Why does the 8086 use a multiplexed Address/Data bus? Explain the process of de-multiplexing this bus using Address Latch Enable (ALE) and Latches.**
 

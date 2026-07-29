@@ -1,4 +1,4 @@
-# Topic: Embedded SQL — Self-Learning
+# Embedded SQL (Self-Learning)
 
 **Q. What is Embedded SQL? Discuss how SQL statements interact with host programming languages using Host Variables and Cursors. Differentiate between Static and Dynamic SQL.**
 

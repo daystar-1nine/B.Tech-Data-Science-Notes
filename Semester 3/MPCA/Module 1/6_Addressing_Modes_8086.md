@@ -1,4 +1,4 @@
-# Topic: Addressing Modes of 8086
+# Addressing Modes of 8086
 
 **Q. What is an Addressing Mode? Explain the various addressing modes supported by the 8086 microprocessor with appropriate examples.**
 

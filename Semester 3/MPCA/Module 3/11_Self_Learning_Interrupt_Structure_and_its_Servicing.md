@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Hardware vs. Software Interrupts
+# Hardware vs. Software Interrupts
 | Type | Source | Characteristics | Examples |
 | :--- | :--- | :--- | :--- |
 | **Hardware** | External physical devices | Triggered by electrical signals to CPU pins. Can be Maskable (ignored if IF=0) or Non-Maskable. | **INTR** (Maskable), **NMI** (Non-Maskable). |

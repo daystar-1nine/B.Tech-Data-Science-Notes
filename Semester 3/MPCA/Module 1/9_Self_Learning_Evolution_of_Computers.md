@@ -9,7 +9,7 @@
 
 ---
 
-### The Five Generations of Computers
+# The Five Generations of Computers
 
 | Generation | Core Technology | Key Characteristics & Examples |
 | :--- | :--- | :--- |

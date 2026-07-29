@@ -1,4 +1,4 @@
-# Topic: String Manipulation
+# String Manipulation
 
 **Q. What is a String in Data Structures? Explain the common string manipulation operations with examples.**
 

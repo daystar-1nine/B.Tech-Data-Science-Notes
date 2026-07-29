@@ -9,7 +9,7 @@
 
 ---
 
-### 1. Selection Operator (σ — Sigma)
+# Selection Operator (σ — Sigma)
 * Operates on a **single table** (unary).
 * Filters **horizontally** — returns same columns, but only matching rows.
 * Output automatically eliminates duplicate rows (set behavior).
