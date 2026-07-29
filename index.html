@@ -221,10 +221,17 @@
         <!-- Minimalist Accordion Sidebar -->
         <aside class="reader-sidebar" id="readerSidebar">
           <div class="sidebar-top">
-            <span class="sidebar-title">Course Explorer</span>
-            <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="Collapse Sidebar">
-              <svg class="icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
+            <span class="sidebar-title">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              Explorer
+            </span>
+            <div class="sidebar-quick-actions">
+              <button class="sidebar-action-btn" onclick="window.expandAllAccordion()" title="Expand All Modules">Expand All</button>
+              <button class="sidebar-action-btn" onclick="window.collapseAllAccordion()" title="Collapse All Modules">Collapse</button>
+              <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="Collapse Sidebar">
+                <svg class="icon" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+            </div>
           </div>
 
           <!-- Subject Filter Pills -->

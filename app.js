@@ -181,6 +181,22 @@
     renderSidebarTree();
   };
 
+  // Global Expand All & Collapse All Controls
+  window.expandAllAccordion = function () {
+    if (!window.NOTES_DATA) return;
+    window.NOTES_DATA.forEach(item => {
+      openSubjects[item.subject] = true;
+      openModules[`${item.subject}-${item.module}`] = true;
+    });
+    renderSidebarTree();
+  };
+
+  window.collapseAllAccordion = function () {
+    openSubjects = {};
+    openModules = {};
+    renderSidebarTree();
+  };
+
   // Render 2-Level Accordion Tree View (Collapsible Subject & Collapsible Module)
   function renderSidebarTree() {
     if (!window.NOTES_DATA || !treeView) return;
@@ -194,7 +210,7 @@
     });
 
     if (filtered.length === 0) {
-      treeView.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 20px 10px; font-size: 0.82rem;">No matching notes found.</div>`;
+      treeView.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 24px 10px; font-size: 0.82rem;">No matching notes found for "${searchQuery}".</div>`;
       return;
     }
 
@@ -223,7 +239,10 @@
 
       html += `<div class="acc-subject ${subOpenClass}">
         <div class="acc-subject-btn" onclick="window.toggleAccordionSubject('${sub}')">
-          <span>${sub} (${totalCount})</span>
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span>${sub}</span>
+            <span class="count-badge">${totalCount}</span>
+          </div>
           ${subChevron}
         </div>
         <div class="acc-subject-body">`;
@@ -243,14 +262,17 @@
 
         html += `<div class="acc-module ${modOpenClass}">
           <div class="acc-module-btn" onclick="window.toggleAccordionModule('${modKey}')">
-            <span>${mod} (${items.length})</span>
+            <div style="display: flex; align-items: center; gap: 4px;">
+              <span>${mod}</span>
+              <span style="font-size: 0.7rem; opacity: 0.7;">(${items.length})</span>
+            </div>
             ${modChevron}
           </div>
           <div class="acc-module-body">`;
 
         items.forEach(item => {
           const isActive = item.id === activeTopicId ? 'active' : '';
-          html += `<div class="tree-link ${isActive}" onclick="window.selectTopic('${item.id}')">
+          html += `<div class="tree-link ${isActive}" onclick="window.selectTopic('${item.id}')" title="${item.title}">
             ${ICONS.fileText}
             <span>${item.title}</span>
           </div>`;
@@ -292,6 +314,10 @@
     activeTopicId = id;
     closeMobileSidebar();
     
+    // Ensure parent subject and module are open in accordion
+    openSubjects[topic.subject] = true;
+    openModules[`${topic.subject}-${topic.module}`] = true;
+
     // PDF Button
     if (topic.pdfPath) {
       pdfDownloadBtn.style.display = 'inline-flex';
