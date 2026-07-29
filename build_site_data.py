@@ -15,18 +15,28 @@ def parse_markdown_file(filepath):
 
     filename = os.path.basename(filepath)
 
-    # Extract Title from first line or filename
-    title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
-    if title_match:
-        title = title_match.group(1).strip()
-    else:
-        title = filename.replace('.md', '').replace('_', ' ')
-
     # Path decomposition
     parts = rel_path.split('/')
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
-    module = parts[2] if len(parts) > 2 else "General"
+    
+    # Ensure module is always Module 1, Module 2, Module 3 (even if nested in QA subfolder)
+    module = "General"
+    for part in parts:
+        if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
+            module = part.title()
+            break
+
+    # Extract or Format Title
+    if filename.lower() in ['2m.md', '3m.md', '5m.md', '10m.md']:
+        mark = filename.lower().replace('m.md', '')
+        title = f"{module} — {mark} Mark Questions & Answers"
+    else:
+        title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+        if title_match:
+            title = title_match.group(1).strip()
+        else:
+            title = filename.replace('.md', '').replace('_', ' ')
 
     # Extract Definition block
     def_match = re.search(r'>\s*📌\s*\*\*Definition to Remember\*\*\s*\n>\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
@@ -74,26 +84,28 @@ def check_pdf_exists(pdf_rel_path):
 def get_file_sort_key(item):
     filename = item['filename']
     
-    # 1. Question Bank files come after topic notes (e.g. 2_Mark, 3_Mark, 5_Mark, 10_Mark)
-    q_match = re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE) or re.search(r'(\d+)_Mark', filename, re.IGNORECASE)
+    # 1. Question Bank files (e.g., 2M.md, 3M.md, 5M.md, 10M.md) placed at the end of each module
+    q_match = re.search(r'(\d+)M\.md', filename, re.IGNORECASE) or re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE)
     if q_match:
         mark_num = int(q_match.group(1))
-        return (item['semester'], item['subject'], item['module'], 1, mark_num, filename)
+        return (item['semester'], item['subject'], item['module'], 1, 0, mark_num, filename)
 
-    # 2. Topic notes with letter-number prefixes (e.g. A1_, A2_, B1_, B2_)
-    alpha_num_match = re.match(r'^([A-Za-z]+)(\d+)_', filename)
+    # 2. Letter-number prefixes (e.g. A1_, A2_, A3_ -> Section A; B1_, B2_, B3_, B4_ -> Section B)
+    alpha_num_match = re.match(r'^([A-Z])(\d+)_', filename, re.IGNORECASE)
     if alpha_num_match:
-        letter = alpha_num_match.group(1).upper()
-        num = int(alpha_num_match.group(2))
-        return (item['semester'], item['subject'], item['module'], 0, letter, num, filename)
+        section_idx = ord(alpha_num_match.group(1).upper()) - ord('A') # A=0, B=1
+        topic_num = int(alpha_num_match.group(2))
+        return (item['semester'], item['subject'], item['module'], 0, section_idx, topic_num, filename)
 
-    # 3. Topic notes with standard numeric prefixes (e.g. 1_, 2_, 10_, 12_)
+    # 3. Standard numeric prefixes (e.g. 1_, 2_, 3_, 8_)
     num_match = re.match(r'^(\d+)_', filename)
     if num_match:
         num = int(num_match.group(1))
-        return (item['semester'], item['subject'], item['module'], 0, "", num, filename)
+        # If it's 8_Self_Learning in Data Structure Module 2, place it after section B (section_idx=2)
+        section_idx = 2 if num == 8 and 'Self_Learning_Stack_Queue' in filename else 0
+        return (item['semester'], item['subject'], item['module'], 0, section_idx, num, filename)
 
-    return (item['semester'], item['subject'], item['module'], 2, "", 0, filename)
+    return (item['semester'], item['subject'], item['module'], 2, 0, 0, filename)
 
 def main():
     items = []
@@ -117,7 +129,7 @@ def main():
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_code)
     
-    print(f"Successfully indexed {len(items)} notes files across all semesters in strict numerical sequence into notes_data.js")
+    print(f"Successfully indexed {len(items)} notes files across all semesters into notes_data.js")
 
 if __name__ == "__main__":
     main()
