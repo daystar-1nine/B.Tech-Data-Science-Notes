@@ -6,6 +6,46 @@ import markdown
 BASE_DIR = r"S:\B.Tech Data Science Notes"
 DATA_FILE = os.path.join(BASE_DIR, "notes_data.js")
 
+def clean_topic_title(raw_title, filename):
+    fn_lower = filename.lower()
+    if fn_lower in ['2m.md', '3m.md', '5m.md', '10m.md']:
+        mark = fn_lower.replace('m.md', '')
+        return f"{mark}-Mark Questions & Answers"
+
+    # Remove leading '# ' if present
+    t = re.sub(r'^#+\s*', '', raw_title).strip()
+
+    # Remove leading 'Topic:\s*' or 'Topic\s*-\s*' or 'Topic\s*:\s*'
+    t = re.sub(r'^Topic\s*[:\-]\s*', '', t, flags=re.IGNORECASE).strip()
+
+    # Remove leading numeric/alpha index prefixes like '1_', '1.', '1 ', 'A1_', 'A1 ', 'B2_', 'B2 '
+    # (Matches only 1 or 2 digit prefixes, preserving 4-digit model numbers like 8086)
+    t = re.sub(r'^(?:[A-Za-z]\d{1,2}|\d{1,2})[\._\s\-]+\s*', '', t).strip()
+
+    # Replace raw underscores with spaces if needed
+    if '_' in t and not ' ' in t:
+        t = t.replace('_', ' ')
+
+    # Normalize Self-Learning tag to append cleanly at the end: (Self-Learning)
+    has_self_learning = bool(re.search(r'Self[\s\-]*Learning', t, re.IGNORECASE))
+    t = re.sub(r'[\–\—\-]?\s*\(?Self[\s\-]*Learning\)?', '', t, flags=re.IGNORECASE).strip()
+    t = re.sub(r'\s+', ' ', t).strip()
+
+    # Clean up edge cases for readability
+    if t.lower() == 'queue types circular priority':
+        t = 'Queue Types: Circular & Priority Queues'
+    elif t.lower() == 'basic instruction cycle interrupt':
+        t = 'Basic Instruction Cycle & Interrupts'
+    elif t.lower() == 'microinstruction sequencing execution':
+        t = 'Microinstruction Sequencing & Execution'
+    elif t.lower() == 'polynomial representation addition':
+        t = 'Polynomial Representation & Addition'
+
+    if has_self_learning:
+        t = f"{t} (Self-Learning)"
+
+    return t
+
 def parse_markdown_file(filepath):
     rel_path = os.path.relpath(filepath, BASE_DIR).replace('\\', '/')
     pdf_rel_path = f"PDF_Notes/{rel_path[:-3]}.pdf"
@@ -20,23 +60,21 @@ def parse_markdown_file(filepath):
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
     
-    # Ensure module is always Module 1, Module 2, Module 3 (even if nested in QA subfolder)
+    # Ensure module is always Module 1, Module 2, Module 3
     module = "General"
     for part in parts:
         if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
             module = part.title()
             break
 
-    # Extract or Format Title
-    if filename.lower() in ['2m.md', '3m.md', '5m.md', '10m.md']:
-        mark = filename.lower().replace('m.md', '')
-        title = f"{module} — {mark} Mark Questions & Answers"
+    # Extract Title from first line or filename
+    title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+    if title_match:
+        raw_title = title_match.group(1).strip()
     else:
-        title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
-        if title_match:
-            title = title_match.group(1).strip()
-        else:
-            title = filename.replace('.md', '').replace('_', ' ')
+        raw_title = filename.replace('.md', '').replace('_', ' ')
+
+    title = clean_topic_title(raw_title, filename)
 
     # Extract Definition block
     def_match = re.search(r'>\s*📌\s*\*\*Definition to Remember\*\*\s*\n>\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
@@ -129,7 +167,7 @@ def main():
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_code)
     
-    print(f"Successfully indexed {len(items)} notes files across all semesters into notes_data.js")
+    print(f"Successfully indexed {len(items)} notes files with perfect clean titles into notes_data.js")
 
 if __name__ == "__main__":
     main()
