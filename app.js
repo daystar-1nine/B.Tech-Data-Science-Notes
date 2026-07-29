@@ -111,6 +111,23 @@
     if (semSelectMobile) semSelectMobile.addEventListener('change', handleSemChange);
   }
 
+  // Monster Modal Popup Functions (100% Reliable Toggle)
+  window.openMonsterModal = function () {
+    const el = document.getElementById('monsterModal');
+    if (el) {
+      el.classList.add('active');
+      el.style.display = 'flex';
+    }
+  };
+
+  window.closeMonsterModal = function () {
+    const el = document.getElementById('monsterModal');
+    if (el) {
+      el.classList.remove('active');
+      el.style.display = 'none';
+    }
+  };
+
   // View Navigation
   window.switchView = function (viewId, subject = null, topicId = null) {
     document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
@@ -138,6 +155,11 @@
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
       initFlashcards();
+    } else if (viewId === 'about') {
+      // Auto display "Give a Monster to Developer" modal when About page opens
+      setTimeout(() => {
+        window.openMonsterModal();
+      }, 100);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });

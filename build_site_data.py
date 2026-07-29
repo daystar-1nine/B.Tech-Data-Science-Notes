@@ -13,12 +13,14 @@ def parse_markdown_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    filename = os.path.basename(filepath)
+
     # Extract Title from first line or filename
     title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
     if title_match:
         title = title_match.group(1).strip()
     else:
-        title = os.path.basename(filepath).replace('.md', '').replace('_', ' ')
+        title = filename.replace('.md', '').replace('_', ' ')
 
     # Path decomposition
     parts = rel_path.split('/')
@@ -51,6 +53,7 @@ def parse_markdown_file(filepath):
         "id": rel_path.replace('/', '-').replace('.md', ''),
         "relPath": rel_path,
         "pdfPath": check_pdf_exists(pdf_rel_path),
+        "filename": filename,
         "semester": semester,
         "subject": subject,
         "module": module,
@@ -68,6 +71,30 @@ def check_pdf_exists(pdf_rel_path):
         return pdf_rel_path
     return ""
 
+def get_file_sort_key(item):
+    filename = item['filename']
+    
+    # 1. Question Bank files come after topic notes (e.g. 2_Mark, 3_Mark, 5_Mark, 10_Mark)
+    q_match = re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE) or re.search(r'(\d+)_Mark', filename, re.IGNORECASE)
+    if q_match:
+        mark_num = int(q_match.group(1))
+        return (item['semester'], item['subject'], item['module'], 1, mark_num, filename)
+
+    # 2. Topic notes with letter-number prefixes (e.g. A1_, A2_, B1_, B2_)
+    alpha_num_match = re.match(r'^([A-Za-z]+)(\d+)_', filename)
+    if alpha_num_match:
+        letter = alpha_num_match.group(1).upper()
+        num = int(alpha_num_match.group(2))
+        return (item['semester'], item['subject'], item['module'], 0, letter, num, filename)
+
+    # 3. Topic notes with standard numeric prefixes (e.g. 1_, 2_, 10_, 12_)
+    num_match = re.match(r'^(\d+)_', filename)
+    if num_match:
+        num = int(num_match.group(1))
+        return (item['semester'], item['subject'], item['module'], 0, "", num, filename)
+
+    return (item['semester'], item['subject'], item['module'], 2, "", 0, filename)
+
 def main():
     items = []
     for root, dirs, files in os.walk(BASE_DIR):
@@ -75,20 +102,22 @@ def main():
             dirs.remove('.git')
         if 'PDF_Notes' in dirs:
             dirs.remove('PDF_Notes')
+        if '.github' in dirs:
+            dirs.remove('.github')
             
         for file in files:
             if file.endswith('.md') and not file.lower().startswith('readme'):
                 full_path = os.path.join(root, file)
                 items.append(parse_markdown_file(full_path))
 
-    # Sort items logically by semester, subject, module, title
-    items.sort(key=lambda x: (x['semester'], x['subject'], x['module'], x['title']))
+    # Sort items strictly by numerical curriculum sequence
+    items.sort(key=get_file_sort_key)
 
     js_code = "window.NOTES_DATA = " + json.dumps(items, indent=2, ensure_ascii=False) + ";"
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_code)
     
-    print(f"Successfully indexed {len(items)} notes files across all semesters into notes_data.js")
+    print(f"Successfully indexed {len(items)} notes files across all semesters in strict numerical sequence into notes_data.js")
 
 if __name__ == "__main__":
     main()
