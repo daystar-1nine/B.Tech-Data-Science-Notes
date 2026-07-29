@@ -485,31 +485,35 @@
 
   </main>
 
-  <!-- Developer Support Modal Overlay (Triggers automatically on opening About Page) -->
-  <div class="monster-modal-overlay" id="monsterModal" onclick="closeMonsterModal()">
-    <div class="monster-modal-card" onclick="event.stopPropagation()">
-      <button class="monster-modal-close" onclick="closeMonsterModal()">&times;</button>
+  <!-- Developer Support Modal Overlay (Guaranteed Fixed Screen Centering) -->
+  <div class="monster-modal-overlay" id="monsterModal" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; background: rgba(0, 0, 0, 0.82) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; z-index: 99999 !important; display: none; align-items: center; justify-content: center; padding: 16px;" onclick="closeMonsterModal()">
+    <div class="monster-modal-card" style="background: var(--bg-card) !important; border: 2px solid var(--accent-primary) !important; border-radius: 18px !important; width: 100% !important; max-width: 420px !important; padding: 24px 20px !important; text-align: center !important; position: relative !important; box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important; max-height: 90vh !important; overflow-y: auto !important;" onclick="event.stopPropagation()">
+      <button class="monster-modal-close" onclick="closeMonsterModal()" style="position: absolute; top: 12px; right: 14px; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
       
-      <div class="monster-badge">
+      <div class="monster-badge" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; background: var(--primary-red-light); border: 1px solid var(--accent-primary); color: var(--accent-primary); font-size: 0.78rem; font-weight: 800; margin-bottom: 10px;">
         <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         Energy Boost
       </div>
-      <h3 class="monster-modal-title">
+      <h3 class="monster-modal-title" style="font-size: 1.35rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
         <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         Give a Monster to Developer
       </h3>
-      <p class="monster-modal-desc">
+      <p class="monster-modal-desc" style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
         If these B.Tech Data Science notes and revision flashcards helped you prepare for exams, consider buying Suraj a Monster Energy drink!
       </p>
 
-      <div class="monster-qr-wrap">
-        <img src="qr_code.png" alt="Developer UPI QR Code" class="monster-qr-img">
-        <div class="monster-upi-id">UPI ID: <strong>9168772121@mbk</strong></div>
+      <div class="monster-qr-wrap" style="background: #ffffff; padding: 14px; border-radius: 12px; display: inline-block; margin: 0 auto; border: 2px solid var(--border-color);">
+        <img src="qr_code.png" alt="Developer UPI QR Code" class="monster-qr-img" style="width: 180px !important; height: 180px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important;">
+        <div class="monster-upi-id" style="margin-top: 10px; font-size: 0.8rem; color: #111827; font-family: 'JetBrains Mono', monospace; background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">UPI ID: <strong>9168772121@mbk</strong></div>
       </div>
 
-      <div style="margin-top: 16px;">
-        <button class="btn-primary" onclick="closeMonsterModal()" style="width: 100%; justify-content: center;">
-          Awesome! Thank You
+      <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: center;">
+        <button class="btn-secondary" id="copyUpiBtn" onclick="copyUpiId()" style="font-size: 0.8rem; padding: 6px 12px; min-height: 36px;">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copyUpiText">Copy UPI ID</span>
+        </button>
+        <button class="btn-primary" onclick="closeMonsterModal()" style="font-size: 0.8rem; padding: 6px 16px; min-height: 36px;">
+          Done
         </button>
       </div>
     </div>

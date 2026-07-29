@@ -26,7 +26,7 @@
     chevronRight: `<svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>`,
     copy: `<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
     check: `<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
-    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>`
+    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`
   };
 
   // DOM Elements
@@ -126,6 +126,17 @@
       el.classList.remove('active');
       el.style.display = 'none';
     }
+  };
+
+  window.copyUpiId = function () {
+    const upiText = '9168772121@mbk';
+    navigator.clipboard.writeText(upiText).then(() => {
+      const label = document.getElementById('copyUpiText');
+      if (label) {
+        label.textContent = 'Copied!';
+        setTimeout(() => { label.textContent = 'Copy UPI ID'; }, 2000);
+      }
+    });
   };
 
   // View Navigation
@@ -440,6 +451,7 @@
       openSpotlight();
     } else if (e.key === 'Escape') {
       closeSpotlight();
+      closeMonsterModal();
     }
   });
 
