@@ -70,6 +70,12 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html, body {
@@ -82,20 +88,65 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Scrollbar Styling */
+/* --------------------------------------------------------------------------
+   Ultra-Sleek Animated Custom Scrollbars System
+   -------------------------------------------------------------------------- */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
+  border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 4px;
+  border-radius: 10px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(169, 14, 2, 0.6);
+}
+
+/* Hide clunky native horizontal scrollbar on sub-tabs while preserving smooth swipe scroll */
+.sidebar-sub-tabs {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.sidebar-sub-tabs::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/* Sleek Animated Glowing Crimson Vertical Scrollbars */
+.tree-view::-webkit-scrollbar,
+.reader-container::-webkit-scrollbar,
+.spotlight-results::-webkit-scrollbar,
+.monster-modal-card::-webkit-scrollbar {
+  width: 5px;
+}
+
+.tree-view::-webkit-scrollbar-track,
+.reader-container::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.tree-view::-webkit-scrollbar-thumb,
+.reader-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-primary) 0%, rgba(169, 14, 2, 0.4) 100%);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tree-view::-webkit-scrollbar-thumb:hover,
+.reader-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c41203 0%, var(--accent-gold) 100%);
+  box-shadow: 0 0 12px rgba(169, 14, 2, 0.8);
 }
 
 /* Scroll Reading Progress Bar */
