@@ -936,7 +936,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 1-Module_1_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 1/Module_1_QA/2M.md",
-    "pdfPath": "",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 1/Module_1_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -951,7 +951,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 1-Module_1_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 1/Module_1_QA/3M.md",
-    "pdfPath": "",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 1/Module_1_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -966,7 +966,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 1-Module_1_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 1/Module_1_QA/5M.md",
-    "pdfPath": "",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 1/Module_1_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",

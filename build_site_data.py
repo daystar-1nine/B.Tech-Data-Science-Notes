@@ -174,7 +174,7 @@ def parse_markdown_file(filepath):
     return {
         "id": rel_path.replace('/', '-').replace('.md', ''),
         "relPath": rel_path,
-        "pdfPath": check_pdf_exists(pdf_rel_path),
+        "pdfPath": check_pdf_exists(pdf_rel_path, rel_path),
         "filename": filename,
         "semester": semester,
         "subject": subject,
@@ -187,10 +187,16 @@ def parse_markdown_file(filepath):
         "quickRecall": quick_recall
     }
 
-def check_pdf_exists(pdf_rel_path):
+def check_pdf_exists(pdf_rel_path, rel_path):
     full_pdf = os.path.join(BASE_DIR, pdf_rel_path.replace('/', '\\'))
     if os.path.exists(full_pdf):
         return pdf_rel_path
+
+    # Secondary check inside PDF_Notes folder without Semester X prefix
+    alt_pdf = os.path.join(BASE_DIR, "PDF_Notes", rel_path.replace('/', '\\')[:-3] + ".pdf")
+    if os.path.exists(alt_pdf):
+        return "PDF_Notes/" + rel_path[:-3] + ".pdf"
+
     return ""
 
 def get_file_sort_key(item):
