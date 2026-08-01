@@ -26,7 +26,8 @@
     chevronRight: `<svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>`,
     copy: `<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
     check: `<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
-    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`
+    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`,
+    sparkles: `<svg class="icon icon-lg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
   };
 
   // DOM Elements
@@ -146,6 +147,91 @@
     });
   };
 
+  // Welcome State for Reader Area before selecting any topic
+  function renderReaderWelcomeState() {
+    if (!readerArticle) return;
+    pdfDownloadBtn.style.display = 'none';
+
+    readerArticle.innerHTML = `
+      <div class="welcome-reader-card" style="text-align: center; padding: 32px 16px; max-width: 800px; margin: 0 auto;">
+        <div style="width: 56px; height: 56px; border-radius: 16px; background: var(--primary-red-light); color: var(--accent-primary); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 1px solid var(--accent-primary);">
+          <svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+        </div>
+
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px;">
+          Welcome to DataSci Notes Reader
+        </h2>
+        <p style="color: var(--text-secondary); max-width: 620px; margin: 0 auto 24px; font-size: 0.94rem; line-height: 1.6;">
+          Select any topic from the sidebar explorer on the left or pick a core subject below to start reading exam-ready notes, must-write points, and question banks.
+        </p>
+
+        <!-- Subject Quick Launch Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 28px; text-align: left;">
+          
+          <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('DBMS')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Database Systems</span>
+              <span class="count-badge">36 Notes</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">DBMS Architecture, ER Modeling, Relational Algebra, SQL, Triggers & Procedures.</p>
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DBMS Notes &rarr;</span>
+          </div>
+
+          <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
+              <span class="count-badge">22 Notes</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials.</p>
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
+          </div>
+
+          <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('MPCA')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Microprocessors</span>
+              <span class="count-badge">40 Notes</span>
+            </div>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">8086 CPU Architecture, Addressing Modes, Instruction Pipelining & Timing.</p>
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start MPCA Notes &rarr;</span>
+          </div>
+
+        </div>
+
+        <!-- Developer Profile Quick Info Card -->
+        <div style="background: var(--bg-card); border: 1.5px solid var(--border-color); border-radius: 16px; padding: 20px; text-align: left; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <img src="suraj_avatar.jpg" alt="Suraj" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-primary);" onerror="this.src='https://ui-avatars.com/api/?name=Suraj&background=A90E02&color=FFFBD4&size=128'">
+          
+          <div style="flex: 1; min-width: 220px;">
+            <div style="font-weight: 800; font-size: 1.05rem; color: var(--text-primary);">Created by Suraj</div>
+            <div style="font-size: 0.8rem; color: var(--accent-primary); font-weight: 700; margin-bottom: 4px;">🎓 B.Tech DS | GATE 2028 CSE & DS</div>
+            <div style="font-size: 0.78rem; color: var(--text-secondary);">Designed for B.Tech Data Science students preparing for university exams and GATE. Includes 5-tier answer formulation and 1-click PDF downloads.</div>
+          </div>
+
+          <button class="btn-primary" onclick="openMonsterModal()" style="font-size: 0.8rem; padding: 8px 14px; min-height: 38px;">
+            🔋 Developer Support
+          </button>
+        </div>
+
+        <!-- Spotlight Shortcut Prompt -->
+        <div style="margin-top: 20px; font-size: 0.8rem; color: var(--text-muted);">
+          Tip: Press <span class="shortcut-kbd">Ctrl + K</span> anytime to search topics, keywords, or question banks instantly!
+        </div>
+      </div>
+    `;
+  }
+
+  window.selectSubjectFirstTopic = function (sub) {
+    selectedSubject = sub;
+    openSubjects[sub] = true;
+    renderSidebarTabs();
+    renderSidebarTree();
+
+    const firstItem = window.NOTES_DATA.find(i => i.subject === sub);
+    if (firstItem) {
+      selectTopic(firstItem.id);
+    }
+  };
+
   // View Navigation
   window.switchView = function (viewId, subject = null, topicId = null) {
     if (mobileNavDrawer) mobileNavDrawer.classList.remove('active');
@@ -168,8 +254,10 @@
       renderSidebarTree();
       if (topicId) {
         selectTopic(topicId);
-      } else if (!activeTopicId && window.NOTES_DATA && window.NOTES_DATA.length > 0) {
-        selectTopic(window.NOTES_DATA[0].id);
+      } else if (activeTopicId) {
+        selectTopic(activeTopicId);
+      } else {
+        renderReaderWelcomeState();
       }
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
@@ -596,9 +684,6 @@
   // Init on DOM Load
   document.addEventListener('DOMContentLoaded', () => {
     initSemesters();
-    if (window.NOTES_DATA && window.NOTES_DATA.length > 0) {
-      activeTopicId = window.NOTES_DATA[0].id;
-    }
   });
 
 })();
