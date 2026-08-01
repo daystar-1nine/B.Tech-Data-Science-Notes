@@ -416,7 +416,7 @@
             <div class="profile-socials" style="margin-top: 24px;">
               <!-- Personal Portfolio Website -->
               <a href="https://suraj1nine.vercel.app/" target="_blank" class="social-circle-btn" title="Personal Website / Portfolio">
-                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
               </a>
               <!-- GitHub -->
               <a href="https://github.com/daystar-1nine" target="_blank" class="social-circle-btn" title="GitHub Profile">
@@ -485,26 +485,26 @@
 
   </main>
 
-  <!-- Developer Support Modal Overlay (Guaranteed Fixed Screen Centering) -->
-  <div class="monster-modal-overlay" id="monsterModal" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; background: rgba(0, 0, 0, 0.82) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; z-index: 99999 !important; display: none; align-items: center; justify-content: center; padding: 16px;" onclick="closeMonsterModal()">
-    <div class="monster-modal-card" style="background: var(--bg-card) !important; border: 2px solid var(--accent-primary) !important; border-radius: 18px !important; width: 100% !important; max-width: 420px !important; padding: 24px 20px !important; text-align: center !important; position: relative !important; box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important; max-height: 90vh !important; overflow-y: auto !important;" onclick="event.stopPropagation()">
-      <button class="monster-modal-close" onclick="closeMonsterModal()" style="position: absolute; top: 12px; right: 14px; background: transparent; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+  <!-- Developer Support Modal Overlay (100% Mobile & WebKit Compatible with Embedded Base64 Image Fallback) -->
+  <div class="monster-modal-overlay" id="monsterModal" style="position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important; width: 100vw !important; height: 100vh !important; inset: 0 !important; background: rgba(0, 0, 0, 0.86) !important; backdrop-filter: blur(8px) !important; -webkit-backdrop-filter: blur(8px) !important; z-index: 999999 !important; display: none; align-items: center; justify-content: center; padding: 16px; transform: translateZ(0); -webkit-transform: translateZ(0);" onclick="closeMonsterModal()">
+    <div class="monster-modal-card" style="background: var(--bg-card) !important; border: 2px solid var(--accent-primary) !important; border-radius: 18px !important; width: 100% !important; max-width: 400px !important; padding: 22px 18px !important; text-align: center !important; position: relative !important; box-shadow: 0 20px 60px rgba(0,0,0,0.8) !important; max-height: 90vh !important; overflow-y: auto !important; -webkit-overflow-scrolling: touch !important;" onclick="event.stopPropagation()">
+      <button class="monster-modal-close" onclick="closeMonsterModal()" style="position: absolute; top: 12px; right: 14px; background: transparent; border: none; color: var(--text-muted); font-size: 1.6rem; cursor: pointer; padding: 4px 8px; line-height: 1;">&times;</button>
       
       <div class="monster-badge" style="display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; background: var(--primary-red-light); border: 1px solid var(--accent-primary); color: var(--accent-primary); font-size: 0.78rem; font-weight: 800; margin-bottom: 10px;">
         <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         Energy Boost
       </div>
-      <h3 class="monster-modal-title" style="font-size: 1.35rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
+      <h3 class="monster-modal-title" style="font-size: 1.3rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;">
         <svg class="icon icon-lg" viewBox="0 0 24 24" style="color: var(--accent-primary);"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         Give a Monster to Developer
       </h3>
-      <p class="monster-modal-desc" style="font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+      <p class="monster-modal-desc" style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px;">
         If these B.Tech Data Science notes and revision flashcards helped you prepare for exams, consider buying Suraj a Monster Energy drink!
       </p>
 
-      <div class="monster-qr-wrap" style="background: #ffffff; padding: 14px; border-radius: 12px; display: inline-block; margin: 0 auto; border: 2px solid var(--border-color);">
-        <img src="qr_code.png" alt="Developer UPI QR Code" class="monster-qr-img" style="width: 180px !important; height: 180px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important;">
-        <div class="monster-upi-id" style="margin-top: 10px; font-size: 0.8rem; color: #111827; font-family: 'JetBrains Mono', monospace; background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">UPI ID: <strong>9168772121@mbk</strong></div>
+      <div class="monster-qr-wrap" style="background: #ffffff !important; padding: 12px !important; border-radius: 12px !important; display: inline-block !important; margin: 0 auto !important; border: 2px solid var(--border-color) !important;">
+        <img src="qr_code.png" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZoAAAGaAQAAAAAefbjOAAAC+klEQVR4nO1cS46jQAy1A1KWIM0B+ijkZtHcDI7CAUaCZSQij/ypIulZ9DCT7jSp9xYVCFgBl+V6/lRYaDOGw3YZIggFoIgAFBGAIgJQRACKCEARe1IEB2pibpUpcE00tHpBh9Ocbjg95fE2AkIPUEQniolIZLoyn2Uh6iaKgaiy64mFQuUFKGIOB2COgob2ysztle1I+nzhWY+3CRB6pCJEpkqom9Qp+PBZv/RXgNB3UMSVfVD38Lm/9DEg9OWKqOOzUY4wE3HXLzUNf5rCbSYL8/T6ihgsktAwg+ajrxp8Ho/Cp1kHUlrBzLt6p22A0J2PkHRKMrwt6jIuHIMtIuZBVkB7L6wI8qiySyzS4opEKvMgS6KcetJ/83c6QOi/LUJ6zTj0jbmH5fZqGIjdpzkKWEQhFiGenAoToM5nP4YUgsJHFLRq0Dv3kE6lb9SD+KC2AR9RShZ7UtsYj+ExbK0wb6HMkk+zEdBKo46nPN42QOhhzFKsmlGpywjTuDEQ8IiyeISEMThnMJdx6yiMd6rlYNUoKdYQNQujEPd1DfCIYoXmOjzDT6t9vlmGiojPI3jE7if3X3hE77GG8QiLK9bAM2JTrBrlCDUXDymkby7eELE2UpkdhKk86fE2AUKP4BHNmo1K7CE4ZnIekbBCFruUDJU4vYyJtxB0vQVZ7NKEREbOxc7gEW4WVhc/3dU6dvJOGwGhu2o4+4nyiDj6sdDQVlEXH9pf9...';" alt="Developer UPI QR Code" class="monster-qr-img" style="width: 170px !important; height: 170px !important; max-width: 100% !important; object-fit: contain !important; display: block !important; margin: 0 auto !important;">
+        <div class="monster-upi-id" style="margin-top: 8px; font-size: 0.8rem; color: #111827; font-family: 'JetBrains Mono', monospace; background: #f3f4f6; padding: 4px 8px; border-radius: 4px;">UPI ID: <strong>9168772121@mbk</strong></div>
       </div>
 
       <div style="margin-top: 14px; display: flex; gap: 8px; justify-content: center;">

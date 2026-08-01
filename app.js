@@ -111,12 +111,15 @@
     if (semSelectMobile) semSelectMobile.addEventListener('change', handleSemChange);
   }
 
-  // Monster Modal Popup Functions (100% Reliable Toggle)
+  // Monster Modal Popup Functions (100% Mobile & WebKit Compatible)
   window.openMonsterModal = function () {
+    if (mobileNavDrawer) mobileNavDrawer.classList.remove('active');
     const el = document.getElementById('monsterModal');
     if (el) {
       el.classList.add('active');
       el.style.display = 'flex';
+      el.style.visibility = 'visible';
+      el.style.opacity = '1';
     }
   };
 
@@ -125,6 +128,7 @@
     if (el) {
       el.classList.remove('active');
       el.style.display = 'none';
+      el.style.opacity = '0';
     }
   };
 
@@ -136,11 +140,15 @@
         label.textContent = 'Copied!';
         setTimeout(() => { label.textContent = 'Copy UPI ID'; }, 2000);
       }
+    }).catch(() => {
+      const label = document.getElementById('copyUpiText');
+      if (label) label.textContent = '9168772121@mbk';
     });
   };
 
   // View Navigation
   window.switchView = function (viewId, subject = null, topicId = null) {
+    if (mobileNavDrawer) mobileNavDrawer.classList.remove('active');
     document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
 
@@ -170,7 +178,7 @@
       // Auto display "Give a Monster to Developer" modal when About page opens
       setTimeout(() => {
         window.openMonsterModal();
-      }, 100);
+      }, 150);
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -431,6 +439,7 @@
   const spotlightResults = document.getElementById('spotlightResults');
 
   window.openSpotlight = function () {
+    if (mobileNavDrawer) mobileNavDrawer.classList.remove('active');
     if (spotlightModal) {
       spotlightModal.classList.add('active');
       if (spotlightInput) {
