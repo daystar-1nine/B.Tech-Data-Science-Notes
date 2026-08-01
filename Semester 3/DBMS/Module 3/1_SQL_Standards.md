@@ -1,4 +1,4 @@
-# SQL Standards
+# SQL Standards & Core Concepts
 
 **Q. What is SQL? Discuss its features, the importance of SQL Standards, and categorize the different types of SQL commands with examples.**
 

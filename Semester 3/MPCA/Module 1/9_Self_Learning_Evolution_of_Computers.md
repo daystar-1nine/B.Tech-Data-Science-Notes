@@ -9,7 +9,7 @@
 
 ---
 
-# The Five Generations of Computers
+# Evolution of Computers (Self-Learning)
 
 | Generation | Core Technology | Key Characteristics & Examples |
 | :--- | :--- | :--- |

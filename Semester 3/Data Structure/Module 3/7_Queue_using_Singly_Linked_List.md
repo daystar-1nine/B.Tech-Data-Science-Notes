@@ -9,7 +9,7 @@
 
 ---
 
-# Conceptual Mapping: Linked List to Queue
+# Queue Implementation using Singly Linked List
 To achieve O(1) time complexity for both Enqueue and Dequeue, we must maintain references to both ends of the list.
 
 | Queue Pointer | Linked List Equivalent | Used For |

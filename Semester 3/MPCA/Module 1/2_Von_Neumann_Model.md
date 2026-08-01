@@ -1,4 +1,4 @@
-# Von Neumann Model
+# Von Neumann Computer Model
 
 **Q. Explain the concept of the Von Neumann Architecture. Discuss its components and working mechanism with the help of a block diagram.**
 

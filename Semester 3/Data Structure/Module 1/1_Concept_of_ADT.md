@@ -1,4 +1,4 @@
-# Concept of ADT
+# Concept of Abstract Data Types (ADT)
 
 **Q. Explain the concept of Abstract Data Type (ADT) with suitable examples. Why is it important in data structures?**
 

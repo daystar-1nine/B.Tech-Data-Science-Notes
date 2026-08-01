@@ -9,7 +9,7 @@
 
 ---
 
-# Array vs Linked List Comparison
+# Linked Lists vs. Arrays Comparison
 
 | Feature | Array | Linked List |
 | :--- | :--- | :--- |

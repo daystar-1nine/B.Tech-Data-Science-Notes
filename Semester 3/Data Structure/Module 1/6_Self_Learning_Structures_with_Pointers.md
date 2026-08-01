@@ -1,4 +1,4 @@
-# Structures with Pointers (Self-Learning)
+# Self-Referential Structures with Pointers (Self-Learning)
 
 **Q. Explain the concept of Structures in C. How can we use pointers with structures? Provide a code example to demonstrate its use.**
 

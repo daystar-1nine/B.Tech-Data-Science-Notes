@@ -1,4 +1,4 @@
-# Applications of Stack – Well-Formedness of Parentheses
+# Stack Applications: Well-Formedness of Parentheses
 
 **Q. Explain how a stack can be used to check the well-formedness of parentheses in an expression. Write a step-by-step algorithmic approach.**
 

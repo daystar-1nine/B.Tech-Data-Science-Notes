@@ -1,4 +1,4 @@
-# Database Management System Architecture
+# Database Management System (DBMS) Architecture
 
 **Q. Explain the different types of Database Management System (DBMS) Architectures. Differentiate between Two-Tier and Three-Tier architecture.**
 

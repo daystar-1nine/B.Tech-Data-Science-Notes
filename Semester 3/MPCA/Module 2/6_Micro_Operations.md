@@ -1,4 +1,4 @@
-# Micro-Operations
+# Register Transfer & Micro-Operations
 
 **Q. What are Micro-Operations? Discuss the four main types: Register Transfer, Arithmetic, Logic, and Shift Micro-Operations with examples.**
 

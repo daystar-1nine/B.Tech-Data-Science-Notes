@@ -6,44 +6,128 @@ import markdown
 BASE_DIR = r"S:\B.Tech Data Science Notes"
 DATA_FILE = os.path.join(BASE_DIR, "notes_data.js")
 
-def clean_topic_title(raw_title, filename):
-    fn_lower = filename.lower()
-    if fn_lower in ['2m.md', '3m.md', '5m.md', '10m.md']:
-        mark = fn_lower.replace('m.md', '')
-        return f"{mark}-Mark Questions & Answers"
+EXACT_TITLES = {
+    # DBMS Module 1
+    "1_DBMS_Architecture.md": "Database Management System (DBMS) Architecture",
+    "2_Data_Abstraction.md": "Data Abstraction & 3-Level Schema Architecture",
+    "3_Data_Independence.md": "Logical & Physical Data Independence",
+    "4_ER_Model.md": "Entity Relationship (ER) Model",
+    "5_Entity_Types_and_Sets.md": "Entity Types & Entity Sets",
+    "6_Attributes_and_Keys.md": "Attributes & Key Constraints",
+    "7_Relationship_Types_and_Sets.md": "Relationship Types & Relationship Sets",
+    "8_Converting_ER_to_Tables.md": "Converting ER Model to Relational Tables",
+    "9_Self_Learning_ORDBMS.md": "Object-Relational DBMS (ORDBMS) (Self-Learning)",
+    
+    # DBMS Module 2
+    "1_Introduction_to_Relational_Algebra.md": "Introduction to Relational Algebra",
+    "2_Selection_Operation.md": "Selection Operation (σ)",
+    "3_Projection_Operation.md": "Projection Operation (π)",
+    "4_Union_Operation.md": "Union Operation (∪)",
+    "5_Intersection_Operation.md": "Intersection Operation (∩)",
+    "6_Cartesian_Product_Operation.md": "Cartesian Product Operation (×)",
+    "7_Join_Operation.md": "Join Operations (⋈)",
+    "8_Self_Learning_Relational_Calculus.md": "Relational Calculus (Self-Learning)",
 
-    # Remove leading '# ' if present
-    t = re.sub(r'^#+\s*', '', raw_title).strip()
+    # DBMS Module 3
+    "1_SQL_Standards.md": "SQL Standards & Core Concepts",
+    "2_DDL_Commands.md": "Data Definition Language (DDL) Commands",
+    "3_Set_Operations.md": "Set Operations in SQL",
+    "4_Aggregate_Functions.md": "Aggregate Functions in SQL",
+    "5_NULL_Values.md": "NULL Values & 3-Valued Logic",
+    "6_DML_Commands.md": "Data Manipulation Language (DML) Commands",
+    "7_DCL_Commands.md": "Data Control Language (DCL) Commands",
+    "8_Complex_Retrieval_Queries_using_GROUP_BY.md": "Complex Retrieval Queries using GROUP BY",
+    "9_Recursive_Queries.md": "Recursive Queries & Common Table Expressions (CTE)",
+    "10_Nested_Queries.md": "Nested Queries & Subqueries",
+    "11_Self_Learning_Triggers.md": "Database Triggers (Self-Learning)",
+    "12_Self_Learning_Procedures.md": "Stored Procedures (Self-Learning)",
+    "13_Self_Learning_Functions.md": "Database Functions (Self-Learning)",
+    "14_Self_Learning_Packages.md": "PL/SQL Packages (Self-Learning)",
+    "15_Self_Learning_Embedded_SQL.md": "Embedded SQL (Self-Learning)",
 
-    # Remove leading 'Topic:\s*' or 'Topic\s*-\s*' or 'Topic\s*:\s*'
+    # Data Structures Module 1
+    "1_Concept_of_ADT.md": "Concept of Abstract Data Types (ADT)",
+    "2_Types_of_Data_Structures.md": "Types of Data Structures: Linear & Non-Linear",
+    "3_Operations_on_Data_Structures.md": "Operations on Data Structures",
+    "4_Arrays_Multi_Dimensional_Arrays.md": "Arrays, Multidimensional Arrays & Pointers",
+    "5_String_Manipulation.md": "String Manipulation Operations",
+    "6_Self_Learning_Structures_with_Pointers.md": "Self-Referential Structures with Pointers (Self-Learning)",
+
+    # Data Structures Module 2
+    "A1_Stack_ADT_Operations_Array_Implementation.md": "Stack ADT, Operations & Array Implementation",
+    "A2_Stack_Applications_Parentheses.md": "Stack Applications: Well-Formedness of Parentheses",
+    "A3_Stack_Infix_Postfix_Recursion.md": "Infix to Postfix Conversion & Recursion",
+    "B1_Queue_ADT_Operations_Array_Implementation.md": "Queue ADT, Operations & Array Implementation",
+    "B2_Queue_Types_Circular_Priority.md": "Queue Types: Circular & Priority Queues",
+    "B3_Deque_Introduction.md": "Double-Ended Queue (Deque) Introduction",
+    "B4_Queue_Applications.md": "Applications of Queues",
+    "8_Self_Learning_Stack_Queue_Structure.md": "Stack & Queue Implementation using Structures (Self-Learning)",
+
+    # Data Structures Module 3
+    "1_Introduction_to_Linked_List.md": "Introduction to Linked Lists",
+    "2_Linked_List_vs_Array.md": "Linked Lists vs. Arrays Comparison",
+    "3_Types_of_Linked_List.md": "Types of Linked Lists",
+    "4_Operations_on_Singly_Linked_List.md": "Operations on Singly Linked List",
+    "5_Operations_on_Doubly_Linked_List.md": "Operations on Doubly Linked List",
+    "6_Stack_using_Singly_Linked_List.md": "Stack Implementation using Singly Linked List",
+    "7_Queue_using_Singly_Linked_List.md": "Queue Implementation using Singly Linked List",
+    "8_Self_Learning_Polynomial_Representation_Addition.md": "Polynomial Representation & Addition (Self-Learning)",
+
+    # MPCA Module 1
+    "1_Intro_Comp_Org_Arch.md": "Computer Organization vs. Architecture",
+    "2_Von_Neumann_Model.md": "Von Neumann Computer Model",
+    "3_Performance_Measures.md": "CPU Performance Measures",
+    "4_Architecture_8086_Family.md": "Architecture of 8086 Microprocessor Family",
+    "5_8086_Instruction_Set.md": "8086 Instruction Set Architecture",
+    "6_Addressing_Modes_8086.md": "Addressing Modes of 8086",
+    "7_Self_Learning_Basic_Organization_of_Computer.md": "Basic Organization of Computer (Self-Learning)",
+    "8_Self_Learning_Block_Level_Description.md": "Block-Level Description of Functional Units (Self-Learning)",
+    "9_Self_Learning_Evolution_of_Computers.md": "Evolution of Computers (Self-Learning)",
+
+    # MPCA Module 2
+    "1_CPU_Architecture.md": "CPU Architecture & Register Organization",
+    "2_Instruction_Formats.md": "Instruction Formats & Addressing",
+    "3_Basic_Instruction_Cycle_Interrupt.md": "Basic Instruction Cycle & Interrupt Servicing",
+    "4_Control_Unit.md": "Control Unit Architecture & Hardwired/Microprogrammed Control",
+    "5_Microinstruction_Sequencing_Execution.md": "Microinstruction Sequencing & Execution",
+    "6_Micro_Operations.md": "Register Transfer & Micro-Operations",
+    "7_Parallel_Processing_Concepts.md": "Parallel Processing Concepts",
+    "8_Flynn_Classification.md": "Flynn's Classification of Computers",
+    "9_Instruction_Pipelining.md": "Instruction Pipelining Principles",
+    "10_Pipeline_Hazards.md": "Pipeline Hazards & Resolution",
+    "11_Self_Learning_Instruction_Interpretation_Sequencing.md": "Instruction Interpretation & Sequencing (Self-Learning)",
+    "12_Self_Learning_Concepts_of_Nano_Programming.md": "Concepts of Nano-Programming (Self-Learning)",
+
+    # MPCA Module 3
+    "1_8086_CPU_Architecture.md": "8086 CPU Architecture & Internal Registers",
+    "2_Programmers_Model_of_8086.md": "Programmer's Model of 8086",
+    "3_Functional_Pin_Diagram_of_8086.md": "Functional Pin Diagram & Signals of 8086",
+    "4_Memory_Segmentation_in_8086.md": "Memory Segmentation in 8086",
+    "5_Memory_Banking_in_8086.md": "Memory Banking in 8086",
+    "6_8086_in_Minimum_Mode.md": "8086 Microprocessor in Minimum Mode",
+    "7_8086_in_Maximum_Mode.md": "8086 Microprocessor in Maximum Mode",
+    "8_Minimum_Mode_Timing_Diagrams.md": "Minimum Mode Timing Diagrams",
+    "9_Maximum_Mode_Timing_Diagrams.md": "Maximum Mode Timing Diagrams",
+    "10_Self_Learning_De_multiplexing_of_Address_Data_Bus.md": "De-multiplexing of Address/Data Bus (Self-Learning)",
+    "11_Self_Learning_Interrupt_Structure_and_its_Servicing.md": "Interrupt Structure & Servicing in 8086 (Self-Learning)",
+
+    # Question Banks
+    "2M.md": "2-Mark Questions & Answers",
+    "3M.md": "3-Mark Questions & Answers",
+    "5M.md": "5-Mark Questions & Answers",
+    "10M.md": "10-Mark Questions & Answers"
+}
+
+def get_clean_title(filename, content):
+    fn = os.path.basename(filename)
+    if fn in EXACT_TITLES:
+        return EXACT_TITLES[fn]
+
+    title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+    t = title_match.group(1).strip() if title_match else fn.replace('.md', '').replace('_', ' ')
+    t = re.sub(r'^#+\s*', '', t).strip()
     t = re.sub(r'^Topic\s*[:\-]\s*', '', t, flags=re.IGNORECASE).strip()
-
-    # Remove leading numeric/alpha index prefixes like '1_', '1.', '1 ', 'A1_', 'A1 ', 'B2_', 'B2 '
-    # (Matches only 1 or 2 digit prefixes, preserving 4-digit model numbers like 8086)
     t = re.sub(r'^(?:[A-Za-z]\d{1,2}|\d{1,2})[\._\s\-]+\s*', '', t).strip()
-
-    # Replace raw underscores with spaces if needed
-    if '_' in t and not ' ' in t:
-        t = t.replace('_', ' ')
-
-    # Normalize Self-Learning tag to append cleanly at the end: (Self-Learning)
-    has_self_learning = bool(re.search(r'Self[\s\-]*Learning', t, re.IGNORECASE))
-    t = re.sub(r'[\–\—\-]?\s*\(?Self[\s\-]*Learning\)?', '', t, flags=re.IGNORECASE).strip()
-    t = re.sub(r'\s+', ' ', t).strip()
-
-    # Clean up edge cases for readability
-    if t.lower() == 'queue types circular priority':
-        t = 'Queue Types: Circular & Priority Queues'
-    elif t.lower() == 'basic instruction cycle interrupt':
-        t = 'Basic Instruction Cycle & Interrupts'
-    elif t.lower() == 'microinstruction sequencing execution':
-        t = 'Microinstruction Sequencing & Execution'
-    elif t.lower() == 'polynomial representation addition':
-        t = 'Polynomial Representation & Addition'
-
-    if has_self_learning:
-        t = f"{t} (Self-Learning)"
-
     return t
 
 def parse_markdown_file(filepath):
@@ -55,26 +139,17 @@ def parse_markdown_file(filepath):
 
     filename = os.path.basename(filepath)
 
-    # Path decomposition
     parts = rel_path.split('/')
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
     
-    # Ensure module is always Module 1, Module 2, Module 3
     module = "General"
     for part in parts:
         if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
             module = part.title()
             break
 
-    # Extract Title from first line or filename
-    title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
-    if title_match:
-        raw_title = title_match.group(1).strip()
-    else:
-        raw_title = filename.replace('.md', '').replace('_', ' ')
-
-    title = clean_topic_title(raw_title, filename)
+    title = get_clean_title(filename, content)
 
     # Extract Definition block
     def_match = re.search(r'>\s*📌\s*\*\*Definition to Remember\*\*\s*\n>\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
@@ -94,7 +169,6 @@ def parse_markdown_file(filepath):
     quick_match = re.search(r'>\s*⚡\s*\*\*Quick Recall\*\*\s*\n>\s*`?(.+?)`?\s*(?=\n|\Z)', content)
     quick_recall = quick_match.group(1).strip() if quick_match else ""
 
-    # Render HTML
     html = markdown.markdown(content, extensions=['tables', 'fenced_code', 'nl2br', 'sane_lists'])
 
     return {
@@ -122,24 +196,23 @@ def check_pdf_exists(pdf_rel_path):
 def get_file_sort_key(item):
     filename = item['filename']
     
-    # 1. Question Bank files (e.g., 2M.md, 3M.md, 5M.md, 10M.md) placed at the end of each module
+    # 1. Question Bank files (2M.md, 3M.md, 5M.md, 10M.md) placed at end of module
     q_match = re.search(r'(\d+)M\.md', filename, re.IGNORECASE) or re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE)
     if q_match:
         mark_num = int(q_match.group(1))
         return (item['semester'], item['subject'], item['module'], 1, 0, mark_num, filename)
 
-    # 2. Letter-number prefixes (e.g. A1_, A2_, A3_ -> Section A; B1_, B2_, B3_, B4_ -> Section B)
+    # 2. Letter-number prefixes (A1_, A2_, B1_, B2_)
     alpha_num_match = re.match(r'^([A-Z])(\d+)_', filename, re.IGNORECASE)
     if alpha_num_match:
-        section_idx = ord(alpha_num_match.group(1).upper()) - ord('A') # A=0, B=1
+        section_idx = ord(alpha_num_match.group(1).upper()) - ord('A')
         topic_num = int(alpha_num_match.group(2))
         return (item['semester'], item['subject'], item['module'], 0, section_idx, topic_num, filename)
 
-    # 3. Standard numeric prefixes (e.g. 1_, 2_, 3_, 8_)
+    # 3. Standard numeric prefixes (1_, 2_, 3_, 8_)
     num_match = re.match(r'^(\d+)_', filename)
     if num_match:
         num = int(num_match.group(1))
-        # If it's 8_Self_Learning in Data Structure Module 2, place it after section B (section_idx=2)
         section_idx = 2 if num == 8 and 'Self_Learning_Stack_Queue' in filename else 0
         return (item['semester'], item['subject'], item['module'], 0, section_idx, num, filename)
 
@@ -148,26 +221,22 @@ def get_file_sort_key(item):
 def main():
     items = []
     for root, dirs, files in os.walk(BASE_DIR):
-        if '.git' in dirs:
-            dirs.remove('.git')
-        if 'PDF_Notes' in dirs:
-            dirs.remove('PDF_Notes')
-        if '.github' in dirs:
-            dirs.remove('.github')
-            
+        if '.git' in dirs: dirs.remove('.git')
+        if 'PDF_Notes' in dirs: dirs.remove('PDF_Notes')
+        if '.github' in dirs: dirs.remove('.github')
+
         for file in files:
             if file.endswith('.md') and not file.lower().startswith('readme'):
                 full_path = os.path.join(root, file)
                 items.append(parse_markdown_file(full_path))
 
-    # Sort items strictly by numerical curriculum sequence
     items.sort(key=get_file_sort_key)
 
     js_code = "window.NOTES_DATA = " + json.dumps(items, indent=2, ensure_ascii=False) + ";"
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_code)
-    
-    print(f"Successfully indexed {len(items)} notes files with perfect clean titles into notes_data.js")
+
+    print(f"Successfully generated notes_data.js with exact syllabus titles for {len(items)} files!")
 
 if __name__ == "__main__":
     main()

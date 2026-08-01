@@ -1,4 +1,4 @@
-# Flynn's Classification
+# Flynn's Classification of Computers
 
 **Q. Elaborate on Flynn's Classification of computer architectures. Describe SISD, SIMD, MISD, and MIMD with suitable examples.**
 

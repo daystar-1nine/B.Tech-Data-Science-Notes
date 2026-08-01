@@ -1,4 +1,4 @@
-# Procedures (Self-Learning)
+# Stored Procedures (Self-Learning)
 
 **Q. What is a Stored Procedure? Explain how to create and execute them, discuss parameters, and highlight the advantages of using stored procedures in a database.**
 

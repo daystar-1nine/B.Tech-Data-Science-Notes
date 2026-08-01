@@ -1,4 +1,4 @@
-# CPU Architecture
+# CPU Architecture & Register Organization
 
 **Q. Explain the internal organization of a CPU. Describe the basic components including Registers, ALU, and the Control Unit.**
 

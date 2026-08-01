@@ -1,4 +1,4 @@
-# Architecture of 8086 Family
+# Architecture of 8086 Microprocessor Family
 
 **Q. Describe the internal architecture of the 8086 Microprocessor. Explain the functions of the Bus Interface Unit (BIU), Execution Unit (EU), Registers, and Memory Segmentation.**
 

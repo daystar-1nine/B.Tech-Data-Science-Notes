@@ -1,4 +1,4 @@
-# 8086 in Maximum Mode
+# 8086 Microprocessor in Maximum Mode
 
 **Q. Explain the operation of the 8086 microprocessor in Maximum Mode. Discuss the role of the Bus Controller (8288) and how a multiprocessor environment is managed.**
 

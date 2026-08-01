@@ -1,4 +1,4 @@
-# Infix to Postfix Conversion, Postfix Evaluation, Recursion
+# Infix to Postfix Conversion & Recursion
 
 **Q. Discuss the application of Stacks in evaluating mathematical expressions. Explain the process of Infix to Postfix conversion, Postfix evaluation, and how stacks handle Recursion.**
 

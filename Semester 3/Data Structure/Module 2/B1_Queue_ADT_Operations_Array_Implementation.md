@@ -1,4 +1,4 @@
-# ADT of Queue, Operations on Queue, Array Implementation
+# Queue ADT, Operations & Array Implementation
 
 **Q. Define Queue as an Abstract Data Type (ADT). Explain its standard operations and demonstrate its implementation using an Array with a relevant code snippet.**
 

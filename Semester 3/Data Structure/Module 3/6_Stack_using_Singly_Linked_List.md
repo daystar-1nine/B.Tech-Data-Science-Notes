@@ -9,7 +9,7 @@
 
 ---
 
-# Conceptual Mapping: Linked List to Stack
+# Stack Implementation using Singly Linked List
 To maintain O(1) time complexity for both Push and Pop operations, all insertions and deletions must occur at the **beginning (head)** of the linked list.
 
 | Stack Operation | Linked List Equivalent |

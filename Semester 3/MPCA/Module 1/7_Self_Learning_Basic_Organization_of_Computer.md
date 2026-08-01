@@ -9,7 +9,7 @@
 
 ---
 
-# The Five Functional Units
+# Basic Organization of Computer (Self-Learning)
 
 | Unit | Primary Function | Examples |
 | :--- | :--- | :--- |

@@ -1,4 +1,4 @@
-# Instruction Interpretation and Sequencing (Self-Learning)
+# Instruction Interpretation & Sequencing (Self-Learning)
 
 **Q. Explain the concepts of Instruction Interpretation and Sequencing. How is the control flow of instructions maintained during execution?**
 

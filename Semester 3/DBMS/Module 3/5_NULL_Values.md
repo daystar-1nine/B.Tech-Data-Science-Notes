@@ -1,4 +1,4 @@
-# NULL Values
+# NULL Values & 3-Valued Logic
 
 **Q. Explain the concept of NULL in SQL. How do we check for NULL values, handle them in expressions, and how do they affect comparisons and aggregate functions?**
 

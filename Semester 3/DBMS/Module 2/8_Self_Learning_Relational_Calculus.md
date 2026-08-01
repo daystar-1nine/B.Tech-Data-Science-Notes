@@ -9,7 +9,7 @@
 
 ---
 
-# Types of Relational Calculus
+# Relational Calculus (Self-Learning)
 
 #### A. Tuple Relational Calculus (TRC)
 * Variables range over **entire tuples (rows)**.

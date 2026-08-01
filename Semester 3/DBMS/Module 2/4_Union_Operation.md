@@ -9,7 +9,7 @@
 
 ---
 
-# Union Operator (∪)
+# Union Operation (∪)
 * **Binary operation** — operates on two tables.
 * **Syntax:** Relation_A ∪ Relation_B
 * **Duplicate Elimination:** If a tuple exists in both A and B, it appears only **once** in the output.

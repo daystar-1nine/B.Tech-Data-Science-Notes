@@ -9,7 +9,7 @@
 
 ---
 
-# Zero-Address Instruction
+# Instruction Formats & Addressing
 Used in **Stack-based architectures**. The operands are implicitly located at the top of the stack.
 * **Format:** `[ Opcode ]`
 * **Example:** `ADD` (Pops the top two stack elements, adds them, and pushes result back).

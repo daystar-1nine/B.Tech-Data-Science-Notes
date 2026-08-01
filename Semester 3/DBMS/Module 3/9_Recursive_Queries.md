@@ -9,7 +9,7 @@
 
 ---
 
-# Common Table Expressions (CTE)
+# Recursive Queries & Common Table Expressions (CTE)
 A **CTE** is a temporary, named result set defined using the `WITH` keyword. It exists only during the execution of a single SQL statement.
 * Used to simplify complex queries by breaking them into readable named blocks.
 * **Syntax:** `WITH CTE_Name AS (SELECT ...)`

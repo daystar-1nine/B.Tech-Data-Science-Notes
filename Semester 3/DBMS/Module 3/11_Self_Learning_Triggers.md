@@ -1,4 +1,4 @@
-# Triggers (Self-Learning)
+# Database Triggers (Self-Learning)
 
 **Q. What is a Trigger in SQL? Discuss the different types of triggers (BEFORE and AFTER) and explain their primary uses.**
 

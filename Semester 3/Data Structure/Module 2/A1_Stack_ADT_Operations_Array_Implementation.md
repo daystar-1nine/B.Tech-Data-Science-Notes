@@ -1,4 +1,4 @@
-# ADT of Stack, Operations on Stack, Array Implementation of Stack
+# Stack ADT, Operations & Array Implementation
 
 **Q. Define Stack as an Abstract Data Type (ADT). Explain its primary operations and demonstrate how a Stack can be implemented using an Array with suitable code snippets.**
 

@@ -1,4 +1,4 @@
-# Introduction to Linked List
+# Introduction to Linked Lists
 
 **Q. What is a Linked List? Explain its representation in memory with the help of a suitable diagram and structure definition in C.**
 

@@ -9,7 +9,7 @@
 
 ---
 
-# Types of Inner Joins
+# Join Operations (⋈)
 *(Return only rows with a matching counterpart in both tables)*
 
 #### A. Theta Join (⋈_{θ})

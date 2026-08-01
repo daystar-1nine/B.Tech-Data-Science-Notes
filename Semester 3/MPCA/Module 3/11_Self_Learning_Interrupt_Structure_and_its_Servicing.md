@@ -9,7 +9,7 @@
 
 ---
 
-# Hardware vs. Software Interrupts
+# Interrupt Structure & Servicing in 8086 (Self-Learning)
 | Type | Source | Characteristics | Examples |
 | :--- | :--- | :--- | :--- |
 | **Hardware** | External physical devices | Triggered by electrical signals to CPU pins. Can be Maskable (ignored if IF=0) or Non-Maskable. | **INTR** (Maskable), **NMI** (Non-Maskable). |

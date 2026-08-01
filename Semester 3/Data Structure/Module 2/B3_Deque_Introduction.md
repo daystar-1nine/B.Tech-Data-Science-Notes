@@ -1,4 +1,4 @@
-# Introduction to Double-Ended Queue (Deque)
+# Double-Ended Queue (Deque) Introduction
 
 **Q. What is a Double-Ended Queue (Deque)? Explain its types and how it differs from a standard queue and stack. Provide real-world applications.**
 

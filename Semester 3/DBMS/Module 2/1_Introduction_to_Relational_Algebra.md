@@ -9,7 +9,7 @@
 
 ---
 
-# Basic Concepts
+# Introduction to Relational Algebra
 
 | Concept | Explanation |
 | :--- | :--- |

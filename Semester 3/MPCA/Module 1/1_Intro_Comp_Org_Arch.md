@@ -1,4 +1,4 @@
-# Introduction to Computer Organization and Architecture
+# Computer Organization vs. Architecture
 
 **Q. Define Computer Organization and Computer Architecture. Clearly distinguish between the two concepts using suitable examples.**
 

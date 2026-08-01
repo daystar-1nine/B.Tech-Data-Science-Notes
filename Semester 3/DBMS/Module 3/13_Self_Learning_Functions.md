@@ -1,4 +1,4 @@
-# Functions (Self-Learning)
+# Database Functions (Self-Learning)
 
 **Q. What is a User-Defined Function (UDF) in SQL? Explain how functions differ from Stored Procedures regarding parameters, return values, and execution contexts.**
 

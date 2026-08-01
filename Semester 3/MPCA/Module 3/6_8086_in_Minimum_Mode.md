@@ -9,7 +9,7 @@
 
 ---
 
-# Minimum Mode Configuration
+# 8086 Microprocessor in Minimum Mode
 * Acts as the sole controller of the system bus.
 * Directly generates all necessary control signals (like read, write, memory/IO).
 * No external bus controller chip is required, making the circuit design simpler and cheaper.

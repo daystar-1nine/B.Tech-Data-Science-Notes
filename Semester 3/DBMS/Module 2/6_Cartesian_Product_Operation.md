@@ -9,7 +9,7 @@
 
 ---
 
-# Cartesian Product Operator (×)
+# Cartesian Product Operation (×)
 * **Binary operation** — operates on two tables (which need NOT be union compatible).
 * **Syntax:** Relation_A × Relation_B
 * **Output Degree (Columns):** Columns_A + Columns_B

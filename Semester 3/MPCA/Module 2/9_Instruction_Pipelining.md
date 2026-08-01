@@ -1,4 +1,4 @@
-# Instruction Pipelining
+# Instruction Pipelining Principles
 
 **Q. What is Instruction Pipelining? Explain the stages of a standard instruction pipeline, its working mechanism, and its advantages.**
 

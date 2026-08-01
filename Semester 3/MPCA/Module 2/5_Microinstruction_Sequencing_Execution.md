@@ -9,7 +9,7 @@
 
 ---
 
-# Control Memory
+# Microinstruction Sequencing & Execution
 * It is a fast, Read-Only Memory (ROM) located inside the CPU, completely separate from main system memory.
 * **Purpose:** Exclusively stores microprograms. When an instruction is decoded, it provides the starting address of that instruction's microprogram in the Control Memory.
 
