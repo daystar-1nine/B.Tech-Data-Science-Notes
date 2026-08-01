@@ -8,12 +8,13 @@
   // Global State
   let selectedSemester = 'All';
   let selectedSubject = 'All';
+  let selectedContentType = 'notes'; // 'notes' or 'qa'
   let searchQuery = '';
   let activeTopicId = null;
   let openSubjects = {};
   let openModules = {};
 
-  // Q&A Bank State
+  // Q&A Bank Hub State
   let qaSelectedSubject = 'All';
   let qaSelectedMarks = 'All';
 
@@ -115,7 +116,7 @@
     if (semSelectMobile) semSelectMobile.addEventListener('change', handleSemChange);
   }
 
-  // Monster Modal Popup Functions (100% Mobile & WebKit Compatible)
+  // Monster Modal Popup Functions
   window.openMonsterModal = function () {
     if (mobileNavDrawer) mobileNavDrawer.classList.remove('active');
     const el = document.getElementById('monsterModal');
@@ -175,7 +176,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('DBMS')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Database Systems</span>
-              <span class="count-badge">36 Notes</span>
+              <span class="count-badge">32 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">DBMS Architecture, ER Modeling, Relational Algebra, SQL, Triggers & Procedures.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DBMS Notes &rarr;</span>
@@ -184,7 +185,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
-              <span class="count-badge">25 Notes</span>
+              <span class="count-badge">22 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials & Solved Q&A Bank.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
@@ -193,7 +194,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('MPCA')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Microprocessors</span>
-              <span class="count-badge">40 Notes</span>
+              <span class="count-badge">32 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">8086 CPU Architecture, Addressing Modes, Instruction Pipelining & Timing.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start MPCA Notes &rarr;</span>
@@ -256,6 +257,7 @@
     }
 
     if (viewId === 'reader') {
+      renderSidebarTypeToggleUI();
       renderSidebarTabs();
       renderSidebarTree();
 
@@ -272,7 +274,6 @@
       initFlashcardSubjectBar();
       initFlashcards();
     } else if (viewId === 'about') {
-      // Auto display "Give a Monster to Developer" modal when About page opens
       setTimeout(() => {
         window.openMonsterModal();
       }, 150);
@@ -280,6 +281,29 @@
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Sidebar Content Type Segment Toggle ('notes' vs 'qa')
+  window.setSidebarContentType = function (type) {
+    selectedContentType = type;
+    renderSidebarTypeToggleUI();
+    renderSidebarTabs();
+    renderSidebarTree();
+  };
+
+  function renderSidebarTypeToggleUI() {
+    const btnNotes = document.getElementById('btnNotesType');
+    const btnQA = document.getElementById('btnQAType');
+
+    if (btnNotes && btnQA) {
+      if (selectedContentType === 'notes') {
+        btnNotes.classList.add('active');
+        btnQA.classList.remove('active');
+      } else {
+        btnQA.classList.add('active');
+        btnNotes.classList.remove('active');
+      }
+    }
+  }
 
   // Dedicated Q&A Bank Hub Functions
   function initQABankView() {
@@ -328,7 +352,7 @@
     if (!gridContainer || !window.NOTES_DATA) return;
 
     const qaFiles = window.NOTES_DATA.filter(item => {
-      const isQA = item.filename.endsWith('M.md') || item.title.includes('Questions & Answers');
+      const isQA = item.module === 'Question & Answers Bank' || item.filename.endsWith('M.md');
       const matchSub = qaSelectedSubject === 'All' || item.subject === qaSelectedSubject;
       
       let matchMark = true;
@@ -370,7 +394,7 @@
     gridContainer.innerHTML = html;
   }
 
-  // Toggle Reader Sidebar Drawer (Desktop & Mobile Responsive)
+  // Toggle Reader Sidebar Drawer
   window.toggleSidebar = function () {
     if (!readerSidebar) return;
     if (window.innerWidth <= 768) {
@@ -388,10 +412,10 @@
     }
   }
 
-  // Sidebar Subject Tabs with Q&A Bank Filter Pill
+  // Sidebar Subject Tabs
   function renderSidebarTabs() {
     if (!sidebarSubTabs || !window.NOTES_DATA) return;
-    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort(), 'Q&A Bank'];
+    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
     
     let html = '';
     subjects.forEach(s => {
@@ -403,7 +427,7 @@
 
   window.setSidebarSubject = function (sub) {
     selectedSubject = sub;
-    if (sub !== 'All' && sub !== 'Q&A Bank') openSubjects[sub] = true;
+    if (sub !== 'All') openSubjects[sub] = true;
     renderSidebarTabs();
     renderSidebarTree();
   };
@@ -424,27 +448,28 @@
     renderSidebarTree();
   };
 
-  // Render 2-Level Accordion Tree View (Collapsible Subject & Collapsible Module)
+  // Render 2-Level Accordion Tree View
   function renderSidebarTree() {
     if (!window.NOTES_DATA || !treeView) return;
 
     let filtered = window.NOTES_DATA.filter(item => {
       const matchSem = selectedSemester === 'All' || item.semester === selectedSemester;
+      const matchSub = selectedSubject === 'All' || item.subject === selectedSubject;
       
-      let matchSub = true;
-      if (selectedSubject === 'Q&A Bank') {
-        matchSub = item.filename.endsWith('M.md') || item.title.includes('Questions & Answers');
-      } else if (selectedSubject !== 'All') {
-        matchSub = item.subject === selectedSubject;
+      let matchType = true;
+      if (selectedContentType === 'notes') {
+        matchType = item.module !== 'Question & Answers Bank';
+      } else if (selectedContentType === 'qa') {
+        matchType = item.module === 'Question & Answers Bank';
       }
 
       const q = (searchQuery || '').toLowerCase();
       const matchSearch = !q || item.title.toLowerCase().includes(q) || item.content.toLowerCase().includes(q);
-      return matchSem && matchSub && matchSearch;
+      return matchSem && matchSub && matchType && matchSearch;
     });
 
     if (filtered.length === 0) {
-      treeView.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 24px 10px; font-size: 0.82rem;">No matching notes found for "${searchQuery}".</div>`;
+      treeView.innerHTML = `<div style="text-align: center; color: var(--text-muted); padding: 24px 10px; font-size: 0.82rem;">No matching ${selectedContentType === 'notes' ? 'lecture notes' : 'Q&A banks'} found.</div>`;
       return;
     }
 
@@ -462,7 +487,7 @@
       if (openSubjects[sub] !== undefined) {
         isSubOpen = openSubjects[sub];
       } else {
-        isSubOpen = searchQuery !== '' || selectedSubject === sub || selectedSubject === 'Q&A Bank';
+        isSubOpen = searchQuery !== '' || selectedSubject === sub;
       }
 
       const subOpenClass = isSubOpen ? 'open' : '';
@@ -488,7 +513,7 @@
         if (openModules[modKey] !== undefined) {
           isModOpen = openModules[modKey];
         } else {
-          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId)) || selectedSubject === 'Q&A Bank';
+          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId));
         }
 
         const modOpenClass = isModOpen ? 'open' : '';
@@ -554,7 +579,10 @@
     activeTopicId = id;
     closeMobileSidebar();
     
-    // Ensure parent subject and module are open in accordion
+    // Automatically set correct content type ('notes' or 'qa') based on selected topic
+    selectedContentType = topic.module === 'Question & Answers Bank' ? 'qa' : 'notes';
+    renderSidebarTypeToggleUI();
+
     openSubjects[topic.subject] = true;
     openModules[`${topic.subject}-${topic.module}`] = true;
 
@@ -708,7 +736,7 @@
     switchView('reader', null, id);
   };
 
-  // Flashcards Module with Subject Selector Bar
+  // Flashcards Module
   function initFlashcardSubjectBar() {
     const container = document.getElementById('flashSubjectBar');
     if (!container || !window.NOTES_DATA) return;
@@ -795,6 +823,7 @@
   // Init on DOM Load
   document.addEventListener('DOMContentLoaded', () => {
     initSemesters();
+    renderSidebarTypeToggleUI();
     renderSidebarTabs();
     renderSidebarTree();
     renderReaderWelcomeState();
