@@ -18,7 +18,7 @@
   * P(T) = predicate (condition) that the tuple must satisfy
 * **Read as:** "Find all tuples T such that P(T) is true."
 * **Example:** Find names of employees in the IT department:
-  $\{ T.Name \mid Employee(T) AND T.Department = 'IT' \}$
+  **\{ T.Name \mid Employee(T) AND T.Department = 'IT' \}**
 
 #### B. Domain Relational Calculus (DRC)
 * Variables range over **individual attribute values (domains)** — not whole tuples.
@@ -26,7 +26,7 @@
   * <x_1, x_2...> = domain variables (individual column values)
   * P = condition on those variables
 * **Example:** Find names of IT employees:
-  $\{ <Name> \mid ∃ ID, Salary (<ID, Name, 'IT', Salary> ∈ Employee) \}$
+  **\{ <Name> \mid ∃ ID, Salary (<ID, Name, 'IT', Salary> ∈ Employee) \}**
 
 ### 2. Relational Algebra vs Relational Calculus
 

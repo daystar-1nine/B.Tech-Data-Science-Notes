@@ -42,7 +42,7 @@ For Union (and also Intersection and Set Difference) to be valid, both relations
 | 5 | Eve |
 
 **Query:** Find all students who play Cricket OR Football or both.
-$CRICKET_TEAM ∪ FOOTBALL_TEAM$
+**CRICKET_TEAM ∪ FOOTBALL_TEAM**
 
 **Result:** Alice, Bob, Charlie, David, Eve — **5 rows** *(Charlie appeared in both tables but appears only once — duplicate eliminated).*
 

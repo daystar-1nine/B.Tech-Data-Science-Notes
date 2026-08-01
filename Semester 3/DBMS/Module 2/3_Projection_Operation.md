@@ -15,7 +15,7 @@
 * **Key Property:** Automatically **eliminates duplicate rows** from the output (because a relation is a mathematical set — no duplicates allowed).
 
 ### 2. Syntax of Projection
-$π_{<attribute_list>}(Relation_Name)$
+**π_{<attribute_list>}(Relation_Name)**
 
 * **attribute_list:** Comma-separated column names to retain.
 
@@ -32,17 +32,17 @@ $π_{<attribute_list>}(Relation_Name)$
 
 #### Example 1: Simple Projection
 **Query:** Get names and majors of all students.
-$π_{Name, Major}(STUDENT)$
+**π_{Name, Major}(STUDENT)**
 **Result:** 4 rows, 2 columns (Name, Major).
 
 #### Example 2: Duplicate Elimination
 **Query:** List all unique majors.
-$π_{Major}(STUDENT)$
+**π_{Major}(STUDENT)**
 **Result:** CS, Math, Physics — *only 3 rows* (CS appeared twice in the original table but appears once in the result after duplicate elimination).
 
 #### Example 3: Composition — Selection + Projection
 **Query:** Find names of CS major students.
-$π_{Name}(σ_{Major = 'CS'}(STUDENT))$
+**π_{Name}(σ_{Major = 'CS'}(STUDENT))**
 **Execution:**
 1. **Step 1:** σ_{Major='CS'} filters rows → John and Luke.
 2. **Step 2:** π_{Name} extracts the Name column → John, Luke.

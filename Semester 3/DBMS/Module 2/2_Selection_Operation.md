@@ -15,7 +15,7 @@
 * Output automatically eliminates duplicate rows (set behavior).
 
 ### 2. Syntax of Selection
-$σ_{<predicate>}(Relation_Name)$
+**σ_{<predicate>}(Relation_Name)**
 
 * **Predicate:** Uses comparison operators (=, ≠, <, ≤, >, ≥) and logical operators (AND AND, OR OR, NOT NOT).
 
@@ -32,17 +32,17 @@ $σ_{<predicate>}(Relation_Name)$
 
 #### Example 1: Simple Condition
 **Query:** Find all IT department employees.
-$σ_{Department = 'IT'}(EMPLOYEE)$
+**σ_{Department = 'IT'}(EMPLOYEE)**
 **Result:** Returns rows for Alice (ID 1) and Charlie (ID 3).
 
 #### Example 2: AND Condition (AND)
 **Query:** IT employees with salary > 55000.
-$σ_{Department = 'IT' AND Salary > 55000}(EMPLOYEE)$
+**σ_{Department = 'IT' AND Salary > 55000}(EMPLOYEE)**
 **Result:** Returns only Charlie (IT, 60000).
 
 #### Example 3: OR Condition (OR)
 **Query:** Employees in HR or Sales.
-$σ_{Department = 'HR' OR Department = 'Sales'}(EMPLOYEE)$
+**σ_{Department = 'HR' OR Department = 'Sales'}(EMPLOYEE)**
 **Result:** Returns Bob (HR) and David (Sales).
 
 ---

@@ -40,7 +40,7 @@ Both relations must be **Union Compatible**:
 | 101 | John | B |
 
 **Query:** Find students with **identical records** (same Roll_No, Name, and Grade) in both tables.
-$TOP_IN_MATH ∩ TOP_IN_SCIENCE$
+**TOP_IN_MATH ∩ TOP_IN_SCIENCE**
 
 **Result:** Only **Emma (102, A)** — her entire tuple (Roll_No=102, Name=Emma, Grade=A) is identical in both tables.
 
