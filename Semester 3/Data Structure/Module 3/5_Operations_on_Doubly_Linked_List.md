@@ -55,3 +55,68 @@ Deleting is highly efficient (O(1)) if a pointer to the target node (`del_node`)
 > ⚡ **Quick Recall**
 > `Doubly Linked List → prev + data + next → Bidirectional Traversal → Fast O(1) Deletion (no need to find previous node) → Costs extra memory → Update both prev and next during insert/delete`
 
+
+
+
+---
+
+## 💻 Complete Executable C Code: Doubly Linked List Full Implementation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *prev;
+    struct Node *next;
+};
+
+// Insert at Head - O(1)
+struct Node* insertHead(struct Node *head, int val) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    newNode->prev = NULL;
+    newNode->next = head;
+    
+    if (head != NULL) head->prev = newNode;
+    return newNode;
+}
+
+// Forward & Backward Traversal
+void traverseForward(struct Node *head) {
+    struct Node *temp = head;
+    printf("Forward List: ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+void traverseBackward(struct Node *head) {
+    if (head == NULL) return;
+    struct Node *temp = head;
+    while (temp->next != NULL) temp = temp->next;
+    
+    printf("Backward List: ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->prev;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+    
+    head = insertHead(head, 30);
+    head = insertHead(head, 20);
+    head = insertHead(head, 10);
+    
+    traverseForward(head);
+    traverseBackward(head);
+    
+    return 0;
+}
+```

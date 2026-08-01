@@ -56,3 +56,91 @@ Visit every node from `head` to `NULL`.
 
 > ⚡ **Quick Recall**
 > `Traversal (temp=temp->next) → Insert Begin (O(1), update head) → Insert End (O(n), traverse to last) → Delete (Bypass node, free memory) → Watch out for memory leaks!`
+
+
+
+---
+
+## 💻 Complete Executable C Code: Singly Linked List Full Implementation
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Insert at Head - O(1)
+struct Node* insertAtHead(struct Node *head, int val) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    newNode->next = head;
+    return newNode;
+}
+
+// Insert at Tail - O(n)
+struct Node* insertAtTail(struct Node *head, int val) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = val;
+    newNode->next = NULL;
+    
+    if (head == NULL) return newNode;
+    
+    struct Node *temp = head;
+    while (temp->next != NULL) temp = temp->next;
+    temp->next = newNode;
+    return head;
+}
+
+// Delete by Value - O(n)
+struct Node* deleteNode(struct Node *head, int key) {
+    if (head == NULL) return NULL;
+    
+    if (head->data == key) {
+        struct Node *temp = head->next;
+        free(head);
+        return temp;
+    }
+    
+    struct Node *curr = head;
+    while (curr->next != NULL && curr->next->data != key) {
+        curr = curr->next;
+    }
+    
+    if (curr->next != NULL) {
+        struct Node *temp = curr->next;
+        curr->next = curr->next->next;
+        free(temp);
+    }
+    return head;
+}
+
+// Traverse List
+void traverse(struct Node *head) {
+    struct Node *temp = head;
+    printf("Singly Linked List: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+    
+    head = insertAtHead(head, 20);
+    head = insertAtHead(head, 10);
+    head = insertAtTail(head, 30);
+    head = insertAtTail(head, 40);
+    traverse(head);
+    
+    printf("\n--- Deleting Node 20 ---\n");
+    head = deleteNode(head, 20);
+    traverse(head);
+    
+    return 0;
+}
+```

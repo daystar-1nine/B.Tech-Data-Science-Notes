@@ -91,3 +91,57 @@ int main() {
 
 > ⚡ **Quick Recall**
 > `struct → Groups different types → Dot (.) for variable → Arrow (->) for pointer → malloc (dynamic) → Self-Referential (Linked List/Tree) → free() to release`
+
+
+
+---
+
+## 💻 C Code: Self-Referential Structure Node Creation & Linked List Traversal
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Definition of Self-Referential Structure
+struct Node {
+    int data;
+    struct Node *next; // Self-referential pointer
+};
+
+// Function to traverse dynamic linked list
+void printList(struct Node *head) {
+    struct Node *curr = head;
+    printf("Linked List: ");
+    while (curr != NULL) {
+        printf("[%d | Next: %p] -> ", curr->data, (void*)curr->next);
+        curr = curr->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    // Dynamic memory allocation for 3 nodes
+    struct Node *head = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *second = (struct Node*)malloc(sizeof(struct Node));
+    struct Node *third = (struct Node*)malloc(sizeof(struct Node));
+    
+    // Assigning data & linking nodes
+    head->data = 10;
+    head->next = second;
+    
+    second->data = 20;
+    second->next = third;
+    
+    third->data = 30;
+    third->next = NULL; // Mark end of list
+    
+    printList(head);
+    
+    // Free allocated memory
+    free(head);
+    free(second);
+    free(third);
+    
+    return 0;
+}
+```

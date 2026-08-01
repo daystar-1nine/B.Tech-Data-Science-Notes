@@ -59,3 +59,64 @@
 
 > ⚡ **Quick Recall**
 > `Opening → Push → Closing → Stack Empty? (FALSE) → Pop → Match? (FALSE if not) → After scan: Stack Empty=TRUE, Non-empty=FALSE → O(n)`
+
+
+
+---
+
+## 💻 C Code: Parentheses Checking Algorithm using Stack
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 100
+
+struct CharStack {
+    char items[MAX];
+    int top;
+};
+
+void push(struct CharStack *s, char c) {
+    s->items[++(s->top)] = c;
+}
+
+char pop(struct CharStack *s) {
+    if (s->top == -1) return '\0';
+    return s->items[(s->top)--];
+}
+
+int isMatchingPair(char char1, char char2) {
+    if (char1 == '(' && char2 == ')') return 1;
+    if (char1 == '{' && char2 == '}') return 1;
+    if (char1 == '[' && char2 == ']') return 1;
+    return 0;
+}
+
+int checkBalanced(char exp[]) {
+    struct CharStack s;
+    s.top = -1;
+    
+    for (int i = 0; i < strlen(exp); i++) {
+        if (exp[i] == '(' || exp[i] == '{' || exp[i] == '[') {
+            push(&s, exp[i]);
+        } else if (exp[i] == ')' || exp[i] == '}' || exp[i] == ']') {
+            if (s.top == -1) return 0;
+            char popped = pop(&s);
+            if (!isMatchingPair(popped, exp[i])) return 0;
+        }
+    }
+    return s.top == -1;
+}
+
+int main() {
+    char expr1[] = "{[()]}";
+    char expr2[] = "{[(])}";
+    
+    printf("Expression: %s -> %s\n", expr1, checkBalanced(expr1) ? "Balanced ✅" : "Unbalanced ❌");
+    printf("Expression: %s -> %s\n", expr2, checkBalanced(expr2) ? "Balanced ✅" : "Unbalanced ❌");
+    
+    return 0;
+}
+```

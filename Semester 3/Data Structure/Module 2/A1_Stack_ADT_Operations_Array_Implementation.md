@@ -85,3 +85,83 @@ int isEmpty() { return top == -1; }
 
 > ⚡ **Quick Recall**
 > `Stack → LIFO → Top pointer → push (Overflow) → pop (Underflow) → peek → isEmpty (top==-1) → Array: O(1), fixed size`
+
+
+
+---
+
+## 💻 Complete Executable C Code: Array Implementation of Stack ADT
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5
+
+struct Stack {
+    int items[MAX];
+    int top;
+};
+
+void initStack(struct Stack *s) {
+    s->top = -1;
+}
+
+int isFull(struct Stack *s) {
+    return s->top == MAX - 1;
+}
+
+int isEmpty(struct Stack *s) {
+    return s->top == -1;
+}
+
+void push(struct Stack *s, int val) {
+    if (isFull(s)) {
+        printf("Stack Overflow! Cannot push %d\n", val);
+        return;
+    }
+    s->items[++(s->top)] = val;
+    printf("Pushed %d onto stack\n", val);
+}
+
+int pop(struct Stack *s) {
+    if (isEmpty(s)) {
+        printf("Stack Underflow! Cannot pop\n");
+        return -1;
+    }
+    return s->items[(s->top)--];
+}
+
+int peek(struct Stack *s) {
+    if (isEmpty(s)) return -1;
+    return s->items[s->top];
+}
+
+void display(struct Stack *s) {
+    if (isEmpty(s)) {
+        printf("Stack is Empty\n");
+        return;
+    }
+    printf("Stack (Top to Bottom): ");
+    for (int i = s->top; i >= 0; i--) {
+        printf("%d ", s->items[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Stack s;
+    initStack(&s);
+    
+    push(&s, 10);
+    push(&s, 20);
+    push(&s, 30);
+    display(&s);
+    
+    printf("Popped Value: %d\n", pop(&s));
+    display(&s);
+    
+    printf("Top Element (Peek): %d\n", peek(&s));
+    return 0;
+}
+```

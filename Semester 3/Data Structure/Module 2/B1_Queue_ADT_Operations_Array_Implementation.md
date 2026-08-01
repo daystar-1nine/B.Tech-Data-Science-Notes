@@ -76,3 +76,84 @@ int dequeue() {
 
 > ⚡ **Quick Recall**
 > `Queue → FIFO → Insert at Rear (enqueue) → Remove from Front (dequeue) → Overflow (rear==SIZE-1) → Underflow (front==-1) → Linear array wastes freed memory`
+
+
+
+---
+
+## 💻 Complete Executable C Code: Linear Queue Array Implementation
+
+```c
+#include <stdio.h>
+
+#define MAX 5
+
+struct Queue {
+    int items[MAX];
+    int front;
+    int rear;
+};
+
+void initQueue(struct Queue *q) {
+    q->front = -1;
+    q->rear = -1;
+}
+
+int isFull(struct Queue *q) {
+    return q->rear == MAX - 1;
+}
+
+int isEmpty(struct Queue *q) {
+    return q->front == -1 || q->front > q->rear;
+}
+
+void enqueue(struct Queue *q, int val) {
+    if (isFull(q)) {
+        printf("Queue Overflow! Cannot enqueue %d\n", val);
+        return;
+    }
+    if (q->front == -1) q->front = 0;
+    q->items[++(q->rear)] = val;
+    printf("Enqueued: %d\n", val);
+}
+
+int dequeue(struct Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue Underflow! Cannot dequeue\n");
+        return -1;
+    }
+    int val = q->items[q->front++];
+    if (q->front > q->rear) { // Reset queue when empty
+        q->front = -1;
+        q->rear = -1;
+    }
+    return val;
+}
+
+void display(struct Queue *q) {
+    if (isEmpty(q)) {
+        printf("Queue is Empty\n");
+        return;
+    }
+    printf("Queue (Front to Rear): ");
+    for (int i = q->front; i <= q->rear; i++) {
+        printf("%d ", q->items[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Queue q;
+    initQueue(&q);
+    
+    enqueue(&q, 10);
+    enqueue(&q, 20);
+    enqueue(&q, 30);
+    display(&q);
+    
+    printf("Dequeued: %d\n", dequeue(&q));
+    display(&q);
+    
+    return 0;
+}
+```

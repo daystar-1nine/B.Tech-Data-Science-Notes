@@ -57,3 +57,100 @@ In a standard linear array queue, once the `rear` pointer reaches the maximum in
 > ⚡ **Quick Recall**
 > `Linear Q wastes memory → Circular Q wraps around ((rear+1)%SIZE), reuses space → Priority Q breaks FIFO for urgent tasks, served by highest priority → implemented via Heaps`
 
+
+
+
+---
+
+## 💻 Complete Executable C Code: Circular Queue Array Implementation
+
+```c
+#include <stdio.h>
+
+#define MAX 5
+
+struct CircularQueue {
+    int items[MAX];
+    int front;
+    int rear;
+};
+
+void initQueue(struct CircularQueue *q) {
+    q->front = -1;
+    q->rear = -1;
+}
+
+int isFull(struct CircularQueue *q) {
+    return (q->rear + 1) % MAX == q->front;
+}
+
+int isEmpty(struct CircularQueue *q) {
+    return q->front == -1;
+}
+
+void enqueue(struct CircularQueue *q, int val) {
+    if (isFull(q)) {
+        printf("Circular Queue Full! Cannot enqueue %d\n", val);
+        return;
+    }
+    if (isEmpty(q)) {
+        q->front = 0;
+        q->rear = 0;
+    } else {
+        q->rear = (q->rear + 1) % MAX;
+    }
+    q->items[q->rear] = val;
+    printf("Enqueued: %d\n", val);
+}
+
+int dequeue(struct CircularQueue *q) {
+    if (isEmpty(q)) {
+        printf("Circular Queue Empty! Cannot dequeue\n");
+        return -1;
+    }
+    int val = q->items[q->front];
+    if (q->front == q->rear) { // Single element left
+        q->front = -1;
+        q->rear = -1;
+    } else {
+        q->front = (q->front + 1) % MAX;
+    }
+    return val;
+}
+
+void display(struct CircularQueue *q) {
+    if (isEmpty(q)) {
+        printf("Queue is Empty\n");
+        return;
+    }
+    printf("Circular Queue: ");
+    int i = q->front;
+    while (1) {
+        printf("%d ", q->items[i]);
+        if (i == q->rear) break;
+        i = (i + 1) % MAX;
+    }
+    printf("\n");
+}
+
+int main() {
+    struct CircularQueue q;
+    initQueue(&q);
+    
+    enqueue(&q, 10);
+    enqueue(&q, 20);
+    enqueue(&q, 30);
+    enqueue(&q, 40);
+    display(&q);
+    
+    printf("Dequeued: %d\n", dequeue(&q));
+    printf("Dequeued: %d\n", dequeue(&q));
+    display(&q);
+    
+    enqueue(&q, 50);
+    enqueue(&q, 60);
+    display(&q);
+    
+    return 0;
+}
+```

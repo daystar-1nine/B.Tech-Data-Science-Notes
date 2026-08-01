@@ -78,3 +78,101 @@ int main() {
 
 > ⚡ **Quick Recall**
 > `String → char array + '\0' → strlen (length) → strcpy (copy) → strcat (join) → strcmp (compare, 0=equal) → strrev (reverse) → <string.h>`
+
+
+
+---
+
+## 💻 Custom String Manipulation Algorithms & C Codes
+
+### 1. Custom String Operations: `strlen`, `strcpy`, `strcat`, `strrev` (C Code)
+
+```c
+#include <stdio.h>
+
+// Custom strlen
+int my_strlen(const char str[]) {
+    int len = 0;
+    while (str[len] != '\0') len++;
+    return len;
+}
+
+// Custom strcpy
+void my_strcpy(char dest[], const char src[]) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+
+// Custom strcat
+void my_strcat(char dest[], const char src[]) {
+    int i = my_strlen(dest);
+    int j = 0;
+    while (src[j] != '\0') {
+        dest[i++] = src[j++];
+    }
+    dest[i] = '\0';
+}
+
+// Custom String Reverse
+void my_strrev(char str[]) {
+    int n = my_strlen(str);
+    for (int i = 0; i < n / 2; i++) {
+        char temp = str[i];
+        str[i] = str[n - i - 1];
+        str[n - i - 1] = temp;
+    }
+}
+
+int main() {
+    char s1[50] = "Data";
+    char s2[] = " Science";
+    
+    printf("Length of s1: %d\n", my_strlen(s1));
+    
+    my_strcat(s1, s2);
+    printf("Concatenated String: %s\n", s1);
+    
+    my_strrev(s1);
+    printf("Reversed String: %s\n", s1);
+    
+    return 0;
+}
+```
+
+---
+
+### 2. Naive Pattern Matching Algorithm (C Code)
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+void naivePatternSearch(char text[], char pattern[]) {
+    int n = strlen(text);
+    int m = strlen(pattern);
+    
+    for (int i = 0; i <= n - m; i++) {
+        int j;
+        for (j = 0; j < m; j++) {
+            if (text[i + j] != pattern[j]) break;
+        }
+        if (j == m) {
+            printf("Pattern found at index %d\n", i);
+        }
+    }
+}
+
+int main() {
+    char text[] = "AABAACAADAABAAABAA";
+    char pattern[] = "AABA";
+    
+    printf("Text: %s\nPattern: %s\n\n", text, pattern);
+    naivePatternSearch(text, pattern);
+    
+    return 0;
+}
+```
