@@ -89,9 +89,15 @@ html, body {
 /* --------------------------------------------------------------------------
    Ultra-Sleek Animated Custom Scrollbars System
    -------------------------------------------------------------------------- */
+@keyframes scrollbarGlow {
+  0% { box-shadow: 0 0 4px rgba(169, 14, 2, 0.4); }
+  50% { box-shadow: 0 0 12px rgba(169, 14, 2, 0.9); }
+  100% { box-shadow: 0 0 4px rgba(169, 14, 2, 0.4); }
+}
+
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -100,17 +106,18 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: linear-gradient(180deg, var(--accent-primary) 0%, rgba(169, 14, 2, 0.5) 100%);
   border-radius: 10px;
+  animation: scrollbarGlow 3s infinite ease-in-out;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
-  box-shadow: 0 0 10px rgba(169, 14, 2, 0.6);
+  background: linear-gradient(180deg, #c41203 0%, var(--accent-gold) 100%);
+  box-shadow: 0 0 14px rgba(169, 14, 2, 0.9);
 }
 
-/* Hide clunky native horizontal scrollbar on sub-tabs while preserving smooth swipe scroll */
+/* Hide clunky native horizontal scrollbar on sub-tabs */
 .sidebar-sub-tabs {
   scrollbar-width: none !important; /* Firefox */
   -ms-overflow-style: none !important; /* IE/Edge */
@@ -121,32 +128,49 @@ html, body {
   height: 0 !important;
 }
 
-/* Sleek Animated Glowing Crimson Vertical Scrollbars */
-.tree-view::-webkit-scrollbar,
-.reader-container::-webkit-scrollbar,
-.spotlight-results::-webkit-scrollbar,
-.monster-modal-card::-webkit-scrollbar {
-  width: 5px;
+/* Animated Scroll Controls for Sub Tabs */
+.sidebar-sub-tabs-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding: 4px 6px;
+  background: var(--bg-surface);
 }
 
-.tree-view::-webkit-scrollbar-track,
-.reader-container::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
+.sub-tab-scroll-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.sub-tab-scroll-btn:hover {
+  background: var(--accent-primary);
+  color: #ffffff;
+  border-color: var(--accent-primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 10px rgba(169, 14, 2, 0.5);
 }
 
-.tree-view::-webkit-scrollbar-thumb,
-.reader-container::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary) 0%, rgba(169, 14, 2, 0.4) 100%);
-  border-radius: 10px;
-  border: 1px solid transparent;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tree-view::-webkit-scrollbar-thumb:hover,
-.reader-container::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #c41203 0%, var(--accent-gold) 100%);
-  box-shadow: 0 0 12px rgba(169, 14, 2, 0.8);
+.sidebar-sub-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 2px 4px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  flex: 1;
 }
 
 /* Scroll Reading Progress Bar */
@@ -664,14 +688,6 @@ html, body {
   background: var(--accent-primary);
   color: #ffffff;
   box-shadow: 0 3px 10px rgba(169, 14, 2, 0.4);
-}
-
-.sidebar-sub-tabs {
-  display: flex;
-  gap: 4px;
-  padding: 6px 12px;
-  overflow-x: auto;
-  border-bottom: 1px solid var(--border-color);
 }
 
 .sub-tab {

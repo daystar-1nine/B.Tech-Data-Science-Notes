@@ -74,6 +74,13 @@
     if (themeToggleMobile) themeToggleMobile.innerHTML = iconHtml;
   }
 
+  // Horizontal Sub Tabs Scroll Helper
+  window.scrollSubTabs = function (amount) {
+    if (sidebarSubTabs) {
+      sidebarSubTabs.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  };
+
   // Reading Progress Bar
   if (readerContainer && progressBar) {
     readerContainer.addEventListener('scroll', () => {
@@ -269,6 +276,8 @@
         renderReaderWelcomeState();
       }
     } else if (viewId === 'qa') {
+      selectedContentType = 'qa';
+      renderSidebarTypeToggleUI();
       initQABankView();
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
@@ -282,9 +291,18 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Sidebar Content Type Segment Toggle ('notes' vs 'qa')
+  // Sidebar Content Type Segment Toggle ('notes' vs 'qa') with Instant Auto-Expansion
   window.setSidebarContentType = function (type) {
     selectedContentType = type;
+    
+    // Auto-expand subjects and modules so content change is 100% visible
+    if (window.NOTES_DATA) {
+      window.NOTES_DATA.forEach(item => {
+        openSubjects[item.subject] = true;
+        openModules[`${item.subject}-${item.module}`] = true;
+      });
+    }
+
     renderSidebarTypeToggleUI();
     renderSidebarTabs();
     renderSidebarTree();
@@ -487,7 +505,7 @@
       if (openSubjects[sub] !== undefined) {
         isSubOpen = openSubjects[sub];
       } else {
-        isSubOpen = searchQuery !== '' || selectedSubject === sub;
+        isSubOpen = searchQuery !== '' || selectedSubject === sub || selectedContentType === 'qa';
       }
 
       const subOpenClass = isSubOpen ? 'open' : '';
@@ -513,7 +531,7 @@
         if (openModules[modKey] !== undefined) {
           isModOpen = openModules[modKey];
         } else {
-          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId));
+          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId)) || selectedContentType === 'qa';
         }
 
         const modOpenClass = isModOpen ? 'open' : '';
