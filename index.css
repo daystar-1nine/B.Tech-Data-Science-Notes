@@ -525,6 +525,20 @@ html, body {
   box-shadow: var(--shadow-md);
 }
 
+.welcome-sub-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.welcome-sub-box:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
 .subject-header {
   display: flex;
   align-items: center;
@@ -884,7 +898,7 @@ html, body {
   border: none;
 }
 
-/* Reader Article Typography & Formatting */
+/* Reader Article Typography & Code Block Spacing */
 .reader-article {
   max-width: 860px;
   width: 100%;
@@ -940,26 +954,18 @@ html, body {
   p { margin-bottom: 0; }
 }
 
-/* Blockquote Callout Enhancements */
-.reader-article blockquote:has(strong:contains("Definition")) {
-  background: var(--callout-def-bg);
-  border-left: 4px solid var(--callout-def-border);
-}
-.reader-article blockquote {
-  background: var(--bg-card);
-  border-left: 4px solid var(--accent-primary);
-}
-
+/* Code Block Formatting with Padded Header space for Copy Button */
 .reader-article pre {
   background: #141414;
   border: 1px solid var(--border-color);
-  padding: 16px;
+  padding: 38px 16px 16px;
   border-radius: 10px;
   overflow-x: auto;
   margin: 18px 0;
   font-family: 'JetBrains Mono', Consolas, monospace;
   font-size: 0.86rem;
   color: #e6e6e6;
+  position: relative;
 }
 
 .reader-article table {
