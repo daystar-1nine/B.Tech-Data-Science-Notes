@@ -26,8 +26,7 @@
     chevronRight: `<svg class="icon" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>`,
     copy: `<svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`,
     check: `<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
-    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`,
-    sparkles: `<svg class="icon icon-lg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
+    clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`
   };
 
   // DOM Elements
@@ -147,10 +146,11 @@
     });
   };
 
-  // Welcome State for Reader Area before selecting any topic
-  function renderReaderWelcomeState() {
+  // Render Reader Welcome Dashboard
+  window.renderReaderWelcomeState = function () {
     if (!readerArticle) return;
-    pdfDownloadBtn.style.display = 'none';
+    activeTopicId = null;
+    if (pdfDownloadBtn) pdfDownloadBtn.style.display = 'none';
 
     readerArticle.innerHTML = `
       <div class="welcome-reader-card" style="text-align: center; padding: 32px 16px; max-width: 800px; margin: 0 auto;">
@@ -218,7 +218,7 @@
         </div>
       </div>
     `;
-  }
+  };
 
   window.selectSubjectFirstTopic = function (sub) {
     selectedSubject = sub;
@@ -226,9 +226,11 @@
     renderSidebarTabs();
     renderSidebarTree();
 
-    const firstItem = window.NOTES_DATA.find(i => i.subject === sub);
-    if (firstItem) {
-      selectTopic(firstItem.id);
+    if (window.NOTES_DATA) {
+      const firstItem = window.NOTES_DATA.find(i => i.subject === sub);
+      if (firstItem) {
+        selectTopic(firstItem.id);
+      }
     }
   };
 
@@ -252,9 +254,10 @@
     if (viewId === 'reader') {
       renderSidebarTabs();
       renderSidebarTree();
+
       if (topicId) {
         selectTopic(topicId);
-      } else if (activeTopicId) {
+      } else if (activeTopicId && window.NOTES_DATA && window.NOTES_DATA.some(t => t.id === activeTopicId)) {
         selectTopic(activeTopicId);
       } else {
         renderReaderWelcomeState();
@@ -436,9 +439,15 @@
 
   // Select Topic in Reader
   window.selectTopic = function (id) {
-    if (!window.NOTES_DATA) return;
+    if (!window.NOTES_DATA) {
+      renderReaderWelcomeState();
+      return;
+    }
     const topic = window.NOTES_DATA.find(t => t.id === id);
-    if (!topic) return;
+    if (!topic) {
+      renderReaderWelcomeState();
+      return;
+    }
 
     activeTopicId = id;
     closeMobileSidebar();
@@ -684,6 +693,9 @@
   // Init on DOM Load
   document.addEventListener('DOMContentLoaded', () => {
     initSemesters();
+    renderSidebarTabs();
+    renderSidebarTree();
+    renderReaderWelcomeState();
   });
 
 })();
