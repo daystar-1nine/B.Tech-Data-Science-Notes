@@ -143,11 +143,21 @@ def parse_markdown_file(filepath):
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
     
-    module = "General"
-    for part in parts:
-        if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
-            module = part.title()
-            break
+    # Check if this is a Question & Answer Bank file
+    is_qa_file = (
+        filename.lower().endswith('m.md') or 
+        'module_' in rel_path.lower() and '_qa' in rel_path.lower() or
+        'questions' in content.lower() and 'answers' in content.lower() and '2-mark' in content.lower()
+    )
+
+    if is_qa_file:
+        module = "Question & Answers Bank"
+    else:
+        module = "General"
+        for part in parts:
+            if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
+                module = part.title()
+                break
 
     title = get_clean_title(filename, content)
 
@@ -202,27 +212,33 @@ def check_pdf_exists(pdf_rel_path, rel_path):
 def get_file_sort_key(item):
     filename = item['filename']
     
-    # 1. Question Bank files (2M.md, 3M.md, 5M.md, 10M.md) placed at end of module
-    q_match = re.search(r'(\d+)M\.md', filename, re.IGNORECASE) or re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE)
-    if q_match:
-        mark_num = int(q_match.group(1))
-        return (item['semester'], item['subject'], item['module'], 1, 0, mark_num, filename)
+    # 1. Module 1, Module 2, Module 3 come first
+    if item['module'].startswith('Module'):
+        mod_num = int(re.search(r'\d+', item['module']).group()) if re.search(r'\d+', item['module']) else 1
+        mod_order = mod_num
+    else:
+        # Question & Answers Bank placed at end of subject
+        mod_order = 99
 
-    # 2. Letter-number prefixes (A1_, A2_, B1_, B2_)
+    # Question Bank mark sorting (2M < 3M < 5M < 10M)
+    q_match = re.search(r'(\d+)M\.md', filename, re.IGNORECASE) or re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE)
+    mark_num = int(q_match.group(1)) if q_match else 0
+
+    # Letter-number prefixes (A1_, A2_, B1_, B2_)
     alpha_num_match = re.match(r'^([A-Z])(\d+)_', filename, re.IGNORECASE)
     if alpha_num_match:
         section_idx = ord(alpha_num_match.group(1).upper()) - ord('A')
         topic_num = int(alpha_num_match.group(2))
-        return (item['semester'], item['subject'], item['module'], 0, section_idx, topic_num, filename)
+        return (item['semester'], item['subject'], mod_order, 0, section_idx, topic_num, mark_num, filename)
 
-    # 3. Standard numeric prefixes (1_, 2_, 3_, 8_)
+    # Standard numeric prefixes (1_, 2_, 3_, 8_)
     num_match = re.match(r'^(\d+)_', filename)
     if num_match:
         num = int(num_match.group(1))
         section_idx = 2 if num == 8 and 'Self_Learning_Stack_Queue' in filename else 0
-        return (item['semester'], item['subject'], item['module'], 0, section_idx, num, filename)
+        return (item['semester'], item['subject'], mod_order, 0, section_idx, num, mark_num, filename)
 
-    return (item['semester'], item['subject'], item['module'], 2, 0, 0, filename)
+    return (item['semester'], item['subject'], mod_order, 1, 0, 0, mark_num, filename)
 
 def main():
     items = []
@@ -242,7 +258,7 @@ def main():
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_code)
 
-    print(f"Successfully generated notes_data.js with exact syllabus titles for {len(items)} files!")
+    print(f"Successfully generated notes_data.js with Question & Answers Bank separation for {len(items)} files!")
 
 if __name__ == "__main__":
     main()
