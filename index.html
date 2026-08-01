@@ -36,6 +36,11 @@
         <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
         <span>Notes Reader</span>
       </li>
+      <!-- Separate Q&A Bank Header Tab -->
+      <li class="nav-item" onclick="switchView('qa')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+        <span>Q&A Bank</span>
+      </li>
       <li class="nav-item" onclick="switchView('flashcards')">
         <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         <span>Rapid Revision</span>
@@ -79,6 +84,10 @@
       <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
       <span>Notes Reader</span>
     </div>
+    <div class="nav-item" onclick="switchView('qa'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+      <span>Q&A Bank</span>
+    </div>
     <div class="nav-item" onclick="switchView('flashcards'); toggleMobileMenu();">
       <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       <span>Rapid Revision</span>
@@ -119,19 +128,19 @@
             <svg class="icon" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
             Start Reading Notes
           </button>
+          <button class="btn-secondary" onclick="switchView('qa')">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Solved Q&A Bank
+          </button>
           <button class="btn-secondary" onclick="switchView('flashcards')">
             <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             Rapid Flashcard Mode
           </button>
-          <a href="https://github.com/daystar-1nine/B.Tech-Data-Science-Notes" target="_blank" class="btn-secondary">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            GitHub Repository
-          </a>
         </div>
 
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-number">98+</div>
+            <div class="stat-number">101+</div>
             <div class="stat-label">Exam Topics Covered</div>
           </div>
           <div class="stat-card">
@@ -184,7 +193,7 @@
               ADT Concepts, Arrays, Multidimensional Pointers, Stacks, Queues, Circular Queues, Deques, Singly/Doubly Linked Lists, Polynomial Addition.
             </p>
             <div class="subject-footer">
-              <span>3 Modules</span>
+              <span>3 Modules + Solved Q&A Bank</span>
               <span>Read Notes →</span>
             </div>
           </div>
@@ -300,9 +309,9 @@
                 <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
                   <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                     <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
-                    <span class="count-badge">22 Notes</span>
+                    <span class="count-badge">25 Notes</span>
                   </div>
-                  <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials.</p>
+                  <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials & Solved Q&A Bank.</p>
                   <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
                 </div>
 
@@ -344,6 +353,36 @@
     </section>
 
     <!-- ===================================================================
+         VIEW 5: DEDICATED SOLVED QUESTION & ANSWERS BANK HUB (Q&A)
+         =================================================================== -->
+    <section id="view-qa" class="view-section">
+      <div class="section-container" style="padding-top: 24px;">
+        <div style="text-align: center; max-width: 760px; margin: 0 auto 24px;">
+          <div class="hero-badge" style="margin-bottom: 8px;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            Exam Preparation Hub
+          </div>
+          <h1 style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">
+            Solved Question & Answers Bank
+          </h1>
+          <p style="color: var(--text-secondary); font-size: 0.94rem; line-height: 1.5;">
+            Master 2-Mark, 3-Mark, 5-Mark, and 10-Mark university exam questions with step-by-step solved answers and 1-click PDF downloads.
+          </p>
+        </div>
+
+        <!-- Q&A Filter Bar -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;" id="qaFilterBar">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Q&A Cards Grid -->
+        <div class="subject-grid" id="qaGridContainer">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
          VIEW 3: RAPID REVISION FLASHCARDS
          =================================================================== -->
     <section id="view-flashcards" class="view-section">
@@ -363,7 +402,7 @@
 
         <div class="flashcard-actions">
           <button class="btn-secondary" onclick="prevCard()">← Previous</button>
-          <span id="flashCounter" style="font-weight: 700; color: var(--text-secondary);">Card 1 of 98</span>
+          <span id="flashCounter" style="font-weight: 700; color: var(--text-secondary);">Card 1 of 101</span>
           <button class="btn-primary" onclick="nextCard()">Next Card →</button>
         </div>
       </div>
@@ -480,7 +519,7 @@
             <div class="profile-socials" style="margin-top: 24px;">
               <!-- Personal Portfolio Website -->
               <a href="https://suraj1nine.vercel.app/" target="_blank" class="social-circle-btn" title="Personal Website / Portfolio">
-                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
               </a>
               <!-- GitHub -->
               <a href="https://github.com/daystar-1nine" target="_blank" class="social-circle-btn" title="GitHub Profile">

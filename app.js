@@ -13,6 +13,10 @@
   let openSubjects = {};
   let openModules = {};
 
+  // Q&A Bank State
+  let qaSelectedSubject = 'All';
+  let qaSelectedMarks = 'All';
+
   // Flashcards State
   let flashcardSubject = 'All';
   let flashcardIndex = 0;
@@ -180,9 +184,9 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
-              <span class="count-badge">22 Notes</span>
+              <span class="count-badge">25 Notes</span>
             </div>
-            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials.</p>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials & Solved Q&A Bank.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
           </div>
 
@@ -262,6 +266,8 @@
       } else {
         renderReaderWelcomeState();
       }
+    } else if (viewId === 'qa') {
+      initQABankView();
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
       initFlashcards();
@@ -274,6 +280,95 @@
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Dedicated Q&A Bank Hub Functions
+  function initQABankView() {
+    renderQAFilterBar();
+    renderQAGridCards();
+  }
+
+  function renderQAFilterBar() {
+    const filterContainer = document.getElementById('qaFilterBar');
+    if (!filterContainer || !window.NOTES_DATA) return;
+
+    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    const markTypes = ['All', '2 Marks', '3 Marks', '5 Marks', '10 Marks'];
+
+    let html = `<div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">`;
+    subjects.forEach(s => {
+      const active = qaSelectedSubject === s ? 'active' : '';
+      html += `<div class="sub-tab ${active}" onclick="window.setQASubject('${s}')">${s === 'All' ? 'All Subjects' : s}</div>`;
+    });
+    html += `</div>`;
+
+    html += `<div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-left: 12px;">`;
+    markTypes.forEach(m => {
+      const active = qaSelectedMarks === m ? 'active' : '';
+      html += `<div class="flash-chip ${active}" onclick="window.setQAMarks('${m}')">${m}</div>`;
+    });
+    html += `</div>`;
+
+    filterContainer.innerHTML = html;
+  }
+
+  window.setQASubject = function (sub) {
+    qaSelectedSubject = sub;
+    renderQAFilterBar();
+    renderQAGridCards();
+  };
+
+  window.setQAMarks = function (marks) {
+    qaSelectedMarks = marks;
+    renderQAFilterBar();
+    renderQAGridCards();
+  };
+
+  function renderQAGridCards() {
+    const gridContainer = document.getElementById('qaGridContainer');
+    if (!gridContainer || !window.NOTES_DATA) return;
+
+    const qaFiles = window.NOTES_DATA.filter(item => {
+      const isQA = item.filename.endsWith('M.md') || item.title.includes('Questions & Answers');
+      const matchSub = qaSelectedSubject === 'All' || item.subject === qaSelectedSubject;
+      
+      let matchMark = true;
+      if (qaSelectedMarks !== 'All') {
+        const markNum = qaSelectedMarks.split(' ')[0];
+        matchMark = item.filename.toLowerCase().startsWith(`${markNum}m`) || item.title.includes(`${markNum}-Mark`);
+      }
+
+      return isQA && matchSub && matchMark;
+    });
+
+    if (qaFiles.length === 0) {
+      gridContainer.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 14px;">No Question & Answers Bank found matching selected filters.</div>`;
+      return;
+    }
+
+    let html = '';
+    qaFiles.forEach(item => {
+      html += `<div class="subject-card" onclick="window.selectSpotlightTopic('${item.id}')">
+        <div class="subject-header">
+          <div class="subject-logo">
+            <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          </div>
+          <div>
+            <div style="font-size: 0.76rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase;">${item.subject} • ${item.module}</div>
+            <div class="subject-name">${item.title}</div>
+          </div>
+        </div>
+        <p class="subject-desc">
+          Exam-ready solved questions, key memory points, structured step-by-step answers, and downloadable PDF bank.
+        </p>
+        <div class="subject-footer">
+          <span>${item.pdfPath ? '📄 PDF Available' : '📖 Solved Bank'}</span>
+          <span style="font-weight: 800; color: var(--accent-primary);">Read Q&A &rarr;</span>
+        </div>
+      </div>`;
+    });
+
+    gridContainer.innerHTML = html;
+  }
 
   // Toggle Reader Sidebar Drawer (Desktop & Mobile Responsive)
   window.toggleSidebar = function () {
@@ -293,10 +388,10 @@
     }
   }
 
-  // Sidebar Subject Tabs
+  // Sidebar Subject Tabs with Q&A Bank Filter Pill
   function renderSidebarTabs() {
     if (!sidebarSubTabs || !window.NOTES_DATA) return;
-    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort(), 'Q&A Bank'];
     
     let html = '';
     subjects.forEach(s => {
@@ -308,7 +403,7 @@
 
   window.setSidebarSubject = function (sub) {
     selectedSubject = sub;
-    if (sub !== 'All') openSubjects[sub] = true;
+    if (sub !== 'All' && sub !== 'Q&A Bank') openSubjects[sub] = true;
     renderSidebarTabs();
     renderSidebarTree();
   };
@@ -335,7 +430,14 @@
 
     let filtered = window.NOTES_DATA.filter(item => {
       const matchSem = selectedSemester === 'All' || item.semester === selectedSemester;
-      const matchSub = selectedSubject === 'All' || item.subject === selectedSubject;
+      
+      let matchSub = true;
+      if (selectedSubject === 'Q&A Bank') {
+        matchSub = item.filename.endsWith('M.md') || item.title.includes('Questions & Answers');
+      } else if (selectedSubject !== 'All') {
+        matchSub = item.subject === selectedSubject;
+      }
+
       const q = (searchQuery || '').toLowerCase();
       const matchSearch = !q || item.title.toLowerCase().includes(q) || item.content.toLowerCase().includes(q);
       return matchSem && matchSub && matchSearch;
@@ -360,7 +462,7 @@
       if (openSubjects[sub] !== undefined) {
         isSubOpen = openSubjects[sub];
       } else {
-        isSubOpen = searchQuery !== '' || selectedSubject === sub;
+        isSubOpen = searchQuery !== '' || selectedSubject === sub || selectedSubject === 'Q&A Bank';
       }
 
       const subOpenClass = isSubOpen ? 'open' : '';
@@ -386,7 +488,7 @@
         if (openModules[modKey] !== undefined) {
           isModOpen = openModules[modKey];
         } else {
-          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId));
+          isModOpen = searchQuery !== '' || (activeTopicId && items.some(i => i.id === activeTopicId)) || selectedSubject === 'Q&A Bank';
         }
 
         const modOpenClass = isModOpen ? 'open' : '';
