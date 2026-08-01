@@ -70,8 +70,6 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-primary) transparent;
 }
 
 html {
@@ -114,11 +112,13 @@ html, body {
 
 /* Hide clunky native horizontal scrollbar on sub-tabs while preserving smooth swipe scroll */
 .sidebar-sub-tabs {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
 }
 .sidebar-sub-tabs::-webkit-scrollbar {
-  display: none; /* Chrome/Safari/Opera */
+  display: none !important; /* Chrome/Safari/Opera */
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Sleek Animated Glowing Crimson Vertical Scrollbars */
@@ -625,14 +625,15 @@ html, body {
   padding: 4px;
 }
 
-/* Sidebar Type Segmented Toggle (Notes vs Q&A Bank) */
+/* Sleek Premium Segmented Toggle (Notes vs Q&A Bank) */
 .sidebar-type-toggle {
   display: flex;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 3px;
+  width: calc(100% - 24px);
   margin: 10px 12px 6px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 3px;
   gap: 4px;
 }
 
@@ -642,26 +643,27 @@ html, body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 7px 10px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  font-weight: 800;
   color: var(--text-secondary);
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
 }
 
 .sidebar-type-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .sidebar-type-btn.active {
-  background: var(--primary-red);
+  background: var(--accent-primary);
   color: #ffffff;
-  box-shadow: 0 2px 8px rgba(169, 14, 2, 0.4);
+  box-shadow: 0 3px 10px rgba(169, 14, 2, 0.4);
 }
 
 .sidebar-sub-tabs {
@@ -673,18 +675,25 @@ html, body {
 }
 
 .sub-tab {
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.78rem;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--text-secondary);
   background: var(--bg-card);
+  border: 1px solid var(--border-color);
   cursor: pointer;
   white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.sub-tab:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
 }
 .sub-tab.active {
   background: var(--accent-primary);
   color: #ffffff;
+  border-color: var(--accent-primary);
 }
 
 .sidebar-search-box {
