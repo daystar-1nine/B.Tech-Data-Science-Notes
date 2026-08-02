@@ -27,19 +27,19 @@ A **Key** is essential for uniqueness and establishing relationships between tab
 #### 1. Super Key
 * A set of one or more attributes that **uniquely identifies** a row in a table.
 * May contain **extra, redundant attributes**.
-* **Example (STUDENT table):** `{Roll_No}`, `{Roll_No, Name}`, `{Roll_No, Email, Age}` — all are Super Keys.
+* **Example (STUDENT table):** `Roll_No`, `{Roll_No, Name}`, `{Roll_No, Email, Age}` — all are Super Keys.
 
 #### 2. Candidate Key
 * A **minimal Super Key** — no redundant attributes; removing any attribute breaks uniqueness.
 * A table can have **multiple** Candidate Keys.
-* **Example:** `{Roll_No}` and `{Email}` are Candidate Keys. `{Roll_No, Name}` is NOT (Name is redundant).
+* **Example:** `Roll_No` and `Email` are Candidate Keys. `{Roll_No, Name}` is NOT (Name is redundant).
 
 #### 3. Primary Key
 * The **one Candidate Key selected** by the designer as the official unique row identifier.
 * **Cannot contain NULL** values; must be strictly unique.
 * Only **one Primary Key** per table.
 * Represented by an **Underlined Oval** in ER diagrams.
-* **Example:** `{Roll_No}` is chosen as Primary Key from candidates `{Roll_No}` and `{Email}`.
+* **Example:** `Roll_No` is chosen as Primary Key from candidates `Roll_No` and `Email`.
 
 #### 4. Foreign Key
 * An attribute in one table that **refers to the Primary Key** of another table.

@@ -17,13 +17,13 @@ Data independence is linked to the three-level abstraction architecture and is c
 * **Concept:** The capacity to change the **Physical schema** (lowest level) without changing the **Logical schema** or the application programs.
 * **Explanation:** Changes to physical storage structure (storage device, file organization, indexes) do not affect the logical view of the database.
 * **Example:** The DBA replaces magnetic hard drives with SSDs, or changes indexing from a **Hash index** to a **B+ tree index**. The SQL queries and application code remain completely unchanged.
-* **Difficulty:** **Relatively easy** to achieve — physical details are fully hidden from the logical level.
+* **Difficulty: Relatively easy** to achieve — physical details are fully hidden from the logical level.
 
 #### 2. Logical Data Independence
 * **Concept:** The capacity to change the **Logical schema** (middle level) without changing the **External/View schema** or the application programs.
 * **Explanation:** Changes to table structure (adding columns, splitting tables, merging tables) should not affect the user views or applications.
 * **Example:** A designer adds a new column `Date_of_Birth` to the `STUDENT` table. The Accountant's application, which only reads `Name` and `Fees`, continues to work without any code changes.
-* **Difficulty:** **Harder to achieve** — applications are tightly coupled to the logical structure they access.
+* **Difficulty: Harder to achieve** — applications are tightly coupled to the logical structure they access.
 
 ### 2. Difference: Physical vs Logical Data Independence
 

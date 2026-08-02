@@ -37,15 +37,15 @@
 
 #### Example 2: Duplicate Elimination
 **Query:** List all unique majors.
-**π_{Major}(STUDENT)**
+**π_Major(STUDENT)**
 **Result:** CS, Math, Physics — *only 3 rows* (CS appeared twice in the original table but appears once in the result after duplicate elimination).
 
 #### Example 3: Composition — Selection + Projection
 **Query:** Find names of CS major students.
-**π_{Name}(σ_{Major = 'CS'}(STUDENT))**
+**π_Name(σ_{Major = 'CS'}(STUDENT))**
 **Execution:**
 1. **Step 1:** σ_{Major='CS'} filters rows → John and Luke.
-2. **Step 2:** π_{Name} extracts the Name column → John, Luke.
+2. **Step 2:** π_Name extracts the Name column → John, Luke.
 
 ---
 

@@ -55,7 +55,7 @@ To add `Poly1` and `Poly2`, traverse both lists simultaneously using pointers `p
 * **Final Result:** 4x^3 + 5x^2 + 5x + 3
 
 ### 4. Advantages
-* **Memory Efficiency:** Only non-zero terms are stored. (An array for x^{100} + 1 requires 101 slots; a linked list requires only 2 nodes).
+* **Memory Efficiency:** Only non-zero terms are stored. (An array for x^100 + 1 requires 101 slots; a linked list requires only 2 nodes).
 * **Dynamic Size:** Easily accommodates the result of addition/multiplication without predefined limits.
 
 ---
