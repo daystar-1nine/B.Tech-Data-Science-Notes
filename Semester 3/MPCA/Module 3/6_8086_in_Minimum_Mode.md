@@ -5,7 +5,7 @@
 ---
 
 > 📌 **Definition to Remember**
-> The 8086 operates in **Minimum Mode** when the **MN/MX'** pin (Pin 33) is tied to +5V (Logic High). In this mode, the 8086 is designed for small, **single-processor systems** and directly generates all memory and I/O control signals itself without an external bus controller.
+> The 8086 operates in **Minimum Mode** when the **MN/MX (Pin 33)'** pin (Pin 33) is tied to +5V (Logic High). In this mode, the 8086 is designed for small, **single-processor systems** and directly generates all memory and I/O control signals itself without an external bus controller.
 
 ---
 
@@ -39,7 +39,7 @@ Because the 8086 outputs generic `M/IO'`, `RD'`, and `WR'` signals, they must be
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. **Minimum Mode** is activated by tying the **MN/MX' pin to +5V (High)**.
+> 1. **Minimum Mode** is activated by tying the **MN/MX (Pin 33)' pin to +5V (High)**.
 > 2. Designed for **single-processor** systems.
 > 3. The 8086 generates all bus control signals internally (no external bus controller needed).
 > 4. Key signals: **ALE** (Latches address), **M/IO'** (Selects Memory or I/O).
@@ -50,5 +50,5 @@ Because the 8086 outputs generic `M/IO'`, `RD'`, and `WR'` signals, they must be
 ---
 
 > ⚡ **Quick Recall**
-> `Minimum Mode → MN/MX' = +5V → Single Processor → CPU generates own signals (ALE, RD, WR, M/IO) → Combine M/IO+RD/WR to get MEMR/MEMW/IOR/IOW → Uses DT/R and DEN for transceivers`
+> `Minimum Mode → MN/MX (Pin 33)' = +5V → Single Processor → CPU generates own signals (ALE, RD, WR, M/IO) → Combine M/IO+RD/WR to get MEMR/MEMW/IOR/IOW → Uses DT/R and DEN for transceivers`
 

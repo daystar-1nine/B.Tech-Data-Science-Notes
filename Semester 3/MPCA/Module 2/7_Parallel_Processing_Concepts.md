@@ -17,13 +17,13 @@ Historically, processors became faster by increasing the clock frequency. Howeve
 ### 2. Types of Parallelism
 1. **Instruction-Level Parallelism (ILP):** 
    * Overlapping the execution of machine instructions.
-   * **Techniques:** **Pipelining** (overlapping stages) and **Superscalar Architecture** (dispatching multiple instructions to different ALUs in one clock cycle). Handled by hardware.
+   * **Techniques: Pipelining** (overlapping stages) and **Superscalar Architecture** (dispatching multiple instructions to different ALUs in one clock cycle). Handled by hardware.
 2. **Task/Thread-Level Parallelism:** 
    * Running completely different threads or programs at the same time.
-   * **Hardware:** **Multi-core Processors** (e.g., Quad-core CPUs).
+   * **Hardware: Multi-core Processors** (e.g., Quad-core CPUs).
 3. **Data-Level Parallelism:** 
    * Performing the exact same operation simultaneously on a large array of data.
-   * **Hardware:** **GPUs** (Graphics Processing Units) modifying millions of pixels concurrently.
+   * **Hardware: GPUs** (Graphics Processing Units) modifying millions of pixels concurrently.
 
 ### 3. Advantages of Parallel Processing
 * **Increased Speed / Throughput:** Executing tasks simultaneously drastically reduces total execution time.

@@ -5,7 +5,7 @@
 ---
 
 > 📌 **Definition to Remember**
-> The 8086 operates in **Maximum Mode** when the **MN/MX'** pin is tied to Ground (Logic Low). Designed for **multi-processor systems** (e.g., using an 8087 coprocessor), the 8086 stops generating control signals and instead sends status codes to an external **8288 Bus Controller**.
+> The 8086 operates in **Maximum Mode** when the **MN/MX (Pin 33)'** pin is tied to Ground (Logic Low). Designed for **multi-processor systems** (e.g., using an 8087 coprocessor), the 8086 stops generating control signals and instead sends status codes to an external **8288 Bus Controller**.
 
 ---
 
@@ -35,7 +35,7 @@ The 8288 decodes the `S2'-S0'` signals to generate system controls:
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. **Maximum Mode** is activated by tying the **MN/MX' pin to Ground (Low)**.
+> 1. **Maximum Mode** is activated by tying the **MN/MX (Pin 33)' pin to Ground (Low)**.
 > 2. Designed for **multi-processor** environments (e.g., CPU + 8087 Math Coprocessor).
 > 3. The 8086 stops generating control signals; relies on the **8288 Bus Controller**.
 > 4. 8086 outputs status on **S2, S1, S0**, which the 8288 decodes to generate Memory/IO Read/Write signals.
@@ -46,4 +46,4 @@ The 8288 decodes the `S2'-S0'` signals to generate system controls:
 ---
 
 > ⚡ **Quick Recall**
-> `Maximum Mode → MN/MX' = GND → Multi-processor → 8288 Bus Controller does the work → CPU sends S0, S1, S2 → Uses RQ/GT for bus request → LOCK to protect shared memory`
+> `Maximum Mode → MN/MX (Pin 33)' = GND → Multi-processor → 8288 Bus Controller does the work → CPU sends S0, S1, S2 → Uses RQ/GT for bus request → LOCK to protect shared memory`
