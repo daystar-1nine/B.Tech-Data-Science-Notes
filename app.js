@@ -183,7 +183,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('DBMS')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Database Systems</span>
-              <span class="count-badge">48 Notes</span>
+              <span class="count-badge">52 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">DBMS Architecture, ER Modeling, Relational Algebra, SQL, Normalization, Query Optimization, Concurrency Control & IBM Db2.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DBMS Notes &rarr;</span>
@@ -192,7 +192,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
-              <span class="count-badge">47 Notes</span>
+              <span class="count-badge">39 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Trees (BST, AVL, B-Tree), Graphs (BFS/DFS), Sorting & Hashing.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
@@ -201,7 +201,7 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('MPCA')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Microprocessors</span>
-              <span class="count-badge">47 Notes</span>
+              <span class="count-badge">46 Notes</span>
             </div>
             <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">8086 CPU Architecture, 8255/8257/8259 Interfacing, 80386DX, Pentium Superscalar & ARM Processor.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start MPCA Notes &rarr;</span>
@@ -370,13 +370,15 @@
     if (!gridContainer || !window.NOTES_DATA) return;
 
     const qaFiles = window.NOTES_DATA.filter(item => {
-      const isQA = item.module === 'Question & Answers Bank' || item.filename.endsWith('M.md');
+      const isQA = item.contentType === 'qa' || item.isQA || item.module === 'Question & Answers Bank' || item.filename.endsWith('M.md');
       const matchSub = qaSelectedSubject === 'All' || item.subject === qaSelectedSubject;
       
       let matchMark = true;
       if (qaSelectedMarks !== 'All') {
         const markNum = qaSelectedMarks.split(' ')[0];
-        matchMark = item.filename.toLowerCase().startsWith(`${markNum}m`) || item.title.includes(`${markNum}-Mark`);
+        matchMark = (item.marksCategory && item.marksCategory.startsWith(markNum)) ||
+                    item.filename.toLowerCase().startsWith(`${markNum}m`) || 
+                    item.title.includes(`${markNum}-Mark`);
       }
 
       return isQA && matchSub && matchMark;
@@ -389,13 +391,14 @@
 
     let html = '';
     qaFiles.forEach(item => {
+      const markBadge = item.marksCategory && item.marksCategory !== 'All' ? ` • ${item.marksCategory}` : '';
       html += `<div class="subject-card" onclick="window.selectSpotlightTopic('${item.id}')">
         <div class="subject-header">
           <div class="subject-logo">
             <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
           </div>
           <div>
-            <div style="font-size: 0.76rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase;">${item.subject} • ${item.module}</div>
+            <div style="font-size: 0.76rem; font-weight: 800; color: var(--accent-primary); text-transform: uppercase;">${item.subject} • ${item.module}${markBadge}</div>
             <div class="subject-name">${item.title}</div>
           </div>
         </div>
@@ -476,9 +479,9 @@
       
       let matchType = true;
       if (selectedContentType === 'notes') {
-        matchType = item.module !== 'Question & Answers Bank';
+        matchType = item.contentType === 'notes' || (!item.isQA && item.module !== 'Question & Answers Bank');
       } else if (selectedContentType === 'qa') {
-        matchType = item.module === 'Question & Answers Bank';
+        matchType = item.contentType === 'qa' || item.isQA || item.module === 'Question & Answers Bank';
       }
 
       const q = (searchQuery || '').toLowerCase();

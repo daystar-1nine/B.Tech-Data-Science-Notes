@@ -6,6 +6,33 @@ import markdown
 BASE_DIR = r"S:\B.Tech Data Science Notes"
 DATA_FILE = os.path.join(BASE_DIR, "notes_data.js")
 
+MODULE_TITLES = {
+    "DBMS": {
+        "Module 1": "Architecture & ER Model",
+        "Module 2": "Relational Algebra & Calculus",
+        "Module 3": "SQL & Advanced Queries",
+        "Module 4": "Relational Database Design",
+        "Module 5": "Query Optimization & Concurrency",
+        "Module 6": "Foundations of IBM Db2"
+    },
+    "Data Structure": {
+        "Module 1": "ADT & Arrays",
+        "Module 2": "Stacks & Queues",
+        "Module 3": "Linked Lists",
+        "Module 4": "Trees",
+        "Module 5": "Graphs",
+        "Module 6": "Sorting & Searching"
+    },
+    "MPCA": {
+        "Module 1": "Architecture & Organization",
+        "Module 2": "CPU & Pipelining",
+        "Module 3": "8086 Microprocessor",
+        "Module 4": "Memory & Peripherals Interfacing",
+        "Module 5": "80386DX & Pentium Processor",
+        "Module 6": "Pentium 4 & ARM Processor"
+    }
+}
+
 EXACT_TITLES = {
     # DBMS Module 1
     "1_DBMS_Architecture.md": "Database Management System (DBMS) Architecture",
@@ -179,16 +206,19 @@ EXACT_TITLES = {
     "2_Pentium_4_NetBurst_Microarchitecture.md": "Pentium 4 NetBurst Microarchitecture",
     "3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.md": "Pentium 4 ITLB, Branch Prediction & Hyper-Threading",
     "4_Self_Learning_ARM_Processor_Architecture_and_Features.md": "ARM Processor Architecture & Features (Self-Learning)",
-
-    # Question Banks
-    "2M.md": "2-Mark Questions & Answers",
-    "3M.md": "3-Mark Questions & Answers",
-    "5M.md": "5-Mark Questions & Answers",
-    "10M.md": "10-Mark Questions & Answers"
 }
 
-def get_clean_title(filename, content):
+def get_clean_title(filename, content, is_qa_file, subject, module):
     fn = os.path.basename(filename)
+
+    if is_qa_file:
+        marks_match = re.search(r'(\d+)M', fn, re.I)
+        marks = f"{marks_match.group(1)}-Mark" if marks_match else "Solved"
+        mod_desc = MODULE_TITLES.get(subject, {}).get(module, "")
+        if mod_desc:
+            return f"{module}: {marks} Questions & Answers ({mod_desc})"
+        return f"{module}: {marks} Questions & Answers"
+
     if fn in EXACT_TITLES:
         return EXACT_TITLES[fn]
 
@@ -208,24 +238,27 @@ def parse_markdown_file(filepath):
         content = f.read()
 
     filename = os.path.basename(filepath)
-
     parts = rel_path.split('/')
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
     
-    # Check if this is a Question & Answer Bank file (strictly 2M, 3M, 5M, 10M or in a _QA folder)
+    # Check if this is a Question & Answer Bank file
     is_qa_file = bool(re.search(r'\b(2M|3M|5M|10M)\.md$', filename, re.I)) or '_qa' in rel_path.lower()
+    content_type = "qa" if is_qa_file else "notes"
 
-    if is_qa_file:
-        module = "Question & Answers Bank"
-    else:
-        module = "General"
-        for part in parts:
-            if re.match(r'^Module\s*\d+$', part, re.IGNORECASE):
-                module = part.title()
-                break
+    # Identify exact Module number
+    module = "General"
+    for part in parts:
+        m_match = re.search(r'Module[_\s]*(\d+)', part, re.IGNORECASE)
+        if m_match:
+            module = f"Module {m_match.group(1)}"
+            break
 
-    title = get_clean_title(filename, content)
+    # Extract marks category
+    marks_match = re.search(r'(\d+)M', filename, re.I)
+    marks_category = f"{marks_match.group(1)} Marks" if marks_match else "All"
+
+    title = get_clean_title(filename, content, is_qa_file, subject, module)
 
     # Extract Definition block
     def_match = re.search(r'>\s*📌\s*\*\*Definition to Remember\*\*\s*\n>\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
@@ -267,6 +300,9 @@ def parse_markdown_file(filepath):
         "semester": semester,
         "subject": subject,
         "module": module,
+        "contentType": content_type,
+        "isQA": is_qa_file,
+        "marksCategory": marks_category,
         "title": title,
         "content": content,
         "html": html,
@@ -297,15 +333,25 @@ def main():
                 except Exception as e:
                     print(f"Error parsing {filepath}: {e}")
 
-    # Sort notes logically: Semester -> Subject -> Module -> Filename
-    notes_list.sort(key=lambda x: (x['semester'], x['subject'], x['module'], x['filename']))
+    # Sort notes logically: Semester -> Subject -> Module -> ContentType -> Filename
+    # Custom sort for marks: 2M -> 3M -> 5M -> 10M
+    def sort_key(x):
+        fn = x['filename']
+        mark_order = 0
+        if fn.startswith('2M'): mark_order = 1
+        elif fn.startswith('3M'): mark_order = 2
+        elif fn.startswith('5M'): mark_order = 3
+        elif fn.startswith('10M'): mark_order = 4
+        return (x['semester'], x['subject'], x['module'], x['contentType'], mark_order, x['filename'])
+
+    notes_list.sort(key=sort_key)
 
     js_content = f"window.NOTES_DATA = {json.dumps(notes_list, indent=2, ensure_ascii=False)};\n"
     
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    print(f"Successfully generated notes_data.js with Question & Answers Bank separation for {len(notes_list)} files!")
+    print(f"Successfully generated notes_data.js for {len(notes_list)} files with clean Q&A bank integration!")
 
 if __name__ == '__main__':
     main()
