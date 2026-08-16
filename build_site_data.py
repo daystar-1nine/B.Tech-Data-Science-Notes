@@ -45,6 +45,32 @@ EXACT_TITLES = {
     "14_Self_Learning_Packages.md": "PL/SQL Packages (Self-Learning)",
     "15_Self_Learning_Embedded_SQL.md": "Embedded SQL (Self-Learning)",
 
+    # DBMS Module 4
+    "1_First_Normal_Form_1NF.md": "First Normal Form (1NF)",
+    "2_Second_Normal_Form_2NF.md": "Second Normal Form (2NF)",
+    "3_Third_Normal_Form_3NF.md": "Third Normal Form (3NF)",
+    "4_Boyce_Codd_Normal_Form_BCNF.md": "Boyce-Codd Normal Form (BCNF)",
+    "5_Algorithm_for_Decomposition_Using_Functional_Dependencies.md": "Algorithm for Decomposition Using Functional Dependencies",
+    "6_Decomposition_Using_Multivalued_Attribute.md": "Decomposition Using Multivalued Attribute (4NF)",
+    "7_Self_Learning_NoSQL_Data_Models.md": "NoSQL Data Models (Self-Learning)",
+
+    # DBMS Module 5
+    "1_Query_Optimization_Relational_Expressions.md": "Query Optimization & Relational Expressions",
+    "2_Estimating_Statistics_and_Choice_of_Evaluation_Plan.md": "Estimating Statistics & Choice of Evaluation Plan",
+    "3_Transaction_Concept_and_ACID_Properties.md": "Transaction Concept & ACID Properties",
+    "4_Serializability_and_Concurrency_Control.md": "Serializability & Concurrency Control",
+    "5_Lock_Based_Protocols_and_Multiple_Granularity.md": "Lock-Based Protocols & Multiple Granularity",
+    "6_Insertion_Deletion_and_Predicate_Reads.md": "Insertion-Deletion & Predicate Reads (Phantoms)",
+    "7_Timestamp_and_Validation_Based_Protocols.md": "Timestamp & Validation-Based Protocols",
+    "8_Log_Based_Recovery.md": "Log-Based Recovery & Checkpointing",
+    "9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning.md": "Distributed Transactions, TCL & Performance Tuning (Self-Learning)",
+
+    # DBMS Module 6
+    "1_IBM_Db2_Overview_Architecture_Use_Cases.md": "IBM Db2 Overview, Architecture & Use Cases",
+    "2_Db2_System_Requirements_Installation_and_Interfaces.md": "Db2 System Requirements, Installation & Interfaces",
+    "3_Basic_SQL_Operations_in_Db2.md": "Basic SQL Operations in IBM Db2",
+    "4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse.md": "Db2 on Cloud, Backup, Indexing & Warehouse (Self-Learning)",
+
     # Data Structures Module 1
     "1_Concept_of_ADT.md": "Concept of Abstract Data Types (ADT)",
     "2_Types_of_Data_Structures.md": "Types of Data Structures: Linear & Non-Linear",
@@ -72,6 +98,29 @@ EXACT_TITLES = {
     "6_Stack_using_Singly_Linked_List.md": "Stack Implementation using Singly Linked List",
     "7_Queue_using_Singly_Linked_List.md": "Queue Implementation using Singly Linked List",
     "8_Self_Learning_Polynomial_Representation_Addition.md": "Polynomial Representation & Addition (Self-Learning)",
+
+    # Data Structures Module 4
+    "1_Tree_Introduction_and_Terminologies.md": "Tree Introduction & Terminologies",
+    "2_Binary_Tree_Representation_and_Types.md": "Binary Tree Representation & Types",
+    "3_Binary_Tree_Traversals.md": "Binary Tree Traversals (Inorder, Preorder, Postorder)",
+    "4_Binary_Search_Tree_and_Operations.md": "Binary Search Tree (BST) & Operations",
+    "5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman.md": "Applications of Binary Tree: Expression Tree & Huffman",
+    "6_AVL_Tree_Rotations_and_Operations.md": "AVL Tree Rotations & Operations",
+    "7_Introduction_to_B_Tree_and_B_Plus_Tree.md": "Introduction to B-Tree & B+ Tree",
+    "8_Self_Learning_Red_Black_Trees.md": "Red-Black Trees (Self-Learning)",
+
+    # Data Structures Module 5
+    "1_Graph_Introduction_and_Terminologies.md": "Graph Introduction & Terminologies",
+    "2_Graph_Representations.md": "Graph Representations (Adjacency Matrix & List)",
+    "3_Graph_Traversals_BFS_and_DFS.md": "Graph Traversals: BFS & DFS",
+    "4_Self_Learning_Graph_Application_Topological_Sorting.md": "Topological Sorting in Graphs (Self-Learning)",
+
+    # Data Structures Module 6
+    "1_Searching_Techniques_Linear_and_Binary_Search.md": "Searching Techniques: Linear & Binary Search",
+    "2_Sorting_Techniques_Bubble_Insertion_Selection_Sort.md": "Sorting Techniques: Bubble, Insertion & Selection Sort",
+    "3_Hashing_Concepts_and_Hash_Functions.md": "Hashing Concepts & Hash Functions",
+    "4_Collision_Resolution_Techniques.md": "Collision Resolution Techniques (Open Addressing & Chaining)",
+    "5_Self_Learning_Merge_Sort_and_Quick_Sort.md": "Merge Sort & Quick Sort (Self-Learning)",
 
     # MPCA Module 1
     "1_Intro_Comp_Org_Arch.md": "Computer Organization vs. Architecture",
@@ -111,6 +160,26 @@ EXACT_TITLES = {
     "10_Self_Learning_De_multiplexing_of_Address_Data_Bus.md": "De-multiplexing of Address/Data Bus (Self-Learning)",
     "11_Self_Learning_Interrupt_Structure_and_its_Servicing.md": "Interrupt Structure & Servicing in 8086 (Self-Learning)",
 
+    # MPCA Module 4
+    "1_Memory_Interfacing_RAM_and_ROM_Decoding.md": "Memory Interfacing: RAM & ROM Decoding",
+    "2_8255_Programmable_Peripheral_Interface_PPI.md": "8255 Programmable Peripheral Interface (PPI)",
+    "3_8257_Direct_Memory_Access_Controller_DMAC.md": "8257 Direct Memory Access Controller (DMAC)",
+    "4_8259_Programmable_Interrupt_Controller_PIC.md": "8259 Programmable Interrupt Controller (PIC)",
+    "5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading.md": "Address Decoding Techniques & 8259 Cascading (Self-Learning)",
+
+    # MPCA Module 5
+    "1_80386DX_Architecture_and_Functional_Units.md": "80386DX Architecture & Functional Units",
+    "2_80386_Register_Organization.md": "80386 Register Organization",
+    "3_80386_Operating_Modes.md": "80386 Operating Modes (Real, Protected & Virtual 8086)",
+    "4_Pentium_Processor_Architecture_and_Superscalar_Pipelining.md": "Pentium Processor Architecture & Superscalar Operation",
+    "5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache.md": "80386 Memory Management & MESI Cache Protocol (Self-Learning)",
+
+    # MPCA Module 6
+    "1_Evolutionary_Comparison_8086_to_Pentium.md": "Comparative Study: 8086 to Pentium 4",
+    "2_Pentium_4_NetBurst_Microarchitecture.md": "Pentium 4 NetBurst Microarchitecture",
+    "3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.md": "Pentium 4 ITLB, Branch Prediction & Hyper-Threading",
+    "4_Self_Learning_ARM_Processor_Architecture_and_Features.md": "ARM Processor Architecture & Features (Self-Learning)",
+
     # Question Banks
     "2M.md": "2-Mark Questions & Answers",
     "3M.md": "3-Mark Questions & Answers",
@@ -128,6 +197,7 @@ def get_clean_title(filename, content):
     t = re.sub(r'^#+\s*', '', t).strip()
     t = re.sub(r'^Topic\s*[:\-]\s*', '', t, flags=re.IGNORECASE).strip()
     t = re.sub(r'^(?:[A-Za-z]\d{1,2}|\d{1,2})[\._\s\-]+\s*', '', t).strip()
+    t = re.sub(r'\s*[\u2014\u2013\-]\s*(MPCA|DBMS|Data Structures?|Module\s*\d+).*$', '', t, flags=re.IGNORECASE).strip()
     return t
 
 def parse_markdown_file(filepath):
@@ -143,12 +213,8 @@ def parse_markdown_file(filepath):
     semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
     subject = parts[1] if len(parts) > 1 else "General"
     
-    # Check if this is a Question & Answer Bank file
-    is_qa_file = (
-        filename.lower().endswith('m.md') or 
-        'module_' in rel_path.lower() and '_qa' in rel_path.lower() or
-        'questions' in content.lower() and 'answers' in content.lower() and '2-mark' in content.lower()
-    )
+    # Check if this is a Question & Answer Bank file (strictly 2M, 3M, 5M, 10M or in a _QA folder)
+    is_qa_file = bool(re.search(r'\b(2M|3M|5M|10M)\.md$', filename, re.I)) or '_qa' in rel_path.lower()
 
     if is_qa_file:
         module = "Question & Answers Bank"
@@ -163,6 +229,8 @@ def parse_markdown_file(filepath):
 
     # Extract Definition block
     def_match = re.search(r'>\s*📌\s*\*\*Definition to Remember\*\*\s*\n>\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
+    if not def_match:
+        def_match = re.search(r'>\s*\*\*Definition:\*\*\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
     definition = def_match.group(1).replace('\n>', ' ').strip() if def_match else ""
 
     # Extract Must Write Points
@@ -174,9 +242,19 @@ def parse_markdown_file(filepath):
             cleaned = re.sub(r'^>\s*\d+\.\s*', '', line).strip()
             if cleaned and not cleaned.startswith('>'):
                 must_write.append(cleaned)
+    else:
+        must_write_section = re.search(r'##\s*\d*\.?\s*Must-Write Points[^\n]*\n((?:[\*\-]\s*.*?\n)+)', content)
+        if must_write_section:
+            lines = must_write_section.group(1).split('\n')
+            for line in lines:
+                cleaned = re.sub(r'^[\*\-]\s*', '', line).strip()
+                if cleaned:
+                    must_write.append(cleaned)
 
     # Extract Quick Recall
     quick_match = re.search(r'>\s*⚡\s*\*\*Quick Recall\*\*\s*\n>\s*`?(.+?)`?\s*(?=\n|\Z)', content)
+    if not quick_match:
+        quick_match = re.search(r'##\s*\d*\.?\s*Quick Recall[^\n]*\n```[a-z]*\n(.+?)\n```', content, re.DOTALL)
     quick_recall = quick_match.group(1).strip() if quick_match else ""
 
     html = markdown.markdown(content, extensions=['tables', 'fenced_code', 'nl2br', 'sane_lists'])
@@ -198,67 +276,36 @@ def parse_markdown_file(filepath):
     }
 
 def check_pdf_exists(pdf_rel_path, rel_path):
-    full_pdf = os.path.join(BASE_DIR, pdf_rel_path.replace('/', '\\'))
-    if os.path.exists(full_pdf):
+    full_pdf_path = os.path.join(BASE_DIR, pdf_rel_path)
+    if os.path.exists(full_pdf_path):
         return pdf_rel_path
-
-    # Secondary check inside PDF_Notes folder without Semester X prefix
-    alt_pdf = os.path.join(BASE_DIR, "PDF_Notes", rel_path.replace('/', '\\')[:-3] + ".pdf")
-    if os.path.exists(alt_pdf):
-        return "PDF_Notes/" + rel_path[:-3] + ".pdf"
-
-    return ""
-
-def get_file_sort_key(item):
-    filename = item['filename']
-    
-    # 1. Module 1, Module 2, Module 3 come first
-    if item['module'].startswith('Module'):
-        mod_num = int(re.search(r'\d+', item['module']).group()) if re.search(r'\d+', item['module']) else 1
-        mod_order = mod_num
-    else:
-        # Question & Answers Bank placed at end of subject
-        mod_order = 99
-
-    # Question Bank mark sorting (2M < 3M < 5M < 10M)
-    q_match = re.search(r'(\d+)M\.md', filename, re.IGNORECASE) or re.search(r'(\d+)\s*Mark', filename, re.IGNORECASE)
-    mark_num = int(q_match.group(1)) if q_match else 0
-
-    # Letter-number prefixes (A1_, A2_, B1_, B2_)
-    alpha_num_match = re.match(r'^([A-Z])(\d+)_', filename, re.IGNORECASE)
-    if alpha_num_match:
-        section_idx = ord(alpha_num_match.group(1).upper()) - ord('A')
-        topic_num = int(alpha_num_match.group(2))
-        return (item['semester'], item['subject'], mod_order, 0, section_idx, topic_num, mark_num, filename)
-
-    # Standard numeric prefixes (1_, 2_, 3_, 8_)
-    num_match = re.match(r'^(\d+)_', filename)
-    if num_match:
-        num = int(num_match.group(1))
-        section_idx = 2 if num == 8 and 'Self_Learning_Stack_Queue' in filename else 0
-        return (item['semester'], item['subject'], mod_order, 0, section_idx, num, mark_num, filename)
-
-    return (item['semester'], item['subject'], mod_order, 1, 0, 0, mark_num, filename)
+    flat_pdf_path = f"PDF_Notes/{os.path.basename(rel_path)[:-3]}.pdf"
+    if os.path.exists(os.path.join(BASE_DIR, flat_pdf_path)):
+        return flat_pdf_path
+    return None
 
 def main():
-    items = []
-    for root, dirs, files in os.walk(BASE_DIR):
-        if '.git' in dirs: dirs.remove('.git')
-        if 'PDF_Notes' in dirs: dirs.remove('PDF_Notes')
-        if '.github' in dirs: dirs.remove('.github')
-
+    notes_list = []
+    
+    for root, dirs, files in os.walk(os.path.join(BASE_DIR, "Semester 3")):
         for file in files:
-            if file.endswith('.md') and not file.lower().startswith('readme'):
-                full_path = os.path.join(root, file)
-                items.append(parse_markdown_file(full_path))
+            if file.endswith('.md'):
+                filepath = os.path.join(root, file)
+                try:
+                    note_obj = parse_markdown_file(filepath)
+                    notes_list.append(note_obj)
+                except Exception as e:
+                    print(f"Error parsing {filepath}: {e}")
 
-    items.sort(key=get_file_sort_key)
+    # Sort notes logically: Semester -> Subject -> Module -> Filename
+    notes_list.sort(key=lambda x: (x['semester'], x['subject'], x['module'], x['filename']))
 
-    js_code = "window.NOTES_DATA = " + json.dumps(items, indent=2, ensure_ascii=False) + ";"
+    js_content = f"window.NOTES_DATA = {json.dumps(notes_list, indent=2, ensure_ascii=False)};\n"
+    
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
-        f.write(js_code)
+        f.write(js_content)
 
-    print(f"Successfully generated notes_data.js with Question & Answers Bank separation for {len(items)} files!")
+    print(f"Successfully generated notes_data.js with Question & Answers Bank separation for {len(notes_list)} files!")
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
