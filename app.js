@@ -183,9 +183,9 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('DBMS')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Database Systems</span>
-              <span class="count-badge">32 Notes</span>
+              <span class="count-badge">48 Notes</span>
             </div>
-            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">DBMS Architecture, ER Modeling, Relational Algebra, SQL, Triggers & Procedures.</p>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">DBMS Architecture, ER Modeling, Relational Algebra, SQL, Normalization, Query Optimization, Concurrency Control & IBM Db2.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DBMS Notes &rarr;</span>
           </div>
 
