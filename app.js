@@ -279,6 +279,8 @@
       selectedContentType = 'qa';
       renderSidebarTypeToggleUI();
       initQABankView();
+    } else if (viewId === 'workshop') {
+      initWorkshopView();
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
       initFlashcards();
@@ -840,6 +842,206 @@
     flashcardIndex = (flashcardIndex - 1 + flashcardList.length) % flashcardList.length;
     renderFlashcard();
   };
+
+  // ==========================================================================
+  // SKILL WORKSHOP: POWER BI 30-DAY MASTERCLASS CONTROLLER
+  // ==========================================================================
+  const POWER_BI_ROADMAP = [
+    { day: 1, week: "Week 1", topic: "Power BI Fundamentals", fileStem: "Day_01_Power_BI_Fundamentals", master: "What Power BI is, Desktop vs Service, reports, dashboards, semantic models, dataflows, workspaces, basic workflow" },
+    { day: 2, week: "Week 1", topic: "Power BI Desktop", fileStem: "Day_02_Power_BI_Desktop_Interface", master: "Interface, Report/Data/Model views, Fields pane, Visualizations, Filters, formatting, themes" },
+    { day: 3, week: "Week 1", topic: "Data Sources & Import", fileStem: "Day_03_Data_Sources_and_Import_Modes", master: "Excel, CSV, SQL Server, Web, folders, APIs, Import vs DirectQuery" },
+    { day: 4, week: "Week 1", topic: "Power Query Fundamentals", fileStem: "Day_04_Power_Query_Fundamentals", master: "Query Editor, steps, Applied Steps, data types, rename/remove columns, filtering, sorting" },
+    { day: 5, week: "Week 1", topic: "Power Query Data Cleaning", fileStem: "Day_05_Power_Query_Data_Cleaning", master: "Nulls, errors, duplicates, replace values, split/merge columns, fill, conditional columns" },
+    { day: 6, week: "Week 1", topic: "Power Query Transformations", fileStem: "Day_06_Power_Query_Transformations", master: "Group By, Pivot/Unpivot, Merge, Append, custom columns, parameters" },
+    { day: 7, week: "Week 1", topic: "Power Query + M Language", fileStem: "Day_07_Power_Query_M_Language", master: "M basics, functions, variables, custom functions, reusable transformations" },
+    { day: 8, week: "Week 2", topic: "Data Modeling Fundamentals", fileStem: "Day_08_Data_Modeling_Fundamentals", master: "Tables, relationships, primary/foreign keys, cardinality, cross-filter direction" },
+    { day: 9, week: "Week 2", topic: "Star Schema", fileStem: "Day_09_Star_Schema_Design", master: "Fact vs Dimension tables, date dimension, snowflake vs star schema, model design" },
+    { day: 10, week: "Week 2", topic: "Advanced Data Modeling", fileStem: "Day_10_Advanced_Data_Modeling", master: "Role-playing dimensions, bridge tables, many-to-many relationships, inactive relationships" },
+    { day: 11, week: "Week 2", topic: "DAX Fundamentals", fileStem: "Day_11_DAX_Fundamentals", master: "Measures vs calculated columns, syntax, operators, basic aggregation functions" },
+    { day: 12, week: "Week 2", topic: "Essential DAX Functions", fileStem: "Day_12_Essential_DAX_Functions", master: "SUM, AVERAGE, COUNT, DISTINCTCOUNT, MIN, MAX, DIVIDE, IF, SWITCH" },
+    { day: 13, week: "Week 2", topic: "DAX Filter Context", fileStem: "Day_13_DAX_Filter_Context_and_CALCULATE", master: "Row context, filter context, context transition, CALCULATE()" },
+    { day: 14, week: "Week 2", topic: "Advanced DAX Filtering", fileStem: "Day_14_Advanced_DAX_Filtering", master: "FILTER, ALL, ALLSELECTED, REMOVEFILTERS, KEEPFILTERS" },
+    { day: 15, week: "Week 3", topic: "Time Intelligence", fileStem: "Day_15_DAX_Time_Intelligence", master: "YTD, MTD, QTD, previous year, previous month, YoY %, rolling averages" },
+    { day: 16, week: "Week 3", topic: "Advanced DAX", fileStem: "Day_16_Advanced_DAX_Iterators", master: "SUMX, AVERAGEX, RANKX, TOPN, VALUES, SELECTEDVALUE, variables" },
+    { day: 17, week: "Week 3", topic: "DAX Patterns", fileStem: "Day_17_DAX_Design_Patterns", master: "Dynamic measures, percentage calculations, ranking, segmentation, Pareto analysis" },
+    { day: 18, week: "Week 3", topic: "Visualization Fundamentals", fileStem: "Day_18_Visualization_Fundamentals", master: "Bar, line, column, area, pie/donut, cards, tables, matrices, KPI visuals" },
+    { day: 19, week: "Week 3", topic: "Advanced Visualizations", fileStem: "Day_19_Advanced_Visualizations", master: "Combo charts, decomposition tree, waterfall, funnel, scatter, maps, gauges" },
+    { day: 20, week: "Week 3", topic: "Dashboard UI/UX", fileStem: "Day_20_Dashboard_UI_UX_Design", master: "Layout, hierarchy, colors, typography, whitespace, navigation, storytelling" },
+    { day: 21, week: "Week 4", topic: "Filters & Interactions", fileStem: "Day_21_Filters_and_Interactions", master: "Slicers, visual/page/report filters, drillthrough, cross-filtering, edit interactions" },
+    { day: 22, week: "Week 4", topic: "Advanced Report Features", fileStem: "Day_22_Advanced_Report_Features", master: "Bookmarks, buttons, tooltips, field parameters, page navigation, conditional formatting" },
+    { day: 23, week: "Week 4", topic: "Power BI Service", fileStem: "Day_23_Power_BI_Service", master: "Publishing, workspaces, apps, sharing, permissions, dashboards, subscriptions" },
+    { day: 24, week: "Week 4", topic: "Refresh & Gateway", fileStem: "Day_24_Data_Refresh_and_Gateways", master: "Scheduled refresh, on-premises gateway, credentials, refresh failures, incremental refresh" },
+    { day: 25, week: "Week 4", topic: "Row-Level Security", fileStem: "Day_25_Row_Level_Security_RLS", master: "Roles, DAX filters, dynamic RLS, USERPRINCIPALNAME, security testing" },
+    { day: 26, week: "Week 4", topic: "Performance Optimization", fileStem: "Day_26_Performance_Optimization", master: "Performance Analyzer, DAX optimization, model size, cardinality, query performance" },
+    { day: 27, week: "Week 5", topic: "Advanced Power BI Architecture", fileStem: "Day_27_Advanced_Power_BI_Architecture", master: "Import vs DirectQuery vs Composite models, aggregations, semantic models, deployment concepts" },
+    { day: 28, week: "Week 5", topic: "Data Analytics & AI Features", fileStem: "Day_28_AI_and_Advanced_Analytics", master: "Forecasting, anomaly detection, Q&A, decomposition tree, Key Influencers, Copilot concepts" },
+    { day: 29, week: "Week 5", topic: "Real-World Project", fileStem: "Day_29_Real_World_Project", master: "Build a complete professional business intelligence dashboard from raw data" },
+    { day: 30, week: "Week 5", topic: "Portfolio + Interview Mastery", fileStem: "Day_30_Portfolio_and_Interview_Mastery", master: "Project documentation, dashboard presentation, DAX interview questions, SQL + Power BI questions, portfolio" }
+  ];
+
+  let workshopSelectedWeek = 'All';
+  let workshopSearchQuery = '';
+
+  function getCompletedDays() {
+    try {
+      const data = localStorage.getItem('powerbi_completed_days');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveCompletedDays(arr) {
+    try {
+      localStorage.setItem('powerbi_completed_days', JSON.stringify(arr));
+    } catch (e) {}
+  }
+
+  function updateWorkshopProgressUI() {
+    const completed = getCompletedDays();
+    const count = completed.length;
+    const pct = Math.round((count / 30) * 100);
+
+    const textEl = document.getElementById('workshopProgressText');
+    const barEl = document.getElementById('workshopProgressBar');
+
+    if (textEl) textEl.textContent = `${count} / 30 Days Mastered (${pct}%)`;
+    if (barEl) barEl.style.width = `${pct}%`;
+  }
+
+  window.initWorkshopView = function () {
+    renderWorkshopFilterBar();
+    updateWorkshopProgressUI();
+    renderWorkshopCards();
+  };
+
+  function renderWorkshopFilterBar() {
+    const bar = document.getElementById('workshopWeekFilterBar');
+    if (!bar) return;
+
+    const weeks = [
+      { id: 'All', label: 'All Days (30)' },
+      { id: 'Week 1', label: 'Week 1: Fundamentals & Power Query' },
+      { id: 'Week 2', label: 'Week 2: Data Modeling & DAX' },
+      { id: 'Week 3', label: 'Week 3: Time Intelligence & Visuals' },
+      { id: 'Week 4', label: 'Week 4: Advanced BI & Performance' },
+      { id: 'Week 5', label: 'Week 5: Enterprise, AI & Portfolio' }
+    ];
+
+    let html = '';
+    weeks.forEach(w => {
+      const activeClass = workshopSelectedWeek === w.id ? 'active' : '';
+      html += `<button class="sub-tab ${activeClass}" onclick="window.setWorkshopWeek('${w.id}')" style="min-height: 36px; padding: 6px 14px;">${w.label}</button>`;
+    });
+
+    bar.innerHTML = html;
+  }
+
+  window.setWorkshopWeek = function (week) {
+    workshopSelectedWeek = week;
+    renderWorkshopFilterBar();
+    renderWorkshopCards();
+  };
+
+  window.handleWorkshopSearch = function (q) {
+    workshopSearchQuery = (q || '').trim().toLowerCase();
+    renderWorkshopCards();
+  };
+
+  window.toggleWorkshopDay = function (dayNum) {
+    let completed = getCompletedDays();
+    if (completed.includes(dayNum)) {
+      completed = completed.filter(d => d !== dayNum);
+    } else {
+      completed.push(dayNum);
+    }
+    saveCompletedDays(completed);
+    updateWorkshopProgressUI();
+    renderWorkshopCards();
+  };
+
+  window.resetWorkshopProgress = function () {
+    if (confirm("Are you sure you want to reset your Power BI Bootcamp progress?")) {
+      saveCompletedDays([]);
+      updateWorkshopProgressUI();
+      renderWorkshopCards();
+    }
+  };
+
+  window.openWorkshopDayNote = function (fileStem) {
+    if (!window.NOTES_DATA) return;
+    const match = window.NOTES_DATA.find(i => i.filename && i.filename.includes(fileStem));
+    if (match) {
+      window.switchView('reader', 'Power BI', match.id);
+    } else {
+      window.switchView('reader', 'Power BI');
+    }
+  };
+
+  function renderWorkshopCards() {
+    const container = document.getElementById('workshopGridContainer');
+    if (!container) return;
+
+    const completed = getCompletedDays();
+
+    const filtered = POWER_BI_ROADMAP.filter(item => {
+      const matchWeek = workshopSelectedWeek === 'All' || item.week === workshopSelectedWeek;
+      const q = workshopSearchQuery;
+      const matchSearch = !q || item.topic.toLowerCase().includes(q) || item.master.toLowerCase().includes(q) || `day ${item.day}`.includes(q);
+      return matchWeek && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 14px;">No Power BI days found matching your search query.</div>`;
+      return;
+    }
+
+    let html = '';
+    filtered.forEach(item => {
+      const isDone = completed.includes(item.day);
+      const cardCompletedClass = isDone ? 'completed' : '';
+      const checkBtnClass = isDone ? 'checked' : '';
+      const checkIcon = isDone ? 
+        `<svg class="icon" viewBox="0 0 24 24" style="color: #22c55e;"><polyline points="20 6 9 17 4 12"></polyline></svg>` : 
+        `<svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>`;
+      const checkText = isDone ? 'Mastered ✓' : 'Mark Complete';
+
+      // Find matching note in NOTES_DATA for PDF and direct read
+      const noteItem = window.NOTES_DATA ? window.NOTES_DATA.find(n => n.filename && n.filename.includes(item.fileStem)) : null;
+      const pdfLink = noteItem && noteItem.pdfPath ? noteItem.pdfPath : `PDF_Notes/${item.fileStem}.pdf`;
+
+      html += `<div class="workshop-card ${cardCompletedClass}">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span class="workshop-day-badge">Day ${item.day < 10 ? '0' + item.day : item.day} • ${item.week}</span>
+            <button class="workshop-check-btn ${checkBtnClass}" onclick="window.toggleWorkshopDay(${item.day})">
+              ${checkIcon}
+              <span>${checkText}</span>
+            </button>
+          </div>
+
+          <h3 class="workshop-title">${item.topic}</h3>
+          
+          <div class="workshop-mastery">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">🎯 What You Should Master:</strong>
+            ${item.master}
+          </div>
+        </div>
+
+        <div class="workshop-card-footer">
+          <button class="btn-primary" onclick="window.openWorkshopDayNote('${item.fileStem}')" style="font-size: 0.8rem; padding: 6px 12px; min-height: 36px;">
+            Read Day ${item.day} Notes &rarr;
+          </button>
+          <a class="reader-btn pdf-btn" href="${pdfLink}" download style="font-size: 0.78rem; text-decoration: none; padding: 6px 10px; display: inline-flex; align-items: center; gap: 4px;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>PDF</span>
+          </a>
+        </div>
+      </div>`;
+    });
+
+    container.innerHTML = html;
+  }
 
   // Init on DOM Load
   document.addEventListener('DOMContentLoaded', () => {

@@ -30,6 +30,13 @@ MODULE_TITLES = {
         "Module 4": "Memory & Peripherals Interfacing",
         "Module 5": "80386DX & Pentium Processor",
         "Module 6": "Pentium 4 & ARM Processor"
+    },
+    "Power BI": {
+        "Week 1": "Fundamentals & Power Query",
+        "Week 2": "Data Modeling & DAX",
+        "Week 3": "Time Intelligence & Visuals",
+        "Week 4": "Advanced BI & Performance",
+        "Week 5": "Enterprise, AI & Portfolio"
     }
 }
 
@@ -227,7 +234,7 @@ def get_clean_title(filename, content, is_qa_file, subject, module):
     t = re.sub(r'^#+\s*', '', t).strip()
     t = re.sub(r'^Topic\s*[:\-]\s*', '', t, flags=re.IGNORECASE).strip()
     t = re.sub(r'^(?:[A-Za-z]\d{1,2}|\d{1,2})[\._\s\-]+\s*', '', t).strip()
-    t = re.sub(r'\s*[\u2014\u2013\-]\s*(MPCA|DBMS|Data Structures?|Module\s*\d+).*$', '', t, flags=re.IGNORECASE).strip()
+    t = re.sub(r'\s*[\u2014\u2013\-]\s*(MPCA|DBMS|Data Structures?|Power BI|Module\s*\d+|Day\s*\d+).*$', '', t, flags=re.IGNORECASE).strip()
     return t
 
 def parse_markdown_file(filepath):
@@ -239,24 +246,49 @@ def parse_markdown_file(filepath):
 
     filename = os.path.basename(filepath)
     parts = rel_path.split('/')
-    semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
-    subject = parts[1] if len(parts) > 1 else "General"
     
-    # Check if this is a Question & Answer Bank file
-    is_qa_file = bool(re.search(r'\b(2M|3M|5M|10M)\.md$', filename, re.I)) or '_qa' in rel_path.lower()
-    content_type = "qa" if is_qa_file else "notes"
+    # Check if this is a Skill Workshop file
+    is_workshop = "Skill Workshop" in rel_path
+    
+    if is_workshop:
+        semester = "Skill Workshop"
+        subject = parts[2] if len(parts) > 2 else "Power BI"
+        content_type = "workshop"
+        is_qa_file = False
+        marks_category = "Workshop"
+        
+        # Determine Day and Week Module
+        day_match = re.search(r'Day_(\d+)', filename, re.I)
+        day_num = int(day_match.group(1)) if day_match else 1
+        
+        if day_num <= 7:
+            module = "Week 1: Fundamentals & Power Query"
+        elif day_num <= 14:
+            module = "Week 2: Data Modeling & DAX"
+        elif day_num <= 20:
+            module = "Week 3: Time Intelligence & Visuals"
+        elif day_num <= 26:
+            module = "Week 4: Advanced BI & Performance"
+        else:
+            module = "Week 5: Enterprise, AI & Portfolio"
+    else:
+        semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
+        subject = parts[1] if len(parts) > 1 else "General"
+        
+        # Check if this is a Question & Answer Bank file
+        is_qa_file = bool(re.search(r'\b(2M|3M|5M|10M)\.md$', filename, re.I)) or '_qa' in rel_path.lower()
+        content_type = "qa" if is_qa_file else "notes"
 
-    # Identify exact Module number
-    module = "General"
-    for part in parts:
-        m_match = re.search(r'Module[_\s]*(\d+)', part, re.IGNORECASE)
-        if m_match:
-            module = f"Module {m_match.group(1)}"
-            break
+        # Identify exact Module number
+        module = "General"
+        for part in parts:
+            m_match = re.search(r'Module[_\s]*(\d+)', part, re.IGNORECASE)
+            if m_match:
+                module = f"Module {m_match.group(1)}"
+                break
 
-    # Extract marks category
-    marks_match = re.search(r'(\d+)M', filename, re.I)
-    marks_category = f"{marks_match.group(1)} Marks" if marks_match else "All"
+        marks_match = re.search(r'(\d+)M', filename, re.I)
+        marks_category = f"{marks_match.group(1)} Marks" if marks_match else "All"
 
     title = get_clean_title(filename, content, is_qa_file, subject, module)
 
@@ -266,8 +298,8 @@ def parse_markdown_file(filepath):
         def_match = re.search(r'>\s*\*\*Definition:\*\*\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
     definition = def_match.group(1).replace('\n>', ' ').strip() if def_match else ""
 
-    # Extract Must Write Points
-    must_write_match = re.search(r'>\s*⭐\s*\*\*Must-Write Points[^\n]*\*\*\s*\n((?:>\s*.*?\n)+)', content)
+    # Extract Must Write Points / Skills
+    must_write_match = re.search(r'>\s*⭐\s*\*\*(?:Must-Write Points|Must-Master Skills)[^\n]*\*\*\s*\n((?:>\s*.*?\n)+)', content)
     must_write = []
     if must_write_match:
         lines = must_write_match.group(1).split('\n')
@@ -276,7 +308,7 @@ def parse_markdown_file(filepath):
             if cleaned and not cleaned.startswith('>'):
                 must_write.append(cleaned)
     else:
-        must_write_section = re.search(r'##\s*\d*\.?\s*Must-Write Points[^\n]*\n((?:[\*\-]\s*.*?\n)+)', content)
+        must_write_section = re.search(r'##\s*\d*\.?\s*(?:Must-Write Points|Must-Master Skills)[^\n]*\n((?:[\*\-]\s*.*?\n)+)', content)
         if must_write_section:
             lines = must_write_section.group(1).split('\n')
             for line in lines:
@@ -333,8 +365,7 @@ def main():
                 except Exception as e:
                     print(f"Error parsing {filepath}: {e}")
 
-    # Sort notes logically: Semester -> Subject -> Module -> ContentType -> Filename
-    # Custom sort for marks: 2M -> 3M -> 5M -> 10M
+    # Custom sort
     def sort_key(x):
         fn = x['filename']
         mark_order = 0
@@ -342,7 +373,14 @@ def main():
         elif fn.startswith('3M'): mark_order = 2
         elif fn.startswith('5M'): mark_order = 3
         elif fn.startswith('10M'): mark_order = 4
-        return (x['semester'], x['subject'], x['module'], x['contentType'], mark_order, x['filename'])
+        
+        # Day number for workshop
+        day_num = 0
+        day_match = re.search(r'Day_(\d+)', fn, re.I)
+        if day_match:
+            day_num = int(day_match.group(1))
+
+        return (x['semester'], x['subject'], x['module'], x['contentType'], mark_order, day_num, x['filename'])
 
     notes_list.sort(key=sort_key)
 
@@ -351,7 +389,7 @@ def main():
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    print(f"Successfully generated notes_data.js for {len(notes_list)} files with clean Q&A bank integration!")
+    print(f"Successfully generated notes_data.js for {len(notes_list)} files with Skill Workshop & Power BI integration!")
 
 if __name__ == '__main__':
     main()
