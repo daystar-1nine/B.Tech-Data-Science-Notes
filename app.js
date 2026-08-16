@@ -192,9 +192,9 @@
           <div class="welcome-sub-box" onclick="window.selectSubjectFirstTopic('Data Structure')" style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 16px; border-radius: 14px; cursor: pointer; transition: all 0.2s ease;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
               <span style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Structures</span>
-              <span class="count-badge">22 Notes</span>
+              <span class="count-badge">47 Notes</span>
             </div>
-            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Polynomials & Solved Q&A Bank.</p>
+            <p style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 10px;">ADT Concepts, Arrays, Stacks, Queues, Linked Lists, Trees (BST, AVL, B-Tree), Graphs (BFS/DFS), Sorting & Hashing.</p>
             <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-primary);">Start DSA Notes &rarr;</span>
           </div>
 
