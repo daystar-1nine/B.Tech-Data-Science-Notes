@@ -37,6 +37,34 @@ MODULE_TITLES = {
         "Week 3": "Time Intelligence & Visuals",
         "Week 4": "Advanced BI & Performance",
         "Week 5": "Enterprise, AI & Portfolio"
+    },
+    "C Programming": {
+        "Module 1": "Variables, Data Types & I/O",
+        "Module 2": "Instructions, Expressions & Operators",
+        "Module 3": "Data Types & Storage Classes",
+        "Module 4": "Decision Control Structures",
+        "Module 5": "Iteration & Loop Control",
+        "Module 6": "Functions & Recursion",
+        "Module 7": "Pointers & Memory Addresses",
+        "Module 8": "Arrays & Matrix Operations",
+        "Module 9": "Strings & Character Arrays",
+        "Module 10": "Structures, Unions & Typedef",
+        "Module 11": "Dynamic Memory Allocation",
+        "Module 12": "File Input / Output"
+    },
+    "C++ Programming": {
+        "Module 1": "Variables, Data Types & Streams",
+        "Module 2": "Instructions, Expressions & Operators",
+        "Module 3": "Data Types & Storage Classes",
+        "Module 4": "Decision Control Structures",
+        "Module 5": "Iteration & Loop Control",
+        "Module 6": "Functions & Recursion",
+        "Module 7": "Pointers & References",
+        "Module 8": "Arrays & std::vector",
+        "Module 9": "Strings & std::string",
+        "Module 10": "Structures & Classes",
+        "Module 11": "Dynamic Memory (new/delete)",
+        "Module 12": "File Streams (fstream)"
     }
 }
 
@@ -249,6 +277,8 @@ def parse_markdown_file(filepath):
     
     # Check if this is a Skill Workshop file
     is_workshop = "Skill Workshop" in rel_path
+    # Check if this is a Programming Skills file
+    is_programming = "Programming Skills" in rel_path
     
     if is_workshop:
         semester = "Skill Workshop"
@@ -271,6 +301,16 @@ def parse_markdown_file(filepath):
             module = "Week 4: Advanced BI & Performance"
         else:
             module = "Week 5: Enterprise, AI & Portfolio"
+    elif is_programming:
+        semester = "Programming Skills"
+        subject = parts[2] if len(parts) > 2 else "C Programming"
+        content_type = "programming"
+        is_qa_file = False
+        marks_category = "Programming"
+        
+        mod_num_match = re.search(r'(?:C_|CPP_|^)(\d+)_', filename)
+        mod_num = int(mod_num_match.group(1)) if mod_num_match else 1
+        module = f"Module {mod_num}"
     else:
         semester = parts[0] if len(parts) > 0 and 'Semester' in parts[0] else "General"
         subject = parts[1] if len(parts) > 1 else "General"
@@ -380,7 +420,13 @@ def main():
         if day_match:
             day_num = int(day_match.group(1))
 
-        return (x['semester'], x['subject'], x['module'], x['contentType'], mark_order, day_num, x['filename'])
+        # Module integer
+        mod_int = 0
+        mod_match = re.search(r'Module\s*(\d+)', x.get('module', ''), re.I)
+        if mod_match:
+            mod_int = int(mod_match.group(1))
+
+        return (x['semester'], x['subject'], mod_int, x['contentType'], mark_order, day_num, x['filename'])
 
     notes_list.sort(key=sort_key)
 
@@ -389,7 +435,7 @@ def main():
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         f.write(js_content)
 
-    print(f"Successfully generated notes_data.js for {len(notes_list)} files with Skill Workshop & Power BI integration!")
+    print(f"Successfully generated notes_data.js for {len(notes_list)} files with Programming Skills & Power BI integration!")
 
 if __name__ == '__main__':
     main()

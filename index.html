@@ -7,7 +7,7 @@
   <meta name="description" content="Comprehensive multi-semester B.Tech Data Science study notes, exam-ready answers, must-write points, quick recall flows, and PDF downloads.">
   <!-- Favicon Logo Link -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="index.css?v=20260817e">
+  <link rel="stylesheet" href="index.css?v=20260824a">
 </head>
 <body>
 
@@ -26,6 +26,7 @@
       </div>
     </div>
 
+    <!-- Desktop Navigation Links -->
     <!-- Desktop Navigation Links -->
     <ul class="nav-links">
       <li class="nav-item active" onclick="switchView('home')">
@@ -46,8 +47,13 @@
         <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
         <span>Skill Workshop</span>
       </li>
-      <li class="nav-item" onclick="switchView('flashcards')">
+      <!-- Programming Skills Navbar Tab -->
+      <li class="nav-item" onclick="switchView('programming')">
         <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+        <span>Programming</span>
+      </li>
+      <li class="nav-item" onclick="switchView('flashcards')">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><polygon points="12 6 12 12 16 14"></polygon></svg>
         <span>Rapid Revision</span>
       </li>
       <li class="nav-item" onclick="switchView('about')">
@@ -97,8 +103,12 @@
       <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
       <span>Skill Workshop</span>
     </div>
-    <div class="nav-item" onclick="switchView('flashcards'); toggleMobileMenu();">
+    <div class="nav-item" onclick="switchView('programming'); toggleMobileMenu();">
       <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+      <span>Programming Skills</span>
+    </div>
+    <div class="nav-item" onclick="switchView('flashcards'); toggleMobileMenu();">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><polygon points="12 6 12 12 16 14"></polygon></svg>
       <span>Rapid Revision</span>
     </div>
     <div class="nav-item" onclick="switchView('about'); toggleMobileMenu();">
@@ -492,6 +502,50 @@
     </section>
 
     <!-- ===================================================================
+         VIEW: PROGRAMMING SKILLS (C & C++ MASTERCLASS)
+         =================================================================== -->
+    <section id="view-programming" class="view-section">
+      <div class="section-container" style="padding-top: 24px;">
+        
+        <!-- Hero Header -->
+        <div style="text-align: center; max-width: 840px; margin: 0 auto 28px;">
+          <div class="hero-badge" style="margin-bottom: 10px;">
+            <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Systems Programming & Core CS
+          </div>
+          <h1 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; color: var(--text-primary);">
+            Programming Skills: C & C++ Masterclass
+          </h1>
+          <p style="color: var(--text-secondary); font-size: 0.96rem; line-height: 1.6;">
+            Deep-dive into low-level memory mechanics, direct pointer manipulation, data structures, algorithms, and 100+ production-grade solved coding problems in C and modern C++.
+          </p>
+        </div>
+
+        <!-- Language Selector Tabs & Search Filter -->
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
+          <!-- Filter Tabs -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;" id="progLangFilterBar">
+            <!-- Populated by JS -->
+          </div>
+
+          <!-- Search Bar -->
+          <div style="max-width: 500px; margin: 0 auto; width: 100%;">
+            <div class="search-input-wrap" style="width: 100%;">
+              <svg class="icon search-icon-pos" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="progSearchInput" placeholder="Search C/C++ topics, memory, functions, algorithms..." oninput="window.handleProgrammingSearch(this.value)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Programming Topics Cards Grid -->
+        <div class="subject-grid" id="programmingGridContainer">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
          VIEW 4: ABOUT & DEVELOPER PROFILE
          =================================================================== -->
     <section id="view-about" class="view-section">
@@ -859,9 +913,9 @@
     </div>
   </div>
 
-  <!-- Load Notes Database and Application Logic (v=20260817e cache-buster) -->
-  <script src="notes_data.js?v=20260817e"></script>
-  <script src="app.js?v=20260817e"></script>
+  <!-- Load Notes Database and Application Logic (v=20260824a cache-buster) -->
+  <script src="notes_data.js?v=20260824a"></script>
+  <script src="app.js?v=20260824a"></script>
 
 </body>
 </html>

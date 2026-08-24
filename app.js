@@ -281,6 +281,8 @@
       initQABankView();
     } else if (viewId === 'workshop') {
       initWorkshopView();
+    } else if (viewId === 'programming') {
+      initProgrammingView();
     } else if (viewId === 'flashcards') {
       initFlashcardSubjectBar();
       initFlashcards();
@@ -1031,6 +1033,126 @@
         <div class="workshop-card-footer">
           <button class="btn-primary" onclick="window.openWorkshopDayNote('${item.fileStem}')" style="font-size: 0.8rem; padding: 6px 12px; min-height: 36px;">
             Read Day ${item.day} Notes &rarr;
+          </button>
+          <a class="reader-btn pdf-btn" href="${pdfLink}" download style="font-size: 0.78rem; text-decoration: none; padding: 6px 10px; display: inline-flex; align-items: center; gap: 4px;">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>PDF</span>
+          </a>
+        </div>
+      </div>`;
+    });
+
+    container.innerHTML = html;
+  }
+
+  // ==========================================================================
+  // PROGRAMMING SKILLS: C & C++ MASTERCLASS CONTROLLER
+  // ==========================================================================
+  let progSelectedLang = 'All';
+  let progSearchQuery = '';
+
+  window.initProgrammingView = function () {
+    renderProgrammingFilterBar();
+    renderProgrammingCards();
+  };
+
+  function renderProgrammingFilterBar() {
+    const bar = document.getElementById('progLangFilterBar');
+    if (!bar) return;
+
+    const langs = [
+      { id: 'All', label: 'All Programming Topics (24 Modules)' },
+      { id: 'C Programming', label: '🔹 C Programming (12 Modules • 107+ Problems)' },
+      { id: 'C++ Programming', label: '🚀 C++ Programming (12 Modules • 107+ Problems)' }
+    ];
+
+    let html = '';
+    langs.forEach(l => {
+      const activeClass = progSelectedLang === l.id ? 'active' : '';
+      html += `<button class="sub-tab ${activeClass}" onclick="window.setProgrammingLanguage('${l.id}')" style="min-height: 36px; padding: 6px 14px;">${l.label}</button>`;
+    });
+
+    bar.innerHTML = html;
+  }
+
+  window.setProgrammingLanguage = function (lang) {
+    progSelectedLang = lang;
+    renderProgrammingFilterBar();
+    renderProgrammingCards();
+  };
+
+  window.handleProgrammingSearch = function (q) {
+    progSearchQuery = (q || '').trim().toLowerCase();
+    renderProgrammingCards();
+  };
+
+  window.openProgrammingNote = function (noteId, subject) {
+    window.switchView('reader', subject, noteId);
+  };
+
+  function countSolvedProblemsInContent(content) {
+    if (!content) return 0;
+    const matches = content.match(/### Problem \d+:/g);
+    return matches ? matches.length : 0;
+  }
+
+  function renderProgrammingCards() {
+    const container = document.getElementById('programmingGridContainer');
+    if (!container) return;
+
+    if (!window.NOTES_DATA) {
+      container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px;">Loading programming notes...</div>`;
+      return;
+    }
+
+    const progNotes = window.NOTES_DATA.filter(n => n.semester === 'Programming Skills' || n.contentType === 'programming');
+
+    const filtered = progNotes.filter(n => {
+      const matchLang = progSelectedLang === 'All' || n.subject === progSelectedLang;
+      const q = progSearchQuery;
+      const matchSearch = !q || 
+        n.title.toLowerCase().includes(q) || 
+        n.module.toLowerCase().includes(q) || 
+        (n.definition && n.definition.toLowerCase().includes(q)) || 
+        n.subject.toLowerCase().includes(q);
+      return matchLang && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 40px 14px;">No programming topics found matching "${progSearchQuery}".</div>`;
+      return;
+    }
+
+    let html = '';
+    filtered.forEach(note => {
+      const isC = note.subject === 'C Programming';
+      const badgeClass = isC ? 'c-lang' : 'cpp-lang';
+      const badgeIcon = isC ? '🔹' : '🚀';
+      const probCount = countSolvedProblemsInContent(note.content);
+      const pdfLink = note.pdfPath || `PDF_Notes/${note.filename.replace('.md', '.pdf')}`;
+      const shortDef = note.definition ? (note.definition.length > 140 ? note.definition.slice(0, 140) + '...' : note.definition) : 'Deep-dive theoretical principles, memory allocation layout, and complete problem walkthroughs.';
+
+      html += `<div class="prog-card">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+            <span class="prog-lang-badge ${badgeClass}">${badgeIcon} ${note.subject} • ${note.module}</span>
+            <span class="prog-problems-pill">
+              <svg class="icon" viewBox="0 0 24 24" style="width: 12px; height: 12px;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              ${probCount} Solved Problems
+            </span>
+          </div>
+
+          <h3 class="prog-title">${note.title}</h3>
+          
+          <div class="prog-desc">
+            <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">📌 Core Concept:</strong>
+            ${shortDef}
+          </div>
+        </div>
+
+        <div class="prog-card-footer">
+          <button class="btn-primary" onclick="window.openProgrammingNote('${note.id}', '${note.subject}')" style="font-size: 0.8rem; padding: 6px 12px; min-height: 36px;">
+            Read Notes & Code &rarr;
           </button>
           <a class="reader-btn pdf-btn" href="${pdfLink}" download style="font-size: 0.78rem; text-decoration: none; padding: 6px 10px; display: inline-flex; align-items: center; gap: 4px;">
             <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
