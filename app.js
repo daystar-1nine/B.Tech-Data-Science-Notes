@@ -422,7 +422,7 @@
   // Toggle Reader Sidebar Drawer
   window.toggleSidebar = function () {
     if (!readerSidebar) return;
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 860) {
       readerSidebar.classList.toggle('open-mobile');
       if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
     } else {
@@ -431,7 +431,7 @@
   };
 
   function closeMobileSidebar() {
-    if (window.innerWidth <= 768 && readerSidebar) {
+    if (window.innerWidth <= 860 && readerSidebar) {
       readerSidebar.classList.remove('open-mobile');
       if (sidebarOverlay) sidebarOverlay.classList.remove('active');
     }
