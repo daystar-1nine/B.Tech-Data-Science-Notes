@@ -648,32 +648,61 @@
       ${paginationHtml}
     `;
 
-    // Attach Copy Code Buttons
-    attachCopyCodeButtons();
+    // Attach Syntax Highlighting and Copy Code Buttons
+    attachSyntaxHighlightingAndCopy();
 
     renderSidebarTree();
     
     if (readerContainer) readerContainer.scrollTop = 0;
   };
 
-  function attachCopyCodeButtons() {
+  function attachSyntaxHighlightingAndCopy() {
+    if (typeof hljs !== 'undefined') {
+      readerArticle.querySelectorAll('pre code').forEach((block) => {
+        try {
+          hljs.highlightElement(block);
+        } catch (e) {
+          console.warn("hljs error:", e);
+        }
+      });
+    }
+
     const pres = readerArticle.querySelectorAll('pre');
     pres.forEach(pre => {
-      if (pre.querySelector('.copy-code-btn')) return;
-      const btn = document.createElement('button');
-      btn.className = 'copy-code-btn';
-      btn.style.cssText = 'position: absolute; top: 8px; right: 8px; background: rgba(255,255,255,0.1); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 4px;';
-      btn.innerHTML = `${ICONS.copy} Copy`;
+      if (pre.querySelector('.code-header-bar')) return;
       
-      btn.addEventListener('click', () => {
-        const code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
-        navigator.clipboard.writeText(code).then(() => {
-          btn.innerHTML = `${ICONS.check} Copied!`;
-          setTimeout(() => { btn.innerHTML = `${ICONS.copy} Copy`; }, 2000);
+      const codeEl = pre.querySelector('code');
+      let lang = 'Code';
+      if (codeEl) {
+        const langClass = Array.from(codeEl.classList).find(c => c.startsWith('language-'));
+        if (langClass) {
+          lang = langClass.replace('language-', '').toUpperCase();
+        }
+      }
+
+      const headerBar = document.createElement('div');
+      headerBar.className = 'code-header-bar';
+      headerBar.innerHTML = `
+        <span style="font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.85;">${lang}</span>
+        <button class="code-copy-btn">
+          ${ICONS.copy} <span>Copy</span>
+        </button>
+      `;
+
+      const copyBtn = headerBar.querySelector('.code-copy-btn');
+      copyBtn.addEventListener('click', () => {
+        const codeText = codeEl ? codeEl.innerText : pre.innerText;
+        navigator.clipboard.writeText(codeText).then(() => {
+          copyBtn.classList.add('copied');
+          copyBtn.innerHTML = `${ICONS.check} <span>Copied!</span>`;
+          setTimeout(() => {
+            copyBtn.classList.remove('copied');
+            copyBtn.innerHTML = `${ICONS.copy} <span>Copy</span>`;
+          }, 2000);
         });
       });
-      pre.style.position = 'relative';
-      pre.appendChild(btn);
+
+      pre.insertBefore(headerBar, pre.firstChild);
     });
   }
 
@@ -1077,6 +1106,35 @@
 
   window.setProgrammingLanguage = function (lang) {
     progSelectedLang = lang;
+
+    // Synchronize 2 Hero Buttons
+    const btnC = document.getElementById('progHeroBtnC');
+    const btnCPP = document.getElementById('progHeroBtnCPP');
+    if (btnC && btnCPP) {
+      if (lang === 'C Programming') {
+        btnC.classList.add('active');
+        const tagC = btnC.querySelector('.prog-lang-hero-tag');
+        if (tagC) tagC.textContent = 'Active Language';
+        btnCPP.classList.remove('active');
+        const tagCPP = btnCPP.querySelector('.prog-lang-hero-tag');
+        if (tagCPP) tagCPP.textContent = 'Switch to C++';
+      } else if (lang === 'C++ Programming') {
+        btnCPP.classList.add('active');
+        const tagCPP = btnCPP.querySelector('.prog-lang-hero-tag');
+        if (tagCPP) tagCPP.textContent = 'Active Language';
+        btnC.classList.remove('active');
+        const tagC = btnC.querySelector('.prog-lang-hero-tag');
+        if (tagC) tagC.textContent = 'Switch to C';
+      } else {
+        btnC.classList.remove('active');
+        btnCPP.classList.remove('active');
+        const tagC = btnC.querySelector('.prog-lang-hero-tag');
+        if (tagC) tagC.textContent = 'Show C Only';
+        const tagCPP = btnCPP.querySelector('.prog-lang-hero-tag');
+        if (tagCPP) tagCPP.textContent = 'Show C++ Only';
+      }
+    }
+
     renderProgrammingFilterBar();
     renderProgrammingCards();
   };

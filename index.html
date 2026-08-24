@@ -7,7 +7,15 @@
   <meta name="description" content="Comprehensive multi-semester B.Tech Data Science study notes, exam-ready answers, must-write points, quick recall flows, and PDF downloads.">
   <!-- Favicon Logo Link -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="index.css?v=20260824a">
+  <link rel="stylesheet" href="index.css?v=20260824b">
+  <!-- Highlight.js Syntax Highlighting Theme & Scripts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark-dimmed.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/armasm.min.js"></script>
 </head>
 <body>
 
@@ -521,7 +529,32 @@
           </p>
         </div>
 
-        <!-- Language Selector Tabs & Search Filter -->
+        <!-- 2 Primary Language Selector Buttons (C vs C++) -->
+        <div class="prog-hero-buttons-container">
+          <button class="prog-lang-hero-btn active" id="progHeroBtnC" onclick="window.setProgrammingLanguage('C Programming')">
+            <div class="prog-lang-hero-badge c-badge">
+              <span class="prog-lang-letter">C</span>
+            </div>
+            <div class="prog-lang-hero-content">
+              <div class="prog-lang-hero-title">C Programming</div>
+              <div class="prog-lang-hero-meta">12 Modules • 107+ Solved Problems • Memory Layout & Pointers</div>
+            </div>
+            <div class="prog-lang-hero-tag">Active Language</div>
+          </button>
+
+          <button class="prog-lang-hero-btn" id="progHeroBtnCPP" onclick="window.setProgrammingLanguage('C++ Programming')">
+            <div class="prog-lang-hero-badge cpp-badge">
+              <span class="prog-lang-letter">C++</span>
+            </div>
+            <div class="prog-lang-hero-content">
+              <div class="prog-lang-hero-title">C++ Programming</div>
+              <div class="prog-lang-hero-meta">12 Modules • 107+ Solved Problems • OOP, STL & Dynamic Memory</div>
+            </div>
+            <div class="prog-lang-hero-tag">Switch to C++</div>
+          </button>
+        </div>
+
+        <!-- Secondary Filter Pills & Search Bar -->
         <div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
           <!-- Filter Tabs -->
           <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;" id="progLangFilterBar">
@@ -913,9 +946,9 @@
     </div>
   </div>
 
-  <!-- Load Notes Database and Application Logic (v=20260824a cache-buster) -->
-  <script src="notes_data.js?v=20260824a"></script>
-  <script src="app.js?v=20260824a"></script>
+  <!-- Load Notes Database and Application Logic (v=20260824b cache-buster) -->
+  <script src="notes_data.js?v=20260824b"></script>
+  <script src="app.js?v=20260824b"></script>
 
 </body>
 </html>

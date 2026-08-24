@@ -2,7 +2,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_01_Variables_Data_Types_IO",
     "relPath": "Semester 3/Programming Skills/C Programming/C_01_Variables_Data_Types_IO.md",
-    "pdfPath": "PDF_Notes/C_01_Variables_Data_Types_IO.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_01_Variables_Data_Types_IO.pdf",
     "filename": "C_01_Variables_Data_Types_IO.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -26,7 +26,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_02_Instructions_Expressions_Operators",
     "relPath": "Semester 3/Programming Skills/C Programming/C_02_Instructions_Expressions_Operators.md",
-    "pdfPath": "PDF_Notes/C_02_Instructions_Expressions_Operators.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_02_Instructions_Expressions_Operators.pdf",
     "filename": "C_02_Instructions_Expressions_Operators.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -50,7 +50,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_03_Data_Types_and_Storage_Classes",
     "relPath": "Semester 3/Programming Skills/C Programming/C_03_Data_Types_and_Storage_Classes.md",
-    "pdfPath": "PDF_Notes/C_03_Data_Types_and_Storage_Classes.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_03_Data_Types_and_Storage_Classes.pdf",
     "filename": "C_03_Data_Types_and_Storage_Classes.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -74,7 +74,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_04_Decision_Control_Structures",
     "relPath": "Semester 3/Programming Skills/C Programming/C_04_Decision_Control_Structures.md",
-    "pdfPath": "PDF_Notes/C_04_Decision_Control_Structures.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_04_Decision_Control_Structures.pdf",
     "filename": "C_04_Decision_Control_Structures.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -98,7 +98,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_05_Iteration_and_Loop_Control",
     "relPath": "Semester 3/Programming Skills/C Programming/C_05_Iteration_and_Loop_Control.md",
-    "pdfPath": "PDF_Notes/C_05_Iteration_and_Loop_Control.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_05_Iteration_and_Loop_Control.pdf",
     "filename": "C_05_Iteration_and_Loop_Control.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -122,7 +122,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_06_Functions_and_Recursion",
     "relPath": "Semester 3/Programming Skills/C Programming/C_06_Functions_and_Recursion.md",
-    "pdfPath": "PDF_Notes/C_06_Functions_and_Recursion.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_06_Functions_and_Recursion.pdf",
     "filename": "C_06_Functions_and_Recursion.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -146,7 +146,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_07_Pointers_and_Memory_Addresses",
     "relPath": "Semester 3/Programming Skills/C Programming/C_07_Pointers_and_Memory_Addresses.md",
-    "pdfPath": "PDF_Notes/C_07_Pointers_and_Memory_Addresses.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_07_Pointers_and_Memory_Addresses.pdf",
     "filename": "C_07_Pointers_and_Memory_Addresses.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -170,7 +170,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_08_Arrays_and_Matrix_Operations",
     "relPath": "Semester 3/Programming Skills/C Programming/C_08_Arrays_and_Matrix_Operations.md",
-    "pdfPath": "PDF_Notes/C_08_Arrays_and_Matrix_Operations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_08_Arrays_and_Matrix_Operations.pdf",
     "filename": "C_08_Arrays_and_Matrix_Operations.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -194,7 +194,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_09_Strings_and_Character_Arrays",
     "relPath": "Semester 3/Programming Skills/C Programming/C_09_Strings_and_Character_Arrays.md",
-    "pdfPath": "PDF_Notes/C_09_Strings_and_Character_Arrays.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_09_Strings_and_Character_Arrays.pdf",
     "filename": "C_09_Strings_and_Character_Arrays.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -218,7 +218,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_10_Structures_and_Unions",
     "relPath": "Semester 3/Programming Skills/C Programming/C_10_Structures_and_Unions.md",
-    "pdfPath": "PDF_Notes/C_10_Structures_and_Unions.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_10_Structures_and_Unions.pdf",
     "filename": "C_10_Structures_and_Unions.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -242,7 +242,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_11_Dynamic_Memory_Allocation",
     "relPath": "Semester 3/Programming Skills/C Programming/C_11_Dynamic_Memory_Allocation.md",
-    "pdfPath": "PDF_Notes/C_11_Dynamic_Memory_Allocation.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_11_Dynamic_Memory_Allocation.pdf",
     "filename": "C_11_Dynamic_Memory_Allocation.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -266,7 +266,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C Programming-C_12_File_Input_Output",
     "relPath": "Semester 3/Programming Skills/C Programming/C_12_File_Input_Output.md",
-    "pdfPath": "PDF_Notes/C_12_File_Input_Output.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C Programming/C_12_File_Input_Output.pdf",
     "filename": "C_12_File_Input_Output.md",
     "semester": "Programming Skills",
     "subject": "C Programming",
@@ -290,7 +290,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_01_Variables_Data_Types_IO",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_01_Variables_Data_Types_IO.md",
-    "pdfPath": "PDF_Notes/CPP_01_Variables_Data_Types_IO.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_01_Variables_Data_Types_IO.pdf",
     "filename": "CPP_01_Variables_Data_Types_IO.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -314,7 +314,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_02_Instructions_Expressions_Operators",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_02_Instructions_Expressions_Operators.md",
-    "pdfPath": "PDF_Notes/CPP_02_Instructions_Expressions_Operators.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_02_Instructions_Expressions_Operators.pdf",
     "filename": "CPP_02_Instructions_Expressions_Operators.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -338,7 +338,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_03_Data_Types_and_Storage_Classes",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_03_Data_Types_and_Storage_Classes.md",
-    "pdfPath": "PDF_Notes/CPP_03_Data_Types_and_Storage_Classes.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_03_Data_Types_and_Storage_Classes.pdf",
     "filename": "CPP_03_Data_Types_and_Storage_Classes.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -362,7 +362,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_04_Decision_Control_Structures",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_04_Decision_Control_Structures.md",
-    "pdfPath": "PDF_Notes/CPP_04_Decision_Control_Structures.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_04_Decision_Control_Structures.pdf",
     "filename": "CPP_04_Decision_Control_Structures.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -386,7 +386,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_05_Iteration_and_Loop_Control",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_05_Iteration_and_Loop_Control.md",
-    "pdfPath": "PDF_Notes/CPP_05_Iteration_and_Loop_Control.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_05_Iteration_and_Loop_Control.pdf",
     "filename": "CPP_05_Iteration_and_Loop_Control.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -410,7 +410,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_06_Functions_and_Recursion",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_06_Functions_and_Recursion.md",
-    "pdfPath": "PDF_Notes/CPP_06_Functions_and_Recursion.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_06_Functions_and_Recursion.pdf",
     "filename": "CPP_06_Functions_and_Recursion.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -434,7 +434,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_07_Pointers_and_References",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_07_Pointers_and_References.md",
-    "pdfPath": "PDF_Notes/CPP_07_Pointers_and_References.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_07_Pointers_and_References.pdf",
     "filename": "CPP_07_Pointers_and_References.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -458,7 +458,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_08_Arrays_and_Vectors",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_08_Arrays_and_Vectors.md",
-    "pdfPath": "PDF_Notes/CPP_08_Arrays_and_Vectors.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_08_Arrays_and_Vectors.pdf",
     "filename": "CPP_08_Arrays_and_Vectors.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -482,7 +482,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_09_Strings_and_STL_String",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_09_Strings_and_STL_String.md",
-    "pdfPath": "PDF_Notes/CPP_09_Strings_and_STL_String.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_09_Strings_and_STL_String.pdf",
     "filename": "CPP_09_Strings_and_STL_String.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -506,7 +506,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_10_Structures_and_Classes",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_10_Structures_and_Classes.md",
-    "pdfPath": "PDF_Notes/CPP_10_Structures_and_Classes.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_10_Structures_and_Classes.pdf",
     "filename": "CPP_10_Structures_and_Classes.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -530,7 +530,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_11_Dynamic_Memory_Allocation",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_11_Dynamic_Memory_Allocation.md",
-    "pdfPath": "PDF_Notes/CPP_11_Dynamic_Memory_Allocation.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_11_Dynamic_Memory_Allocation.pdf",
     "filename": "CPP_11_Dynamic_Memory_Allocation.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -554,7 +554,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Programming Skills-C++ Programming-CPP_12_File_Input_Output",
     "relPath": "Semester 3/Programming Skills/C++ Programming/CPP_12_File_Input_Output.md",
-    "pdfPath": "PDF_Notes/CPP_12_File_Input_Output.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Programming Skills/C++ Programming/CPP_12_File_Input_Output.pdf",
     "filename": "CPP_12_File_Input_Output.md",
     "semester": "Programming Skills",
     "subject": "C++ Programming",
@@ -1092,7 +1092,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 2-Module_2_QA-2M",
     "relPath": "Semester 3/DBMS/Module 2/Module_2_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 2/Module_2_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1110,7 +1110,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 2-Module_2_QA-3M",
     "relPath": "Semester 3/DBMS/Module 2/Module_2_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 2/Module_2_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1128,7 +1128,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 2-Module_2_QA-5M",
     "relPath": "Semester 3/DBMS/Module 2/Module_2_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 2/Module_2_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1146,7 +1146,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 2-Module_2_QA-10M",
     "relPath": "Semester 3/DBMS/Module 2/Module_2_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 2/Module_2_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1554,7 +1554,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 3-Module_3_QA-2M",
     "relPath": "Semester 3/DBMS/Module 3/Module_3_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 3/Module_3_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1572,7 +1572,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 3-Module_3_QA-3M",
     "relPath": "Semester 3/DBMS/Module 3/Module_3_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 3/Module_3_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1590,7 +1590,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 3-Module_3_QA-5M",
     "relPath": "Semester 3/DBMS/Module 3/Module_3_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 3/Module_3_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1608,7 +1608,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 3-Module_3_QA-10M",
     "relPath": "Semester 3/DBMS/Module 3/Module_3_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 3/Module_3_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1626,7 +1626,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-1_First_Normal_Form_1NF",
     "relPath": "Semester 3/DBMS/Module 4/1_First_Normal_Form_1NF.md",
-    "pdfPath": "PDF_Notes/1_First_Normal_Form_1NF.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/1_First_Normal_Form_1NF.pdf",
     "filename": "1_First_Normal_Form_1NF.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1648,7 +1648,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-2_Second_Normal_Form_2NF",
     "relPath": "Semester 3/DBMS/Module 4/2_Second_Normal_Form_2NF.md",
-    "pdfPath": "PDF_Notes/2_Second_Normal_Form_2NF.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/2_Second_Normal_Form_2NF.pdf",
     "filename": "2_Second_Normal_Form_2NF.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1670,7 +1670,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-3_Third_Normal_Form_3NF",
     "relPath": "Semester 3/DBMS/Module 4/3_Third_Normal_Form_3NF.md",
-    "pdfPath": "PDF_Notes/3_Third_Normal_Form_3NF.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/3_Third_Normal_Form_3NF.pdf",
     "filename": "3_Third_Normal_Form_3NF.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1692,7 +1692,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-4_Boyce_Codd_Normal_Form_BCNF",
     "relPath": "Semester 3/DBMS/Module 4/4_Boyce_Codd_Normal_Form_BCNF.md",
-    "pdfPath": "PDF_Notes/4_Boyce_Codd_Normal_Form_BCNF.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/4_Boyce_Codd_Normal_Form_BCNF.pdf",
     "filename": "4_Boyce_Codd_Normal_Form_BCNF.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1714,7 +1714,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-5_Algorithm_for_Decomposition_Using_Functional_Dependencies",
     "relPath": "Semester 3/DBMS/Module 4/5_Algorithm_for_Decomposition_Using_Functional_Dependencies.md",
-    "pdfPath": "PDF_Notes/5_Algorithm_for_Decomposition_Using_Functional_Dependencies.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/5_Algorithm_for_Decomposition_Using_Functional_Dependencies.pdf",
     "filename": "5_Algorithm_for_Decomposition_Using_Functional_Dependencies.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1736,7 +1736,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-6_Decomposition_Using_Multivalued_Attribute",
     "relPath": "Semester 3/DBMS/Module 4/6_Decomposition_Using_Multivalued_Attribute.md",
-    "pdfPath": "PDF_Notes/6_Decomposition_Using_Multivalued_Attribute.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/6_Decomposition_Using_Multivalued_Attribute.pdf",
     "filename": "6_Decomposition_Using_Multivalued_Attribute.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1758,7 +1758,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-7_Self_Learning_NoSQL_Data_Models",
     "relPath": "Semester 3/DBMS/Module 4/7_Self_Learning_NoSQL_Data_Models.md",
-    "pdfPath": "PDF_Notes/7_Self_Learning_NoSQL_Data_Models.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/7_Self_Learning_NoSQL_Data_Models.pdf",
     "filename": "7_Self_Learning_NoSQL_Data_Models.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1776,7 +1776,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-Module_4_QA-2M",
     "relPath": "Semester 3/DBMS/Module 4/Module_4_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/Module_4_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1794,7 +1794,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-Module_4_QA-3M",
     "relPath": "Semester 3/DBMS/Module 4/Module_4_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/Module_4_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1812,7 +1812,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-Module_4_QA-5M",
     "relPath": "Semester 3/DBMS/Module 4/Module_4_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/Module_4_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1830,7 +1830,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 4-Module_4_QA-10M",
     "relPath": "Semester 3/DBMS/Module 4/Module_4_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 4/Module_4_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1848,7 +1848,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-1_Query_Optimization_Relational_Expressions",
     "relPath": "Semester 3/DBMS/Module 5/1_Query_Optimization_Relational_Expressions.md",
-    "pdfPath": "PDF_Notes/1_Query_Optimization_Relational_Expressions.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/1_Query_Optimization_Relational_Expressions.pdf",
     "filename": "1_Query_Optimization_Relational_Expressions.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1870,7 +1870,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-2_Estimating_Statistics_and_Choice_of_Evaluation_Plan",
     "relPath": "Semester 3/DBMS/Module 5/2_Estimating_Statistics_and_Choice_of_Evaluation_Plan.md",
-    "pdfPath": "PDF_Notes/2_Estimating_Statistics_and_Choice_of_Evaluation_Plan.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/2_Estimating_Statistics_and_Choice_of_Evaluation_Plan.pdf",
     "filename": "2_Estimating_Statistics_and_Choice_of_Evaluation_Plan.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1892,7 +1892,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-3_Transaction_Concept_and_ACID_Properties",
     "relPath": "Semester 3/DBMS/Module 5/3_Transaction_Concept_and_ACID_Properties.md",
-    "pdfPath": "PDF_Notes/3_Transaction_Concept_and_ACID_Properties.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/3_Transaction_Concept_and_ACID_Properties.pdf",
     "filename": "3_Transaction_Concept_and_ACID_Properties.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1914,7 +1914,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-4_Serializability_and_Concurrency_Control",
     "relPath": "Semester 3/DBMS/Module 5/4_Serializability_and_Concurrency_Control.md",
-    "pdfPath": "PDF_Notes/4_Serializability_and_Concurrency_Control.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/4_Serializability_and_Concurrency_Control.pdf",
     "filename": "4_Serializability_and_Concurrency_Control.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1936,7 +1936,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-5_Lock_Based_Protocols_and_Multiple_Granularity",
     "relPath": "Semester 3/DBMS/Module 5/5_Lock_Based_Protocols_and_Multiple_Granularity.md",
-    "pdfPath": "PDF_Notes/5_Lock_Based_Protocols_and_Multiple_Granularity.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/5_Lock_Based_Protocols_and_Multiple_Granularity.pdf",
     "filename": "5_Lock_Based_Protocols_and_Multiple_Granularity.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1958,7 +1958,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-6_Insertion_Deletion_and_Predicate_Reads",
     "relPath": "Semester 3/DBMS/Module 5/6_Insertion_Deletion_and_Predicate_Reads.md",
-    "pdfPath": "PDF_Notes/6_Insertion_Deletion_and_Predicate_Reads.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/6_Insertion_Deletion_and_Predicate_Reads.pdf",
     "filename": "6_Insertion_Deletion_and_Predicate_Reads.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -1980,7 +1980,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-7_Timestamp_and_Validation_Based_Protocols",
     "relPath": "Semester 3/DBMS/Module 5/7_Timestamp_and_Validation_Based_Protocols.md",
-    "pdfPath": "PDF_Notes/7_Timestamp_and_Validation_Based_Protocols.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/7_Timestamp_and_Validation_Based_Protocols.pdf",
     "filename": "7_Timestamp_and_Validation_Based_Protocols.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2002,7 +2002,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-8_Log_Based_Recovery",
     "relPath": "Semester 3/DBMS/Module 5/8_Log_Based_Recovery.md",
-    "pdfPath": "PDF_Notes/8_Log_Based_Recovery.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/8_Log_Based_Recovery.pdf",
     "filename": "8_Log_Based_Recovery.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2024,7 +2024,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning",
     "relPath": "Semester 3/DBMS/Module 5/9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning.md",
-    "pdfPath": "PDF_Notes/9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning.pdf",
     "filename": "9_Self_Learning_Distributed_Transactions_TCL_Performance_Tuning.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2042,7 +2042,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-Module_5_QA-2M",
     "relPath": "Semester 3/DBMS/Module 5/Module_5_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/Module_5_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2060,7 +2060,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-Module_5_QA-3M",
     "relPath": "Semester 3/DBMS/Module 5/Module_5_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/Module_5_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2078,7 +2078,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-Module_5_QA-5M",
     "relPath": "Semester 3/DBMS/Module 5/Module_5_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/Module_5_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2096,7 +2096,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 5-Module_5_QA-10M",
     "relPath": "Semester 3/DBMS/Module 5/Module_5_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 5/Module_5_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2114,7 +2114,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-1_IBM_Db2_Overview_Architecture_Use_Cases",
     "relPath": "Semester 3/DBMS/Module 6/1_IBM_Db2_Overview_Architecture_Use_Cases.md",
-    "pdfPath": "PDF_Notes/1_IBM_Db2_Overview_Architecture_Use_Cases.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/1_IBM_Db2_Overview_Architecture_Use_Cases.pdf",
     "filename": "1_IBM_Db2_Overview_Architecture_Use_Cases.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2136,7 +2136,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-2_Db2_System_Requirements_Installation_and_Interfaces",
     "relPath": "Semester 3/DBMS/Module 6/2_Db2_System_Requirements_Installation_and_Interfaces.md",
-    "pdfPath": "PDF_Notes/2_Db2_System_Requirements_Installation_and_Interfaces.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/2_Db2_System_Requirements_Installation_and_Interfaces.pdf",
     "filename": "2_Db2_System_Requirements_Installation_and_Interfaces.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2158,7 +2158,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-3_Basic_SQL_Operations_in_Db2",
     "relPath": "Semester 3/DBMS/Module 6/3_Basic_SQL_Operations_in_Db2.md",
-    "pdfPath": "PDF_Notes/3_Basic_SQL_Operations_in_Db2.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/3_Basic_SQL_Operations_in_Db2.pdf",
     "filename": "3_Basic_SQL_Operations_in_Db2.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2180,7 +2180,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse",
     "relPath": "Semester 3/DBMS/Module 6/4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse.md",
-    "pdfPath": "PDF_Notes/4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse.pdf",
     "filename": "4_Self_Learning_Db2_Cloud_Backup_Indexing_Warehouse.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2202,7 +2202,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-Module_6_QA-2M",
     "relPath": "Semester 3/DBMS/Module 6/Module_6_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/Module_6_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2220,7 +2220,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-Module_6_QA-3M",
     "relPath": "Semester 3/DBMS/Module 6/Module_6_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/Module_6_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2238,7 +2238,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-Module_6_QA-5M",
     "relPath": "Semester 3/DBMS/Module 6/Module_6_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/Module_6_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2256,7 +2256,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-DBMS-Module 6-Module_6_QA-10M",
     "relPath": "Semester 3/DBMS/Module 6/Module_6_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/DBMS/Module 6/Module_6_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "DBMS",
@@ -2484,7 +2484,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 1-Module_1_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 1/Module_1_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 1/Module_1_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -2710,7 +2710,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 2-Module_2_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 2/Module_2_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 2/Module_2_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -2728,7 +2728,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 2-Module_2_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 2/Module_2_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 2/Module_2_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -2746,7 +2746,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 2-Module_2_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 2/Module_2_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 2/Module_2_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -2764,7 +2764,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 2-Module_2_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 2/Module_2_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 2/Module_2_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -2990,7 +2990,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 3-Module_3_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 3/Module_3_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 3/Module_3_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3008,7 +3008,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 3-Module_3_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 3/Module_3_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 3/Module_3_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3026,7 +3026,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 3-Module_3_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 3/Module_3_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 3/Module_3_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3044,7 +3044,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 3-Module_3_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 3/Module_3_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 3/Module_3_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3062,7 +3062,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-1_Tree_Introduction_and_Terminologies",
     "relPath": "Semester 3/Data Structure/Module 4/1_Tree_Introduction_and_Terminologies.md",
-    "pdfPath": "PDF_Notes/1_Tree_Introduction_and_Terminologies.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/1_Tree_Introduction_and_Terminologies.pdf",
     "filename": "1_Tree_Introduction_and_Terminologies.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3084,7 +3084,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-2_Binary_Tree_Representation_and_Types",
     "relPath": "Semester 3/Data Structure/Module 4/2_Binary_Tree_Representation_and_Types.md",
-    "pdfPath": "PDF_Notes/2_Binary_Tree_Representation_and_Types.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/2_Binary_Tree_Representation_and_Types.pdf",
     "filename": "2_Binary_Tree_Representation_and_Types.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3106,7 +3106,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-3_Binary_Tree_Traversals",
     "relPath": "Semester 3/Data Structure/Module 4/3_Binary_Tree_Traversals.md",
-    "pdfPath": "PDF_Notes/3_Binary_Tree_Traversals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/3_Binary_Tree_Traversals.pdf",
     "filename": "3_Binary_Tree_Traversals.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3128,7 +3128,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-4_Binary_Search_Tree_and_Operations",
     "relPath": "Semester 3/Data Structure/Module 4/4_Binary_Search_Tree_and_Operations.md",
-    "pdfPath": "PDF_Notes/4_Binary_Search_Tree_and_Operations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/4_Binary_Search_Tree_and_Operations.pdf",
     "filename": "4_Binary_Search_Tree_and_Operations.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3146,7 +3146,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman",
     "relPath": "Semester 3/Data Structure/Module 4/5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman.md",
-    "pdfPath": "PDF_Notes/5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman.pdf",
     "filename": "5_Applications_of_Binary_Tree_Expression_Tree_and_Huffman.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3168,7 +3168,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-6_AVL_Tree_Rotations_and_Operations",
     "relPath": "Semester 3/Data Structure/Module 4/6_AVL_Tree_Rotations_and_Operations.md",
-    "pdfPath": "PDF_Notes/6_AVL_Tree_Rotations_and_Operations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/6_AVL_Tree_Rotations_and_Operations.pdf",
     "filename": "6_AVL_Tree_Rotations_and_Operations.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3190,7 +3190,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-7_Introduction_to_B_Tree_and_B_Plus_Tree",
     "relPath": "Semester 3/Data Structure/Module 4/7_Introduction_to_B_Tree_and_B_Plus_Tree.md",
-    "pdfPath": "PDF_Notes/7_Introduction_to_B_Tree_and_B_Plus_Tree.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/7_Introduction_to_B_Tree_and_B_Plus_Tree.pdf",
     "filename": "7_Introduction_to_B_Tree_and_B_Plus_Tree.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3211,7 +3211,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-8_Self_Learning_Red_Black_Trees",
     "relPath": "Semester 3/Data Structure/Module 4/8_Self_Learning_Red_Black_Trees.md",
-    "pdfPath": "PDF_Notes/8_Self_Learning_Red_Black_Trees.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/8_Self_Learning_Red_Black_Trees.pdf",
     "filename": "8_Self_Learning_Red_Black_Trees.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3229,7 +3229,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-Module_4_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 4/Module_4_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/Module_4_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3247,7 +3247,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-Module_4_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 4/Module_4_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/Module_4_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3265,7 +3265,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-Module_4_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 4/Module_4_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/Module_4_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3283,7 +3283,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 4-Module_4_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 4/Module_4_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 4/Module_4_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3301,7 +3301,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-1_Graph_Introduction_and_Terminologies",
     "relPath": "Semester 3/Data Structure/Module 5/1_Graph_Introduction_and_Terminologies.md",
-    "pdfPath": "PDF_Notes/1_Graph_Introduction_and_Terminologies.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/1_Graph_Introduction_and_Terminologies.pdf",
     "filename": "1_Graph_Introduction_and_Terminologies.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3323,7 +3323,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-2_Graph_Representations",
     "relPath": "Semester 3/Data Structure/Module 5/2_Graph_Representations.md",
-    "pdfPath": "PDF_Notes/2_Graph_Representations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/2_Graph_Representations.pdf",
     "filename": "2_Graph_Representations.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3344,7 +3344,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-3_Graph_Traversals_BFS_and_DFS",
     "relPath": "Semester 3/Data Structure/Module 5/3_Graph_Traversals_BFS_and_DFS.md",
-    "pdfPath": "PDF_Notes/3_Graph_Traversals_BFS_and_DFS.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/3_Graph_Traversals_BFS_and_DFS.pdf",
     "filename": "3_Graph_Traversals_BFS_and_DFS.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3362,7 +3362,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-4_Self_Learning_Graph_Application_Topological_Sorting",
     "relPath": "Semester 3/Data Structure/Module 5/4_Self_Learning_Graph_Application_Topological_Sorting.md",
-    "pdfPath": "PDF_Notes/4_Self_Learning_Graph_Application_Topological_Sorting.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/4_Self_Learning_Graph_Application_Topological_Sorting.pdf",
     "filename": "4_Self_Learning_Graph_Application_Topological_Sorting.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3380,7 +3380,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-Module_5_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 5/Module_5_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/Module_5_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3398,7 +3398,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-Module_5_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 5/Module_5_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/Module_5_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3416,7 +3416,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-Module_5_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 5/Module_5_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/Module_5_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3434,7 +3434,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 5-Module_5_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 5/Module_5_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 5/Module_5_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3452,7 +3452,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-1_Searching_Techniques_Linear_and_Binary_Search",
     "relPath": "Semester 3/Data Structure/Module 6/1_Searching_Techniques_Linear_and_Binary_Search.md",
-    "pdfPath": "PDF_Notes/1_Searching_Techniques_Linear_and_Binary_Search.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/1_Searching_Techniques_Linear_and_Binary_Search.pdf",
     "filename": "1_Searching_Techniques_Linear_and_Binary_Search.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3470,7 +3470,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-2_Sorting_Techniques_Bubble_Insertion_Selection_Sort",
     "relPath": "Semester 3/Data Structure/Module 6/2_Sorting_Techniques_Bubble_Insertion_Selection_Sort.md",
-    "pdfPath": "PDF_Notes/2_Sorting_Techniques_Bubble_Insertion_Selection_Sort.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/2_Sorting_Techniques_Bubble_Insertion_Selection_Sort.pdf",
     "filename": "2_Sorting_Techniques_Bubble_Insertion_Selection_Sort.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3488,7 +3488,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-3_Hashing_Concepts_and_Hash_Functions",
     "relPath": "Semester 3/Data Structure/Module 6/3_Hashing_Concepts_and_Hash_Functions.md",
-    "pdfPath": "PDF_Notes/3_Hashing_Concepts_and_Hash_Functions.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/3_Hashing_Concepts_and_Hash_Functions.pdf",
     "filename": "3_Hashing_Concepts_and_Hash_Functions.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3506,7 +3506,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-4_Collision_Resolution_Techniques",
     "relPath": "Semester 3/Data Structure/Module 6/4_Collision_Resolution_Techniques.md",
-    "pdfPath": "PDF_Notes/4_Collision_Resolution_Techniques.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/4_Collision_Resolution_Techniques.pdf",
     "filename": "4_Collision_Resolution_Techniques.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3524,7 +3524,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-5_Self_Learning_Merge_Sort_and_Quick_Sort",
     "relPath": "Semester 3/Data Structure/Module 6/5_Self_Learning_Merge_Sort_and_Quick_Sort.md",
-    "pdfPath": "PDF_Notes/5_Self_Learning_Merge_Sort_and_Quick_Sort.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/5_Self_Learning_Merge_Sort_and_Quick_Sort.pdf",
     "filename": "5_Self_Learning_Merge_Sort_and_Quick_Sort.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3542,7 +3542,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-Module_6_QA-2M",
     "relPath": "Semester 3/Data Structure/Module 6/Module_6_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/Module_6_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3560,7 +3560,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-Module_6_QA-3M",
     "relPath": "Semester 3/Data Structure/Module 6/Module_6_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/Module_6_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3578,7 +3578,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-Module_6_QA-5M",
     "relPath": "Semester 3/Data Structure/Module 6/Module_6_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/Module_6_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -3596,7 +3596,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Data Structure-Module 6-Module_6_QA-10M",
     "relPath": "Semester 3/Data Structure/Module 6/Module_6_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Data Structure/Module 6/Module_6_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "Data Structure",
@@ -4590,7 +4590,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 3-Module_3_QA-2M",
     "relPath": "Semester 3/MPCA/Module 3/Module_3_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 3/Module_3_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4608,7 +4608,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 3-Module_3_QA-3M",
     "relPath": "Semester 3/MPCA/Module 3/Module_3_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 3/Module_3_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4626,7 +4626,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 3-Module_3_QA-5M",
     "relPath": "Semester 3/MPCA/Module 3/Module_3_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 3/Module_3_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4644,7 +4644,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 3-Module_3_QA-10M",
     "relPath": "Semester 3/MPCA/Module 3/Module_3_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 3/Module_3_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4662,7 +4662,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-1_Memory_Interfacing_RAM_and_ROM_Decoding",
     "relPath": "Semester 3/MPCA/Module 4/1_Memory_Interfacing_RAM_and_ROM_Decoding.md",
-    "pdfPath": "PDF_Notes/1_Memory_Interfacing_RAM_and_ROM_Decoding.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/1_Memory_Interfacing_RAM_and_ROM_Decoding.pdf",
     "filename": "1_Memory_Interfacing_RAM_and_ROM_Decoding.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4684,7 +4684,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-2_8255_Programmable_Peripheral_Interface_PPI",
     "relPath": "Semester 3/MPCA/Module 4/2_8255_Programmable_Peripheral_Interface_PPI.md",
-    "pdfPath": "PDF_Notes/2_8255_Programmable_Peripheral_Interface_PPI.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/2_8255_Programmable_Peripheral_Interface_PPI.pdf",
     "filename": "2_8255_Programmable_Peripheral_Interface_PPI.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4706,7 +4706,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-3_8257_Direct_Memory_Access_Controller_DMAC",
     "relPath": "Semester 3/MPCA/Module 4/3_8257_Direct_Memory_Access_Controller_DMAC.md",
-    "pdfPath": "PDF_Notes/3_8257_Direct_Memory_Access_Controller_DMAC.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/3_8257_Direct_Memory_Access_Controller_DMAC.pdf",
     "filename": "3_8257_Direct_Memory_Access_Controller_DMAC.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4728,7 +4728,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-4_8259_Programmable_Interrupt_Controller_PIC",
     "relPath": "Semester 3/MPCA/Module 4/4_8259_Programmable_Interrupt_Controller_PIC.md",
-    "pdfPath": "PDF_Notes/4_8259_Programmable_Interrupt_Controller_PIC.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/4_8259_Programmable_Interrupt_Controller_PIC.pdf",
     "filename": "4_8259_Programmable_Interrupt_Controller_PIC.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4750,7 +4750,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading",
     "relPath": "Semester 3/MPCA/Module 4/5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading.md",
-    "pdfPath": "PDF_Notes/5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading.pdf",
     "filename": "5_Self_Learning_Address_Decoding_Techniques_and_8259_Cascading.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4768,7 +4768,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-Module_4_QA-2M",
     "relPath": "Semester 3/MPCA/Module 4/Module_4_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/Module_4_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4786,7 +4786,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-Module_4_QA-3M",
     "relPath": "Semester 3/MPCA/Module 4/Module_4_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/Module_4_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4804,7 +4804,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-Module_4_QA-5M",
     "relPath": "Semester 3/MPCA/Module 4/Module_4_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/Module_4_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4822,7 +4822,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 4-Module_4_QA-10M",
     "relPath": "Semester 3/MPCA/Module 4/Module_4_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 4/Module_4_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4840,7 +4840,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-1_80386DX_Architecture_and_Functional_Units",
     "relPath": "Semester 3/MPCA/Module 5/1_80386DX_Architecture_and_Functional_Units.md",
-    "pdfPath": "PDF_Notes/1_80386DX_Architecture_and_Functional_Units.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/1_80386DX_Architecture_and_Functional_Units.pdf",
     "filename": "1_80386DX_Architecture_and_Functional_Units.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4862,7 +4862,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-2_80386_Register_Organization",
     "relPath": "Semester 3/MPCA/Module 5/2_80386_Register_Organization.md",
-    "pdfPath": "PDF_Notes/2_80386_Register_Organization.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/2_80386_Register_Organization.pdf",
     "filename": "2_80386_Register_Organization.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4880,7 +4880,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-3_80386_Operating_Modes",
     "relPath": "Semester 3/MPCA/Module 5/3_80386_Operating_Modes.md",
-    "pdfPath": "PDF_Notes/3_80386_Operating_Modes.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/3_80386_Operating_Modes.pdf",
     "filename": "3_80386_Operating_Modes.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4898,7 +4898,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-4_Pentium_Processor_Architecture_and_Superscalar_Pipelining",
     "relPath": "Semester 3/MPCA/Module 5/4_Pentium_Processor_Architecture_and_Superscalar_Pipelining.md",
-    "pdfPath": "PDF_Notes/4_Pentium_Processor_Architecture_and_Superscalar_Pipelining.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/4_Pentium_Processor_Architecture_and_Superscalar_Pipelining.pdf",
     "filename": "4_Pentium_Processor_Architecture_and_Superscalar_Pipelining.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4920,7 +4920,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache",
     "relPath": "Semester 3/MPCA/Module 5/5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache.md",
-    "pdfPath": "PDF_Notes/5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache.pdf",
     "filename": "5_Self_Learning_80386_Memory_Management_Paging_and_MESI_Cache.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4938,7 +4938,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-Module_5_QA-2M",
     "relPath": "Semester 3/MPCA/Module 5/Module_5_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/Module_5_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4956,7 +4956,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-Module_5_QA-3M",
     "relPath": "Semester 3/MPCA/Module 5/Module_5_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/Module_5_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4974,7 +4974,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-Module_5_QA-5M",
     "relPath": "Semester 3/MPCA/Module 5/Module_5_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/Module_5_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -4992,7 +4992,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 5-Module_5_QA-10M",
     "relPath": "Semester 3/MPCA/Module 5/Module_5_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 5/Module_5_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5010,7 +5010,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-1_Evolutionary_Comparison_8086_to_Pentium",
     "relPath": "Semester 3/MPCA/Module 6/1_Evolutionary_Comparison_8086_to_Pentium.md",
-    "pdfPath": "PDF_Notes/1_Evolutionary_Comparison_8086_to_Pentium.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/1_Evolutionary_Comparison_8086_to_Pentium.pdf",
     "filename": "1_Evolutionary_Comparison_8086_to_Pentium.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5028,7 +5028,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-2_Pentium_4_NetBurst_Microarchitecture",
     "relPath": "Semester 3/MPCA/Module 6/2_Pentium_4_NetBurst_Microarchitecture.md",
-    "pdfPath": "PDF_Notes/2_Pentium_4_NetBurst_Microarchitecture.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/2_Pentium_4_NetBurst_Microarchitecture.pdf",
     "filename": "2_Pentium_4_NetBurst_Microarchitecture.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5046,7 +5046,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading",
     "relPath": "Semester 3/MPCA/Module 6/3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.md",
-    "pdfPath": "PDF_Notes/3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.pdf",
     "filename": "3_Pentium_4_ITLB_Branch_Prediction_and_Hyper_Threading.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5068,7 +5068,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-4_Self_Learning_ARM_Processor_Architecture_and_Features",
     "relPath": "Semester 3/MPCA/Module 6/4_Self_Learning_ARM_Processor_Architecture_and_Features.md",
-    "pdfPath": "PDF_Notes/4_Self_Learning_ARM_Processor_Architecture_and_Features.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/4_Self_Learning_ARM_Processor_Architecture_and_Features.pdf",
     "filename": "4_Self_Learning_ARM_Processor_Architecture_and_Features.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5086,7 +5086,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-Module_6_QA-2M",
     "relPath": "Semester 3/MPCA/Module 6/Module_6_QA/2M.md",
-    "pdfPath": "PDF_Notes/2M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/Module_6_QA/2M.pdf",
     "filename": "2M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5104,7 +5104,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-Module_6_QA-3M",
     "relPath": "Semester 3/MPCA/Module 6/Module_6_QA/3M.md",
-    "pdfPath": "PDF_Notes/3M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/Module_6_QA/3M.pdf",
     "filename": "3M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5122,7 +5122,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-Module_6_QA-5M",
     "relPath": "Semester 3/MPCA/Module 6/Module_6_QA/5M.md",
-    "pdfPath": "PDF_Notes/5M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/Module_6_QA/5M.pdf",
     "filename": "5M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5140,7 +5140,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-MPCA-Module 6-Module_6_QA-10M",
     "relPath": "Semester 3/MPCA/Module 6/Module_6_QA/10M.md",
-    "pdfPath": "PDF_Notes/10M.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/MPCA/Module 6/Module_6_QA/10M.pdf",
     "filename": "10M.md",
     "semester": "Semester 3",
     "subject": "MPCA",
@@ -5158,7 +5158,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_01_Power_BI_Fundamentals",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_01_Power_BI_Fundamentals.md",
-    "pdfPath": "PDF_Notes/Day_01_Power_BI_Fundamentals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_01_Power_BI_Fundamentals.pdf",
     "filename": "Day_01_Power_BI_Fundamentals.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5180,7 +5180,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_02_Power_BI_Desktop_Interface",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_02_Power_BI_Desktop_Interface.md",
-    "pdfPath": "PDF_Notes/Day_02_Power_BI_Desktop_Interface.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_02_Power_BI_Desktop_Interface.pdf",
     "filename": "Day_02_Power_BI_Desktop_Interface.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5202,7 +5202,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_03_Data_Sources_and_Import_Modes",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_03_Data_Sources_and_Import_Modes.md",
-    "pdfPath": "PDF_Notes/Day_03_Data_Sources_and_Import_Modes.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_03_Data_Sources_and_Import_Modes.pdf",
     "filename": "Day_03_Data_Sources_and_Import_Modes.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5224,7 +5224,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_04_Power_Query_Fundamentals",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_04_Power_Query_Fundamentals.md",
-    "pdfPath": "PDF_Notes/Day_04_Power_Query_Fundamentals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_04_Power_Query_Fundamentals.pdf",
     "filename": "Day_04_Power_Query_Fundamentals.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5246,7 +5246,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_05_Power_Query_Data_Cleaning",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_05_Power_Query_Data_Cleaning.md",
-    "pdfPath": "PDF_Notes/Day_05_Power_Query_Data_Cleaning.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_05_Power_Query_Data_Cleaning.pdf",
     "filename": "Day_05_Power_Query_Data_Cleaning.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5268,7 +5268,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_06_Power_Query_Transformations",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_06_Power_Query_Transformations.md",
-    "pdfPath": "PDF_Notes/Day_06_Power_Query_Transformations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_06_Power_Query_Transformations.pdf",
     "filename": "Day_06_Power_Query_Transformations.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5290,7 +5290,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_07_Power_Query_M_Language",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_07_Power_Query_M_Language.md",
-    "pdfPath": "PDF_Notes/Day_07_Power_Query_M_Language.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_07_Power_Query_M_Language.pdf",
     "filename": "Day_07_Power_Query_M_Language.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5312,7 +5312,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_08_Data_Modeling_Fundamentals",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_08_Data_Modeling_Fundamentals.md",
-    "pdfPath": "PDF_Notes/Day_08_Data_Modeling_Fundamentals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_08_Data_Modeling_Fundamentals.pdf",
     "filename": "Day_08_Data_Modeling_Fundamentals.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5334,7 +5334,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_09_Star_Schema_Design",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_09_Star_Schema_Design.md",
-    "pdfPath": "PDF_Notes/Day_09_Star_Schema_Design.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_09_Star_Schema_Design.pdf",
     "filename": "Day_09_Star_Schema_Design.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5356,7 +5356,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_10_Advanced_Data_Modeling",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_10_Advanced_Data_Modeling.md",
-    "pdfPath": "PDF_Notes/Day_10_Advanced_Data_Modeling.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_10_Advanced_Data_Modeling.pdf",
     "filename": "Day_10_Advanced_Data_Modeling.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5378,7 +5378,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_11_DAX_Fundamentals",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_11_DAX_Fundamentals.md",
-    "pdfPath": "PDF_Notes/Day_11_DAX_Fundamentals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_11_DAX_Fundamentals.pdf",
     "filename": "Day_11_DAX_Fundamentals.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5400,7 +5400,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_12_Essential_DAX_Functions",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_12_Essential_DAX_Functions.md",
-    "pdfPath": "PDF_Notes/Day_12_Essential_DAX_Functions.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_12_Essential_DAX_Functions.pdf",
     "filename": "Day_12_Essential_DAX_Functions.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5422,7 +5422,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_13_DAX_Filter_Context_and_CALCULATE",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_13_DAX_Filter_Context_and_CALCULATE.md",
-    "pdfPath": "PDF_Notes/Day_13_DAX_Filter_Context_and_CALCULATE.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_13_DAX_Filter_Context_and_CALCULATE.pdf",
     "filename": "Day_13_DAX_Filter_Context_and_CALCULATE.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5444,7 +5444,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_14_Advanced_DAX_Filtering",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_14_Advanced_DAX_Filtering.md",
-    "pdfPath": "PDF_Notes/Day_14_Advanced_DAX_Filtering.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_14_Advanced_DAX_Filtering.pdf",
     "filename": "Day_14_Advanced_DAX_Filtering.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5466,7 +5466,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_15_DAX_Time_Intelligence",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_15_DAX_Time_Intelligence.md",
-    "pdfPath": "PDF_Notes/Day_15_DAX_Time_Intelligence.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_15_DAX_Time_Intelligence.pdf",
     "filename": "Day_15_DAX_Time_Intelligence.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5488,7 +5488,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_16_Advanced_DAX_Iterators",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_16_Advanced_DAX_Iterators.md",
-    "pdfPath": "PDF_Notes/Day_16_Advanced_DAX_Iterators.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_16_Advanced_DAX_Iterators.pdf",
     "filename": "Day_16_Advanced_DAX_Iterators.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5510,7 +5510,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_17_DAX_Design_Patterns",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_17_DAX_Design_Patterns.md",
-    "pdfPath": "PDF_Notes/Day_17_DAX_Design_Patterns.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_17_DAX_Design_Patterns.pdf",
     "filename": "Day_17_DAX_Design_Patterns.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5532,7 +5532,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_18_Visualization_Fundamentals",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_18_Visualization_Fundamentals.md",
-    "pdfPath": "PDF_Notes/Day_18_Visualization_Fundamentals.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_18_Visualization_Fundamentals.pdf",
     "filename": "Day_18_Visualization_Fundamentals.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5554,7 +5554,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_19_Advanced_Visualizations",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_19_Advanced_Visualizations.md",
-    "pdfPath": "PDF_Notes/Day_19_Advanced_Visualizations.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_19_Advanced_Visualizations.pdf",
     "filename": "Day_19_Advanced_Visualizations.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5576,7 +5576,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_20_Dashboard_UI_UX_Design",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_20_Dashboard_UI_UX_Design.md",
-    "pdfPath": "PDF_Notes/Day_20_Dashboard_UI_UX_Design.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_20_Dashboard_UI_UX_Design.pdf",
     "filename": "Day_20_Dashboard_UI_UX_Design.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5598,7 +5598,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_21_Filters_and_Interactions",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_21_Filters_and_Interactions.md",
-    "pdfPath": "PDF_Notes/Day_21_Filters_and_Interactions.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_21_Filters_and_Interactions.pdf",
     "filename": "Day_21_Filters_and_Interactions.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5620,7 +5620,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_22_Advanced_Report_Features",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_22_Advanced_Report_Features.md",
-    "pdfPath": "PDF_Notes/Day_22_Advanced_Report_Features.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_22_Advanced_Report_Features.pdf",
     "filename": "Day_22_Advanced_Report_Features.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5642,7 +5642,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_23_Power_BI_Service",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_23_Power_BI_Service.md",
-    "pdfPath": "PDF_Notes/Day_23_Power_BI_Service.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_23_Power_BI_Service.pdf",
     "filename": "Day_23_Power_BI_Service.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5664,7 +5664,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_24_Data_Refresh_and_Gateways",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_24_Data_Refresh_and_Gateways.md",
-    "pdfPath": "PDF_Notes/Day_24_Data_Refresh_and_Gateways.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_24_Data_Refresh_and_Gateways.pdf",
     "filename": "Day_24_Data_Refresh_and_Gateways.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5686,7 +5686,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_25_Row_Level_Security_RLS",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_25_Row_Level_Security_RLS.md",
-    "pdfPath": "PDF_Notes/Day_25_Row_Level_Security_RLS.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_25_Row_Level_Security_RLS.pdf",
     "filename": "Day_25_Row_Level_Security_RLS.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5708,7 +5708,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_26_Performance_Optimization",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_26_Performance_Optimization.md",
-    "pdfPath": "PDF_Notes/Day_26_Performance_Optimization.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_26_Performance_Optimization.pdf",
     "filename": "Day_26_Performance_Optimization.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5730,7 +5730,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_27_Advanced_Power_BI_Architecture",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_27_Advanced_Power_BI_Architecture.md",
-    "pdfPath": "PDF_Notes/Day_27_Advanced_Power_BI_Architecture.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_27_Advanced_Power_BI_Architecture.pdf",
     "filename": "Day_27_Advanced_Power_BI_Architecture.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5752,7 +5752,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_28_AI_and_Advanced_Analytics",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_28_AI_and_Advanced_Analytics.md",
-    "pdfPath": "PDF_Notes/Day_28_AI_and_Advanced_Analytics.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_28_AI_and_Advanced_Analytics.pdf",
     "filename": "Day_28_AI_and_Advanced_Analytics.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5774,7 +5774,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_29_Real_World_Project",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_29_Real_World_Project.md",
-    "pdfPath": "PDF_Notes/Day_29_Real_World_Project.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_29_Real_World_Project.pdf",
     "filename": "Day_29_Real_World_Project.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
@@ -5796,7 +5796,7 @@ window.NOTES_DATA = [
   {
     "id": "Semester 3-Skill Workshop-Power BI-Day_30_Portfolio_and_Interview_Mastery",
     "relPath": "Semester 3/Skill Workshop/Power BI/Day_30_Portfolio_and_Interview_Mastery.md",
-    "pdfPath": "PDF_Notes/Day_30_Portfolio_and_Interview_Mastery.pdf",
+    "pdfPath": "PDF_Notes/Semester 3/Skill Workshop/Power BI/Day_30_Portfolio_and_Interview_Mastery.pdf",
     "filename": "Day_30_Portfolio_and_Interview_Mastery.md",
     "semester": "Skill Workshop",
     "subject": "Power BI",
