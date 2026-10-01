@@ -1,10 +1,17 @@
-# Binary Search Tree (BST) & Operations — Data Structures
+# Binary Search Tree (BST) & Operations
 
-> **Definition:** A **Binary Search Tree (BST)** is a binary tree with the ordering property: for every node `X`, all keys in `X`'s left subtree are strictly **less than** `X.key`, and all keys in `X`'s right subtree are strictly **greater than** `X.key`.
+**Q. Define a Binary Search Tree (BST). Explain search, insertion, and deletion operations with suitable diagrams and C code. Discuss the three deletion cases in detail and analyze their time complexities.**
 
 ---
 
-## 1. Detailed Technical Explanation
+> 📌 **Definition to Remember**
+> A **Binary Search Tree (BST)** is a binary tree with the ordering property: for every node $X$, all keys in $X$'s left subtree are strictly **less than** $X.\text{key}$, and all keys in $X$'s right subtree are strictly **greater than** $X.\text{key}$. Duplicate keys are typically not allowed.
+
+---
+
+### 1. BST Property & Visual Structure
+
+$$\text{Left Subtree Keys} < \mathbf{\text{Node Key}} < \text{Right Subtree Keys}$$
 
 ```
                      [ 50 ]
@@ -14,27 +21,51 @@
           [ 20 ]  [ 40 ] [ 60 ]  [ 80 ]
 ```
 
-### 1. Search Operation in BST
-- Compare search key `K` with `root->data`:
-  - If `K == root->data`: Found!
-  - If `K < root->data`: Recursively search `root->left`.
-  - If `K > root->data`: Recursively search `root->right`.
-- **Time Complexity:** Average `O(log N)`, Worst-case `O(N)` (skewed tree).
-
-### 2. Insertion Operation
-- Traverse tree following BST property until reaching a `NULL` pointer, then insert new node as a leaf.
-
-### 3. Deletion Operation in BST (Three Cases):
-1. **Case 1: Node is a Leaf (0 Children):** Simply delete the node and set parent's pointer to `NULL`.
-2. **Case 2: Node has 1 Child:** Replace the node with its only child.
-3. **Case 3: Node has 2 Children:**
-   - Find the **Inorder Successor** (smallest value in right subtree) OR **Inorder Predecessor** (largest value in left subtree).
-   - Copy the successor's data to the target node.
-   - Recursively delete the Inorder Successor node from the right subtree.
+* **Inorder Traversal:** `20 -> 30 -> 40 -> 50 -> 60 -> 70 -> 80` (Strictly Sorted Ascending!).
 
 ---
 
-## 2. Complete Executable C Implementation of BST
+### 2. Search & Insertion Operations
+
+#### 1. Search Operation
+* Compare search key $K$ with current node:
+  * If $K == \text{node.data}$: Search Successful!
+  * If $K < \text{node.data}$: Recursively search left subtree.
+  * If $K > \text{node.data}$: Recursively search right subtree.
+* If `NULL` reached: Key does not exist in BST.
+
+#### 2. Insertion Operation
+* Traverse down the tree following search logic until reaching a `NULL` pointer.
+* Attach the new node as a leaf at that exact location.
+
+---
+
+### 3. Deletion in BST: The Three Cases Explained
+
+Deleting a node is the most complex BST operation because the BST ordering invariant must be preserved:
+
+```
+Case 1: Delete Leaf (20)      Case 2: Delete Node with 1 Child (30)   Case 3: Delete Node with 2 Children (50)
+      [ 30 ]                               [ 50 ]                                    [ 50 ]  <-- Replace with
+     /      \                            /      \                                 /      \     Inorder Successor (60)
+  [ 20 ]   [ 40 ]                      [ 30 ]   [ 70 ]                          [ 30 ]   [ 70 ]
+  (Remove pointer)                     /                                                 /      \
+                                    [ 20 ]                                            [ 60 ]  [ 80 ]
+                                (Bypass: link 50 directly to 20)
+```
+
+1. **Case 1: Node is a Leaf (0 Children):**
+   * Simply free the node and set its parent's left/right pointer to `NULL`.
+2. **Case 2: Node has Exactly 1 Child:**
+   * Bypass the target node by connecting its parent directly to its only child, then free the target node.
+3. **Case 3: Node has 2 Children:**
+   * Find the **Inorder Successor** (smallest key in the right subtree: leftmost node of right child) OR **Inorder Predecessor** (largest key in the left subtree).
+   * Copy the successor's data value into the target node.
+   * Recursively delete the Inorder Successor node from the right subtree (which will fall into Case 1 or Case 2).
+
+---
+
+### 4. Complete C Implementation of BST Operations
 
 ```c
 #include <stdio.h>
@@ -45,6 +76,7 @@ struct Node {
     struct Node *left, *right;
 };
 
+// Create a new BST node
 struct Node* createNode(int key) {
     struct Node* n = (struct Node*)malloc(sizeof(struct Node));
     n->data = key;
@@ -52,7 +84,7 @@ struct Node* createNode(int key) {
     return n;
 }
 
-// 1. BST Insert
+// 1. Insert Operation
 struct Node* insert(struct Node* node, int key) {
     if (node == NULL) return createNode(key);
     if (key < node->data)
@@ -62,15 +94,15 @@ struct Node* insert(struct Node* node, int key) {
     return node;
 }
 
-// Find minimum node (Inorder Successor helper)
-struct Node* findMin(struct Node* node) {
+// Helper: Find minimum node (Inorder Successor)
+struct Node* minValueNode(struct Node* node) {
     struct Node* current = node;
     while (current && current->left != NULL)
         current = current->left;
     return current;
 }
 
-// 2. BST Delete
+// 2. Delete Operation (Covering all 3 Cases)
 struct Node* deleteNode(struct Node* root, int key) {
     if (root == NULL) return root;
 
@@ -90,35 +122,38 @@ struct Node* deleteNode(struct Node* root, int key) {
             return temp;
         }
         // Case 3: 2 children
-        struct Node* temp = findMin(root->right); // Inorder successor
-        root->data = temp->data;
-        root->right = deleteNode(root->right, temp->data);
+        struct Node* temp = minValueNode(root->right); // Inorder Successor
+        root->data = temp->data;                       // Copy value
+        root->right = deleteNode(root->right, temp->data); // Delete successor
     }
     return root;
 }
-
-void inorder(struct Node* root) {
-    if (root != NULL) {
-        inorder(root->left);
-        printf("%d ", root->data);
-        inorder(root->right);
-    }
-}
 ```
 
 ---
 
-## 3. Time and Space Complexities
-| Operation | Average Case | Worst Case (Skewed) |
-| :--- | :--- | :--- |
-| **Search** | `O(log N)` | `O(N)` |
-| **Insertion** | `O(log N)` | `O(N)` |
-| **Deletion** | `O(log N)` | `O(N)` |
-| **Space** | `O(H)` | `O(N)` |
+### 5. Time Complexity Analysis
+
+| Operation | Average Case (Balanced) | Worst Case (Skewed) | Reason for Degradation |
+| :--- | :---: | :---: | :--- |
+| **Search** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Tree degenerates into a singly linked list if keys inserted in sorted order |
+| **Insert** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Traverses down the full height $h = N$ |
+| **Delete** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Successor lookup takes $O(h)$ |
+
+* **Solution to Worst Case:** Self-balancing trees like **AVL Trees** and **Red-Black Trees** strictly guarantee $O(\log N)$ worst-case time.
 
 ---
 
-## 4. Quick Recall Flow
-```
-BST Property: Left < Root < Right -> Search/Insert via Binary Decision -> Delete (0 child: drop, 1 child: bypass, 2 children: inorder successor)
-```
+> ⭐ **Must-Write Points (for 10 marks)**
+> 1. BST rule: **Left Subtree Keys < Root Key < Right Subtree Keys** at every node.
+> 2. **Inorder traversal of a BST always yields sorted ascending output**.
+> 3. Search and insertion take **$O(\log N)$ on average**, but degrade to **$O(N)$** in skewed trees.
+> 4. **Deletion Case 1 (Leaf):** Free node, set parent pointer to `NULL`.
+> 5. **Deletion Case 2 (1 Child):** Replace target node with its only child.
+> 6. **Deletion Case 3 (2 Children):** Replace target value with **Inorder Successor** (min in right subtree), then delete successor.
+> 7. Worst-case $O(N)$ occurs when keys are inserted in strictly sorted order, creating a degenerate tree.
+
+---
+
+> ⚡ **Quick Recall**
+> `Left < Root < Right → Inorder = Sorted → Search/Insert: O(log N) → Delete: Leaf (NULL) | 1 Child (Bypass) | 2 Children (Inorder Successor) → Skewed: O(N)`

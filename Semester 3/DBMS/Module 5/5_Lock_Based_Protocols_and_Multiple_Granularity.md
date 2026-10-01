@@ -1,81 +1,97 @@
-# Lock-Based Protocols & Multiple Granularity — DBMS
+# Lock-Based Protocols & Multiple Granularity
 
-> **Definition: Lock-Based Protocols** control concurrent access to data items by requiring transactions to acquire **Locks** (Shared or Exclusive) before reading or writing data.
+**Q. Explain lock-based concurrency control protocols. Describe Shared and Exclusive locks, the Two-Phase Locking (2PL) protocol with its variations (Strict and Rigorous 2PL), and Multiple Granularity Locking (MGL) with Intent locks.**
 
 ---
 
-## 1. Detailed Technical Explanation
+> 📌 **Definition to Remember**
+> **Lock-Based Protocols** control concurrent access by requiring transactions to obtain **Locks** (Shared for reading, Exclusive for writing) before accessing data items. The **Two-Phase Locking (2PL) protocol** guarantees conflict serializability by ensuring transactions acquire all locks in a Growing phase before releasing any in a Shrinking phase.
 
-### 1. Lock Modes:
-1. **Shared Lock (S-Lock):** Granted for `READ` operations. Multiple transactions can hold S-locks simultaneously on the same item.
-2. **Exclusive Lock (X-Lock):** Granted for `WRITE` operations. Only one transaction can hold an X-lock; no other transaction can read or write.
+---
+
+### 1. Basic Lock Modes & Compatibility Matrix
+
+1. **Shared Lock ($S$):** Requested for read-only operations (`Read(Q)`). Multiple transactions can concurrently hold shared locks on the same data item.
+2. **Exclusive Lock ($X$):** Requested for write/update operations (`Write(Q)`). Only one transaction can hold an exclusive lock; no other transaction can read or write.
 
 #### Lock Compatibility Matrix:
-| Lock Requested | Shared (S) | Exclusive (X) |
-| :--- | :--- | :--- |
-| **Shared (S)** | **Compatible (True)** | Incompatible (False) |
-| **Exclusive (X)**| Incompatible (False) | Incompatible (False) |
+| Lock Requested by $T_2$ \ Lock Held by $T_1$ | Shared Lock ($S$) | Exclusive Lock ($X$) |
+| :---: | :---: | :---: |
+| **Shared Lock ($S$)** | **Compatible (TRUE)** | Incompatible (FALSE - Wait) |
+| **Exclusive Lock ($X$)** | Incompatible (FALSE - Wait) | Incompatible (FALSE - Wait) |
 
 ---
 
-## 2. Two-Phase Locking Protocol (2PL)
+### 2. Two-Phase Locking Protocol (2PL)
 
-2PL guarantees conflict serializability by dividing a transaction's lock lifecycle into two distinct phases:
+To guarantee conflict serializability, 2PL requires each transaction to execute in **two distinct phases**:
 
 ```
 Number of
 Locks Held
-   ^             Phase 1: Growing Phase          Phase 2: Shrinking Phase
-   |             (Locks acquired, none released)  (Locks released, none acquired)
+   ^               PHASE 1: GROWING PHASE          PHASE 2: SHRINKING PHASE
+   |               (Locks acquired, none released) (Locks released, none acquired)
    |
-   |                   /\ Lock Point
-   |                  /     |                 /       |                /         +---------------+--------+-----------------------------------> Time
+   |                         /\ Lock Point
+   |                        /     |                       /       |                      /         +---------------------+--------+---------------------------------------> Time
 ```
 
-### 2PL Variants:
-1. **Basic 2PL:** Transaction acquires locks as needed (Growing), releases locks (Shrinking). Can suffer from **Cascading Aborts**.
-2. **Strict 2PL:** Transaction holds all **Exclusive (X) locks until COMMIT/ABORT**. Prevents cascading aborts (Strict schedules).
-3. **Rigorous 2PL:** Transaction holds **ALL locks (Shared and Exclusive) until COMMIT/ABORT**.
+1. **Growing Phase:** Transaction may acquire new locks, but cannot release any lock.
+2. **Lock Point:** The exact instant when the transaction acquires its final lock.
+3. **Shrinking Phase:** Transaction may release locks, but cannot acquire any new lock.
+
+#### 2PL Variations:
+* **Basic 2PL:** Guarantees conflict serializability, but can suffer from **Cascading Aborts** (if $T_1$ releases an $X$ lock and then aborts, readers must also abort).
+* **Strict 2PL:** Transaction holds all **Exclusive ($X$) locks until COMMIT or ABORT**. Prevents cascading aborts; schedules are strict and recoverable.
+* **Rigorous 2PL:** Transaction holds **ALL locks (Shared and Exclusive) until COMMIT or ABORT**. Schedules are easily serialized in order of transaction commit.
 
 ---
 
-## 3. Multiple Granularity Locking (MGL)
+### 3. Multiple Granularity Locking (MGL)
 
-MGL allows data items of various sizes (Database -> File -> Page -> Record) to be locked in a tree hierarchy.
+In large databases, locking at a single granularity (e.g., locking only whole tables or only single records) causes inefficiencies:
+* Locking whole tables: Poor concurrency.
+* Locking individual records: Huge lock management overhead.
+
+**Multiple Granularity Locking (MGL)** organizes lockable data items in a **tree hierarchy**:
 
 ```
-                  [ DATABASE ]
-                       |
-                  [   FILE   ]
-                       |
-                  [   PAGE   ]
-                       |
-                  [  RECORD  ]
+                       [ DATABASE ]
+                            |
+                       [   AREA   ]
+                            |
+                       [   FILE   ]
+                            |
+                       [  RECORD  ]
 ```
 
-### Intent Locks:
-Before locking a fine-grained node (e.g., Record), a transaction must acquire an **Intent Lock** on its ancestor nodes:
-- **IS (Intent Shared):** Intent to lock explicit child nodes with Shared locks.
-- **IX (Intent Exclusive):** Intent to lock explicit child nodes with Exclusive locks.
-- **SIX (Shared + Intent Exclusive):** Explicit Shared lock on current subtree plus Intent Exclusive on lower nodes.
+#### Intent Locks:
+Before locking an explicit fine-grained node (e.g., a Record), a transaction must acquire an **Intent Lock** on all ancestor nodes to alert other transactions:
+* **Intent Shared (IS):** Explicit shared locking will be performed at lower tree levels.
+* **Intent Exclusive (IX):** Explicit exclusive locking will be performed at lower tree levels.
+* **Shared with Intent Exclusive (SIX):** Subtree is explicitly locked in Shared mode, but fine-grained exclusive locking will occur at lower levels.
+
+#### Multiple Granularity Lock Compatibility Matrix:
+| | IS | IX | S | SIX | X |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| **IS** | **TRUE** | **TRUE** | **TRUE** | **TRUE** | FALSE |
+| **IX** | **TRUE** | **TRUE** | FALSE | FALSE | FALSE |
+| **S** | **TRUE** | FALSE | **TRUE** | FALSE | FALSE |
+| **SIX**| **TRUE** | FALSE | FALSE | FALSE | FALSE |
+| **X** | FALSE | FALSE | FALSE | FALSE | FALSE |
 
 ---
 
-## 4. Core Concepts & Memory Keywords
-- **Lock Point:** Point in time where a transaction acquires its final lock in 2PL.
-- **Cascading Rollback:** One transaction aborting causes multiple dependent transactions to abort.
-- **Intent Locking:** Top-down locking mechanism in granularity trees.
+> ⭐ **Must-Write Points (for 10 marks)**
+> 1. Lock modes: **Shared ($S$)** allows concurrent reads; **Exclusive ($X$)** gives sole read/write access.
+> 2. **Two-Phase Locking (2PL)** divides lock lifecycle into **Growing Phase** (acquire) and **Shrinking Phase** (release).
+> 3. The **Lock Point** is the moment the transaction holds its maximum number of locks.
+> 4. **Strict 2PL** holds all $X$ locks until commit, completely eliminating cascading rollbacks.
+> 5. **Rigorous 2PL** holds all $S$ and $X$ locks until commit; standard in commercial engines.
+> 6. 2PL guarantees serializability, but is vulnerable to **deadlocks**.
+> 7. **Multiple Granularity Locking (MGL)** uses hierarchy trees and **Intent Locks (IS, IX, SIX)** to optimize locking overhead across records, files, and databases.
 
 ---
 
-## 5. Must-Write Points for Exams
-- Basic 2PL guarantees **conflict serializability**, but does NOT prevent **deadlocks**.
-- Strict 2PL prevents cascading aborts by holding Exclusive locks until the transaction commits.
-- Multiple granularity locking improves concurrency by allowing fine-grained locks without searching entire trees.
-
----
-
-## 6. Quick Recall Flow
-```
-Growing Phase (Acquire Locks) -> Lock Point -> Shrinking Phase (Release Locks) -> Hold X-Locks to Commit (Strict 2PL)
-```
+> ⚡ **Quick Recall**
+> `S-Lock (Read) vs X-Lock (Write) → 2PL (Growing Phase → Lock Point → Shrinking Phase) → Strict 2PL (Hold X till Commit) → MGL Hierarchy & Intent Locks (IS, IX, SIX)`
