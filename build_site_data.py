@@ -337,6 +337,8 @@ def parse_markdown_file(filepath):
     if not def_match:
         def_match = re.search(r'>\s*\*\*Definition:\*\*\s*(.+?)(?=\n\n|\n>|\n---|\Z)', content, re.DOTALL)
     definition = def_match.group(1).replace('\n>', ' ').strip() if def_match else ""
+    if definition:
+        definition = re.sub(r'\s+', ' ', definition).strip()
 
     # Extract Must Write Points / Skills
     must_write_match = re.search(r'>\s*⭐\s*\*\*(?:Must-Write Points|Must-Master Skills)[^\n]*\*\*\s*\n((?:>\s*.*?\n)+)', content)
@@ -361,6 +363,9 @@ def parse_markdown_file(filepath):
     if not quick_match:
         quick_match = re.search(r'##\s*\d*\.?\s*Quick Recall[^\n]*\n```[a-z]*\n(.+?)\n```', content, re.DOTALL)
     quick_recall = quick_match.group(1).strip() if quick_match else ""
+    if quick_recall:
+        quick_recall = re.sub(r'^`+|`+$', '', quick_recall).strip()
+        quick_recall = re.sub(r'\s+', ' ', quick_recall).strip()
 
     html = markdown.markdown(content, extensions=['tables', 'fenced_code', 'nl2br', 'sane_lists'])
 

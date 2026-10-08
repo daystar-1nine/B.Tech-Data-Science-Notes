@@ -1,7 +1,6 @@
 # Collision Resolution Techniques (Open Addressing & Chaining) — Data Structures
 
-> **Definition:** A **Collision** occurs in hashing when a hash function maps two distinct keys $k_1 
-e k_2** to the **exact same table index** (**h(k_1) = h(k_2)$). Collision resolution techniques resolve this conflict.
+> **Definition:** A **Collision** occurs in hashing when a hash function maps two distinct keys  \neq k_2$ to the **exact same table index** ((k_1) = h(k_2)$). Collision resolution techniques resolve this conflict.
 
 ---
 

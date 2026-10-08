@@ -790,6 +790,106 @@
     switchView('reader', null, id);
   };
 
+  // Inline Markdown & LaTeX Math Formatter for Cards, Snippets & Previews
+  function formatInlineMarkdown(str) {
+    if (!str) return '';
+    let s = String(str);
+
+    // 1. Protect C/C++ pointer types (int** ptr, char** argv, void** buffer)
+    s = s.replace(/(?<!\*\*)(\b(?:int|int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|char|void|float|double|size_t)\s*)\*\*(\s*[a-zA-Z_]\w*|\s*\)|\s*,)/g, '$1§PTRPTR§$2');
+    s = s.replace(/(?<!\*)(\b(?:int|int8_t|int16_t|int32_t|int64_t|uint8_t|uint16_t|uint32_t|uint64_t|char|void|float|double|size_t)\s*)\*(\s*[a-zA-Z_]\w*|\s*\)|\s*,)/g, '$1§PTR§$2');
+
+    // 2. LaTeX Overline (e.g., \overline{BHE}, \overline{RD}, \overlineRD, \overline{G_{2A}})
+    s = s.replace(/\\overline\{([^{}]+)\}/g, '<span class="overline-text">$1</span>');
+    s = s.replace(/\\overline([A-Za-z0-9_]+)/g, '<span class="overline-text">$1</span>');
+
+    // 3. LaTeX Math Symbols & Greek Letters
+    s = s.replace(/\\rightarrow/g, ' &rarr; ');
+    s = s.replace(/\\leftarrow/g, ' &larr; ');
+    s = s.replace(/\\twoheadrightarrow/g, ' &#8608; ');
+    s = s.replace(/\\bowtie/g, ' &#8904; ');
+    s = s.replace(/\\bigcup/g, ' &bigcup; ');
+    s = s.replace(/\\bigcap/g, ' &bigcap; ');
+    s = s.replace(/\\cap/g, ' &cap; ');
+    s = s.replace(/\\cup/g, ' &cup; ');
+    s = s.replace(/\\times/g, ' &times; ');
+    s = s.replace(/\\le\b/g, ' &le; ');
+    s = s.replace(/\\ge\b/g, ' &ge; ');
+    s = s.replace(/\\neq\b/g, ' &ne; ');
+    s = s.replace(/\\ne\b/g, ' &ne; ');
+    s = s.replace(/\\approx\b/g, ' &asymp; ');
+    s = s.replace(/\\dots\b/g, ' &hellip; ');
+    s = s.replace(/\\in\b/g, ' &isin; ');
+    s = s.replace(/\\not\\subseteq\b/g, ' &#8840; ');
+    s = s.replace(/\\subseteq\b/g, ' &sube; ');
+    s = s.replace(/\\sigma\b/g, '&sigma;');
+    s = s.replace(/\\pi\b/g, '&pi;');
+    s = s.replace(/\\rho\b/g, '&rho;');
+    s = s.replace(/\\mid\b/g, '|');
+    s = s.replace(/\\\{/g, '{');
+    s = s.replace(/\\\}/g, '}');
+
+    // 4. LaTeX text and math formatting
+    s = s.replace(/\\text\{([^}]+)\}/g, '$1');
+    s = s.replace(/\\mathbf\{([^}]+)\}/g, '<strong>$1</strong>');
+    s = s.replace(/\\log_2\b/g, 'log<sub>2</sub>');
+    s = s.replace(/\\log\b/g, 'log');
+
+    // Superscripts & Subscripts
+    s = s.replace(/\^\{([^}]+)\}/g, '<sup>$1</sup>');
+    s = s.replace(/\^([0-9a-zA-Z\+\-]+)/g, '<sup>$1</sup>');
+    s = s.replace(/_\{([^}]+)\}/g, '<sub>$1</sub>');
+    s = s.replace(/([A-Za-z])_([0-9a-zA-Z]+)/g, '$1<sub>$2</sub>');
+
+    // Clean up math dollars $...$
+    s = s.replace(/\$([^\$]+)\$/g, '$1');
+    s = s.replace(/\$/g, '');
+
+    // 5. Inline Code `code` -> <code class="inline-code">code</code>
+    s = s.replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>');
+    s = s.replace(/`/g, '');
+
+    // 6. Bold: **text** and __text__ -> <strong>text</strong>
+    s = s.replace(/\*\*([^*]+?)\*\*/g, '<strong>$1</strong>');
+    s = s.replace(/__([^_]+?)__/g, '<strong>$1</strong>');
+
+    // 7. Plain text arrows: -> and <-
+    s = s.replace(/(?<!<)-+>\s*/g, ' &rarr; ');
+    s = s.replace(/\s*<-+(?!>)\s*/g, ' &larr; ');
+
+    // 8. Italics: *text* -> <em>text</em>
+    s = s.replace(/(?<![\w*])\*([^*\s][^*]*?[^*\s])\*(?![\w*])/g, '<em>$1</em>');
+
+    // 9. Clean any orphan/unmatched ** or __ that might remain
+    s = s.replace(/\*\*/g, '').replace(/__/g, '');
+
+    // 10. Restore protected pointers
+    s = s.replace(/§PTRPTR§/g, '**').replace(/§PTR§/g, '*');
+
+    return s.replace(/[ \t]+/g, ' ').trim();
+  }
+
+  function stripMarkdown(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/__([^_]+)__/g, '$1')
+      .replace(/\*([^*]+)\*/g, '$1')
+      .replace(/_([^_]+)_/g, '$1')
+      .replace(/\$([^$]+)\$/g, '$1')
+      .replace(/\$/g, '')
+      .replace(/\\text\{([^}]+)\}/g, '$1')
+      .replace(/\\overline\{([^}]+)\}/g, '$1')
+      .replace(/\\rightarrow/g, '->')
+      .replace(/\\leftarrow/g, '<-')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  window.formatInlineMarkdown = formatInlineMarkdown;
+  window.stripMarkdown = stripMarkdown;
+
   // Flashcards Module
   function initFlashcardSubjectBar() {
     const container = document.getElementById('flashSubjectBar');
@@ -829,7 +929,7 @@
 
     if (flashcardList.length === 0) {
       cardEl.innerHTML = `<div class="flashcard-body">No flashcards available for selected subject.</div>`;
-      counterEl.textContent = `0 of 0`;
+      if (counterEl) counterEl.textContent = `0 of 0`;
       return;
     }
 
@@ -841,25 +941,25 @@
     if (item.mustWrite && item.mustWrite.length > 0) {
       backHtml += `<div style="text-align: left; font-size: 0.88rem; margin-top: 10px;">
         <strong style="color: var(--accent-primary);">⭐ Must-Write Points:</strong>
-        <ul style="margin-top: 6px; padding-left: 18px; color: var(--text-secondary);">`;
+        <ul style="margin-top: 6px; padding-left: 18px; color: var(--text-secondary); line-height: 1.6;">`;
       item.mustWrite.forEach(pt => {
-        backHtml += `<li style="margin-bottom: 3px;">${pt}</li>`;
+        backHtml += `<li style="margin-bottom: 5px;">${formatInlineMarkdown(pt)}</li>`;
       });
       backHtml += `</ul></div>`;
+    } else if (item.definition) {
+      backHtml += `<div class="flashcard-body" style="text-align: left; margin-top: 10px;">${formatInlineMarkdown(item.definition)}</div>`;
+    } else if (!item.quickRecall) {
+      backHtml += `<div class="flashcard-body" style="text-align: left; margin-top: 10px;">Key concept review</div>`;
     }
 
     if (item.quickRecall) {
-      backHtml += `<div style="margin-top: 12px; padding: 8px 12px; background: var(--callout-quick-bg); border-left: 3px solid var(--callout-quick-border); font-size: 0.82rem; color: var(--text-primary); text-align: left; border-radius: 4px;">
-        ⚡ <strong>Quick Recall:</strong> ${item.quickRecall}
+      backHtml += `<div style="margin-top: 14px; padding: 10px 14px; background: var(--callout-quick-bg); border-left: 3px solid var(--callout-quick-border); font-size: 0.84rem; color: var(--text-primary); text-align: left; border-radius: 6px; line-height: 1.5;">
+        ⚡ <strong>Quick Recall:</strong> ${formatInlineMarkdown(item.quickRecall)}
       </div>`;
     }
 
-    if (!item.mustWrite.length && !item.quickRecall) {
-      backHtml += `<div class="flashcard-body">${item.definition || 'Key concept review'}</div>`;
-    }
-
     cardEl.innerHTML = backHtml;
-    counterEl.textContent = `Card ${flashcardIndex + 1} of ${flashcardList.length}`;
+    if (counterEl) counterEl.textContent = `Card ${flashcardIndex + 1} of ${flashcardList.length}`;
   }
 
   window.nextCard = function () {
@@ -1055,7 +1155,7 @@
           
           <div class="workshop-mastery">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">🎯 What You Should Master:</strong>
-            ${item.master}
+            ${formatInlineMarkdown(item.master)}
           </div>
         </div>
 
@@ -1188,7 +1288,8 @@
       const badgeIcon = isC ? '🔹' : '🚀';
       const probCount = countSolvedProblemsInContent(note.content);
       const pdfLink = note.pdfPath || `PDF_Notes/${note.filename.replace('.md', '.pdf')}`;
-      const shortDef = note.definition ? (note.definition.length > 140 ? note.definition.slice(0, 140) + '...' : note.definition) : 'Deep-dive theoretical principles, memory allocation layout, and complete problem walkthroughs.';
+      const rawDef = stripMarkdown(note.definition || '');
+      const shortDef = rawDef ? (rawDef.length > 140 ? rawDef.slice(0, 140) + '...' : rawDef) : 'Deep-dive theoretical principles, memory allocation layout, and complete problem walkthroughs.';
 
       html += `<div class="prog-card">
         <div>
@@ -1204,7 +1305,7 @@
           
           <div class="prog-desc">
             <strong style="color: var(--text-primary); display: block; margin-bottom: 4px;">📌 Core Concept:</strong>
-            ${shortDef}
+            ${formatInlineMarkdown(shortDef)}
           </div>
         </div>
 
