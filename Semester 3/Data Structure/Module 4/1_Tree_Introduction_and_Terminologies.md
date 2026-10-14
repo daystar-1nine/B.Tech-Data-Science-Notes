@@ -5,7 +5,7 @@
 ---
 
 > 📌 **Definition to Remember**
-> A **Tree** is a non-linear, hierarchical data structure consisting of a collection of nodes connected by directed or undirected edges, such that there exists **exactly one path** between any two nodes and **no cycles** are formed. A valid tree with $N$ nodes always contains exactly **$N - 1$ edges**.
+> A **Tree** is a non-linear, hierarchical data structure consisting of a collection of nodes connected by directed or undirected edges, such that there exists **exactly one path** between any two nodes and **no cycles** are formed. A valid tree with **N** nodes always contains exactly **N - 1 edges**.
 
 ---
 
@@ -53,17 +53,17 @@ Unlike linear structures (Arrays, Stacks, Queues) where elements maintain sequen
 | :--- | :--- | :--- |
 | **Measurement Direction** | Measured **top-down** from the Root | Measured **bottom-up** from the Leaves |
 | **Reference Point** | Distance from Root down to the node | Distance from the node down to deepest leaf |
-| **Base Case** | $\text{Depth}(\text{Root}) = 0$ | $\text{Height}(\text{Leaf}) = 0$ |
+| **Base Case** | Depth(Root) = 0 | Height(Leaf) = 0 |
 | **Tree Metric** | Max depth of any node = Height of tree | Height of the root = Height of tree |
 
 ---
 
 ### 4. Key Mathematical Properties of Trees
 
-* **Node-to-Edge Relation:** Every tree with $N$ nodes has exactly **$N - 1$ edges**.
+* **Node-to-Edge Relation:** Every tree with N nodes has exactly **N - 1 edges**.
 * **Path Uniqueness:** There exists exactly one unique simple path between any pair of nodes.
-* **Cycle Freedom:** A connected undirected graph with $N$ nodes and $N-1$ edges is acyclic (a tree).
-* **Leaves vs. Internal Nodes:** In a strict binary tree, number of leaves $L = I + 1$ (where $I$ is internal nodes).
+* **Cycle Freedom:** A connected undirected graph with N nodes and N - 1 edges is acyclic (a tree).
+* **Leaves vs. Internal Nodes:** In a strict binary tree, number of leaves L = I + 1 (where I is internal nodes).
 
 ---
 
@@ -77,9 +77,9 @@ Unlike linear structures (Arrays, Stacks, Queues) where elements maintain sequen
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. A tree is a non-linear hierarchical data structure with **$N$ nodes and exactly $N - 1$ edges**.
+> 1. A tree is a non-linear hierarchical data structure with **N nodes and exactly N - 1 edges**.
 > 2. The **Root** is the unique topmost node with no parent.
-> 3. **Leaf nodes** have degree 0 (no children); **internal nodes** have degree $\ge 1$.
+> 3. **Leaf nodes** have degree 0 (no children); **internal nodes** have degree ≥ 1.
 > 4. **Depth** is measured top-down from root (Depth of root = 0).
 > 5. **Height** is measured bottom-up from the deepest leaf (Height of leaf = 0).
 > 6. There exists **exactly one unique path** between any two nodes in a tree.

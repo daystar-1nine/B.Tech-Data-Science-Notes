@@ -119,7 +119,7 @@ void DFS(int u) {
 | :--- | :--- | :--- |
 | **Data Structure** | **FIFO Queue** | **LIFO Stack / System Call Recursion** |
 | **Traversal Direction** | Level-by-level horizontally | Deep into branches vertically |
-| **Time Complexity** | **$O(V + E)$** (Adjacency List) / $O(V^2)$ (Matrix) | **$O(V + E)$** (Adjacency List) / $O(V^2)$ (Matrix) |
+| **Time Complexity** | **O(V + E)** (Adjacency List) / **O(V²)** (Matrix) | **O(V + E)** (Adjacency List) / **O(V²)** (Matrix) |
 | **Space Complexity** | **$O(V)$** (Queue holds entire level width) | **$O(V)$** (Stack holds recursion path depth) |
 | **Shortest Path** | **Guaranteed shortest path** in unweighted graphs | Does not guarantee shortest path |
 | **Primary Use Cases** | Shortest path, GPS navigation, peer-to-peer | Cycle detection, topological sort, maze solving |

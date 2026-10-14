@@ -34,19 +34,18 @@
 2. **Complete Binary Tree:** All levels are completely filled except possibly the last level, which is filled from **left to right** without any gaps. (Forms the structural foundation for **Binary Heaps**).
 3. **Perfect Binary Tree:** All internal nodes have exactly 2 children, and **all leaf nodes reside at the exact same level**.
 4. **Balanced Binary Tree (Height-Balanced / AVL):** The height difference between the left and right subtrees of any node is at most 1:
-   $$|\text{Height}(\text{Left}) - \text{Height}(\text{Right})| \le 1$$
-5. **Degenerate (Skewed) Binary Tree:** Every internal node has exactly one child (Left-skewed or Right-skewed). Height equals $N-1$; search time degrades from $O(\log N)$ to $O(N)$.
+   `|Height(Left) - Height(Right)| ≤ 1`
+5. **Degenerate (Skewed) Binary Tree:** Every internal node has exactly one child (Left-skewed or Right-skewed). Height equals N - 1; search time degrades from O(log N) to O(N).
 
 ---
 
 ### 2. Mathematical Properties of Binary Trees
 
-* **Max Nodes at Level $i$:** $2^i$ nodes (assuming root is at Level 0).
-* **Max Nodes in Tree of Height $h$:** $2^{h+1} - 1$ nodes.
-* **Min Height for $N$ Nodes:** $h_{\min} = \lceil \log_2(N + 1) \rceil - 1$.
-* **Max Height for $N$ Nodes:** $h_{\max} = N - 1$ (in a degenerate skewed tree).
-* **Leaf vs. Internal Nodes Relation:** In any full binary tree, the number of leaf nodes $L$ is always:
-  $$L = I + 1 \quad (\text{where } I = \text{number of internal nodes with 2 children})$$
+* **Max Nodes at Level i:** 2^i nodes (assuming root is at Level 0).
+* **Max Nodes in Tree of Height h:** 2^(h+1) - 1 nodes.
+* **Min Height for N Nodes:** h_min = ⌈log₂(N + 1)⌉ - 1.
+* **Max Height for N Nodes:** h_max = N - 1 (in a degenerate skewed tree).
+* **Leaf vs. Internal Nodes Relation:** In any full binary tree, leaf count `L = I + 1` (where I is internal nodes with 2 children).
 
 ---
 
@@ -91,19 +90,19 @@ struct Node* createNode(int value) {
 | :--- | :--- | :--- |
 | **Memory Allocation** | Static / Contiguous memory | **Dynamic memory** (`malloc`) |
 | **Wasted Space** | High for skewed/sparse trees | Minimal (extra pointer overhead per node) |
-| **Child/Parent Access** | **$O(1)$ fast arithmetic** ($2i, 2i+1$) | Pointer dereferencing (`node->left`) |
-| **Insertion / Deletion** | Expensive (shifting elements) | **Fast $O(1)$ pointer rewiring** |
+| **Child/Parent Access** | **O(1) fast arithmetic** (2i, 2i + 1) | Pointer dereferencing (`node->left`) |
+| **Insertion / Deletion** | Expensive (shifting elements) | **Fast O(1) pointer rewiring** |
 | **Best Used For** | Complete binary trees, Heaps | General trees, BST, AVL trees |
 
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
 > 1. A binary tree restricts every node to **at most two children (left and right)**.
-> 2. **Full Binary Tree:** Every node has 0 or 2 children; $L = I + 1$.
+> 2. **Full Binary Tree:** Every node has 0 or 2 children; L = I + 1.
 > 3. **Complete Binary Tree:** Filled level by level, left to right; ideal for array storage.
-> 4. **Perfect Binary Tree:** All leaves at same level; total nodes = $2^{h+1} - 1$.
-> 5. **Balanced Tree:** $|h_L - h_R| \le 1$ at every node, guaranteeing $O(\log N)$ search time.
-> 6. Array formula for node $i$: **Left = $2i$, Right = $2i+1$, Parent = $\lfloor i/2 \rfloor$**.
+> 4. **Perfect Binary Tree:** All leaves at same level; total nodes = 2^(h+1) - 1.
+> 5. **Balanced Tree:** `|h_L - h_R| ≤ 1` at every node, guaranteeing O(log N) search time.
+> 6. Array formula for node i: **Left = 2i, Right = 2i + 1, Parent = ⌊i / 2⌋**.
 > 7. Linked representation uses `struct Node { int data; struct Node *left, *right; }`.
 
 ---

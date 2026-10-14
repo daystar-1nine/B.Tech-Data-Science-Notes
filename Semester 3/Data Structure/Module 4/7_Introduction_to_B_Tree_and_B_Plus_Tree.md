@@ -1,20 +1,20 @@
 # Introduction to B-Tree & B+ Tree
 
-**Q. What is a B-Tree of order $m$? State its structural properties. Explain the differences between a B-Tree and a B+ Tree with diagrams, and explain why B+ Trees are preferred for database indexing.**
+**Q. What is a B-Tree of order m? State its structural properties. Explain the differences between a B-Tree and a B+ Tree with diagrams, and explain why B+ Trees are preferred for database indexing.**
 
 ---
 
 > 📌 **Definition to Remember**
-> A **B-Tree** is a self-balancing multi-way search tree of order $m$ where each node can contain multiple keys and more than two children, designed specifically to optimize **disk read/write block transfers** by matching tree node sizes to physical disk block sizes.
+> A **B-Tree** is a self-balancing multi-way search tree of order m where each node can contain multiple keys and more than two children, designed specifically to optimize **disk read/write block transfers** by matching tree node sizes to physical disk block sizes.
 
 ---
 
-### 1. Structural Properties of a B-Tree of Order $m$
+### 1. Structural Properties of a B-Tree of Order m
 
-1. **Max Children:** Every node has at most $m$ children.
-2. **Min Children (Internal Nodes):** Every internal node (except the root) has at least $\lceil m / 2 \rceil$ children.
+1. **Max Children:** Every node has at most m children.
+2. **Min Children (Internal Nodes):** Every internal node (except the root) has at least ⌈m / 2⌉ children.
 3. **Root Property:** The root has at least 2 children (unless it is a leaf).
-4. **Key-to-Child Rule:** A node with $k$ children contains exactly **$k - 1$ sorted keys**.
+4. **Key-to-Child Rule:** A node with k children contains exactly **k - 1 sorted keys**.
 5. **Leaf Level Uniformity:** **All leaf nodes reside at the exact same physical depth**, ensuring perfect tree balance.
 
 ```
@@ -56,7 +56,7 @@ B+ TREE ARCHITECTURE:
 | Feature | B-Tree | B+ Tree |
 | :--- | :--- | :--- |
 | **Data Storage Location** | Stored in **both internal and leaf nodes** | Stored **ONLY in leaf nodes** |
-| **Search Performance** | Search may terminate early at internal node | Search **always descends to leaf** ($O(\log N)$ uniform) |
+| **Search Performance** | Search may terminate early at internal node | Search **always descends to leaf** (**O(log N)** uniform) |
 | **Sequential Range Queries**| **Inefficient** (requires in-order tree traversal) | **Extremely Fast** (sequential scan via leaf linked list) |
 | **Node Key Capacity** | Lower (data pointers take space in every node) | **Higher fanout** (internal nodes hold only keys) |
 | **Tree Height** | Taller for the same number of records | **Shorter / Flatter** (due to higher fanout) |
@@ -68,13 +68,13 @@ B+ TREE ARCHITECTURE:
 
 ### 4. Why B+ Trees are Preferred for Database Indexing
 
-1. **Higher Fanout & Shallower Tree:** Because internal nodes store only search keys (without bulky data records), a single 4 KB disk block can hold hundreds of keys. This creates a massive branch factor (fanout), reducing tree height to just 3 or 4 levels for millions of records ($3 - 4$ disk I/Os per lookup!).
-2. **Superior Range Queries (`BETWEEN` Clauses):** In SQL, queries like `WHERE age BETWEEN 20 AND 30` find the first leaf node `20` in $O(\log N)$ time, and then traverse the doubly linked list of leaves directly in **$O(K)$ linear time** without returning up the tree!
+1. **Higher Fanout & Shallower Tree:** Because internal nodes store only search keys (without bulky data records), a single 4 KB disk block can hold hundreds of keys. This creates a massive branch factor (fanout), reducing tree height to just 3 or 4 levels for millions of records (3–4 disk I/Os per lookup!).
+2. **Superior Range Queries (`BETWEEN` Clauses):** In SQL, queries like `WHERE age BETWEEN 20 AND 30` find the first leaf node `20` in **O(log N)** time, and then traverse the doubly linked list of leaves directly in **O(K) linear time** without returning up the tree!
 
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. B-Tree of order $m$: Nodes have at most $m$ children, at least $\lceil m / 2 \rceil$ children (except root).
+> 1. B-Tree of order m: Nodes have at most m children, at least ⌈m / 2⌉ children (except root).
 > 2. All leaves in a B-Tree / B+ Tree appear at the **exact same physical depth**.
 > 3. In B-Trees, data is stored in both internal and leaf nodes.
 > 4. In B+ Trees, data is stored **exclusively in leaf nodes**; internal nodes hold only routing keys.

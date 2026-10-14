@@ -72,11 +72,11 @@ Huffman coding is a **Greedy Algorithm** that assigns variable-length binary cod
 | **F** | 5 |
 
 #### Construction Steps (Greedy Min-Heap):
-1. **Merge two smallest:** `F(5)` and `E(9)` $\rightarrow$ Node `(14)`.
-2. **Merge next two smallest:** `C(12)` and `B(13)` $\rightarrow$ Node `(25)`.
-3. **Merge smallest:** Node `(14)` and `D(16)` $\rightarrow$ Node `(30)`.
-4. **Merge smallest:** Node `(25)` and Node `(30)` $\rightarrow$ Node `(55)`.
-5. **Final merge:** `A(45)` and Node `(55)` $\rightarrow$ Root `(100)`.
+1. **Merge two smallest:** `F(5)` and `E(9)` → Node `(14)`.
+2. **Merge next two smallest:** `C(12)` and `B(13)` → Node `(25)`.
+3. **Merge smallest:** Node `(14)` and `D(16)` → Node `(30)`.
+4. **Merge smallest:** Node `(25)` and Node `(30)` → Node `(55)`.
+5. **Final merge:** `A(45)` and Node `(55)` → Root `(100)`.
 
 ```
                         [ 100 ]
@@ -104,10 +104,10 @@ Huffman coding is a **Greedy Algorithm** that assigns variable-length binary cod
   * **D:** `111` (3 bits)
 
 #### Compression Analysis:
-* **Fixed-length encoding:** 6 characters require 3 bits each ($100 \times 3 = \mathbf{300 \text{ bits}}$).
+* **Fixed-length encoding:** 6 characters require 3 bits each (100 × 3 = **300 bits**).
 * **Huffman encoding:**
-  $$(45 \times 1) + (12 \times 3) + (13 \times 3) + (5 \times 4) + (9 \times 4) + (16 \times 3) = 45 + 36 + 39 + 20 + 36 + 48 = \mathbf{224 \text{ bits}}$$
-* **Storage Saved:** $\approx 25.3\%$ bandwidth compression!
+  **(45 × 1) + (12 × 3) + (13 × 3) + (5 × 4) + (9 × 4) + (16 × 3) = 45 + 36 + 39 + 20 + 36 + 48 = 224 bits**
+* **Storage Saved:** ≈ 25.3% bandwidth compression!
 
 ---
 
@@ -118,7 +118,7 @@ Huffman coding is a **Greedy Algorithm** that assigns variable-length binary cod
 > 4. **Huffman coding** is a greedy compression algorithm producing optimal variable-length codes.
 > 5. High-frequency characters get shorter codes; low-frequency characters get longer codes.
 > 6. Huffman codes are **prefix-free** (no code is a prefix of another), enabling direct stream decoding.
-> 7. Time complexity of Huffman tree construction is **$O(N \log N)$** using a Min-Priority Queue.
+> 7. Time complexity of Huffman tree construction is **O(N log N)** using a Min-Priority Queue.
 
 ---
 

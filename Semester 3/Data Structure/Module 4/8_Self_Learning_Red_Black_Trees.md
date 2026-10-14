@@ -5,7 +5,7 @@
 ---
 
 > 📌 **Definition to Remember**
-> A **Red-Black Tree** is a self-balancing Binary Search Tree where each node stores an extra color bit (**Red or Black**) and satisfies five strict structural invariants, ensuring that no path from the root to any leaf is more than **twice as long** as any other path, strictly guaranteeing **$O(\log N)$** search, insertion, and deletion.
+> A **Red-Black Tree** is a self-balancing Binary Search Tree where each node stores an extra color bit (**Red or Black**) and satisfies five strict structural invariants, ensuring that no path from the root to any leaf is more than **twice as long** as any other path, strictly guaranteeing **O(log N)** search, insertion, and deletion.
 
 ---
 
@@ -25,8 +25,8 @@
             [ 5 (B) ]   [ 15 (B) ]
 ```
 
-* **Maximum Tree Height:** A Red-Black tree with $N$ internal nodes has height:
-  $$h \le 2 \log_2(N + 1)$$
+* **Maximum Tree Height:** A Red-Black tree with N internal nodes has height:
+  `h ≤ 2 · log₂(N + 1)`
 
 ---
 
@@ -61,8 +61,8 @@ CASE 3: Uncle (u) is BLACK (Line: x is left child, p is left child)
 
 | Feature | Red-Black Tree | AVL Tree |
 | :--- | :--- | :--- |
-| **Balancing Strictness** | **Roughly balanced** (path ratio $\le 2:1$) | **Strictly balanced** ($|h_L - h_R| \le 1$) |
-| **Lookup / Search Speed** | Fast ($O(\log N)$) | **Faster** (due to strictly smaller height) |
+| **Balancing Strictness** | **Roughly balanced** (path ratio ≤ 2:1) | **Strictly balanced:** \|h_L - h_R\| ≤ 1 |
+| **Lookup / Search Speed** | Fast (O(log N)) | **Faster** (due to strictly smaller height) |
 | **Insert / Delete Speed** | **Faster** (at most 2-3 rotations per operation) | Slower (frequent multi-level rotations) |
 | **Storage Overhead** | 1 bit per node (Color: Red/Black) | 2 bits per node (Balance Factor: -1, 0, +1) |
 | **Industry Standard Use** | Standard library maps (`std::map` in C++, `TreeMap` in Java, Linux kernel process scheduler) | Look-up intensive databases, in-memory caches |

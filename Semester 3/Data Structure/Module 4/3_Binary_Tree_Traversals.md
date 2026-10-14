@@ -19,15 +19,15 @@
         [ 4 ]   [ 5 ]
 ```
 
-1. **Preorder Traversal (Root $\rightarrow$ Left $\rightarrow$ Right):**
+1. **Preorder Traversal (Root → Left → Right):**
    * Visit Root node first, recursively traverse Left subtree, recursively traverse Right subtree.
    * *Output:* `1 -> 2 -> 4 -> 5 -> 3`
    * *Use:* Creating a copy of the tree, prefix expression generation.
-2. **Inorder Traversal (Left $\rightarrow$ Root $\rightarrow$ Right):**
+2. **Inorder Traversal (Left → Root → Right):**
    * Recursively traverse Left subtree, visit Root node, recursively traverse Right subtree.
    * *Output:* `4 -> 2 -> 5 -> 1 -> 3`
    * *Key Property:* Inorder traversal of a **Binary Search Tree (BST)** always outputs elements in **sorted ascending order**!
-3. **Postorder Traversal (Left $\rightarrow$ Right $\rightarrow$ Root):**
+3. **Postorder Traversal (Left → Right → Root):**
    * Recursively traverse Left subtree, recursively traverse Right subtree, visit Root node last.
    * *Output:* `4 -> 5 -> 2 -> 3 -> 1`
    * *Use:* Deleting a tree bottom-up (freeing memory), postfix expression evaluation.
@@ -74,8 +74,8 @@ void postorder(struct Node* root) {
 }
 ```
 
-* **Time Complexity:** $O(N)$ for all traversals (each node visited once).
-* **Space Complexity:** $O(h)$ auxiliary stack memory (where $h$ is tree height; $O(\log N)$ for balanced, $O(N)$ for skewed).
+* **Time Complexity:** O(N) for all traversals (each node visited once).
+* **Space Complexity:** O(h) auxiliary stack memory (where h is tree height; O(log N) for balanced, O(N) for skewed).
 
 ---
 
@@ -90,8 +90,8 @@ void postorder(struct Node* root) {
 **Step-by-Step Procedure:**
 1. The **first element in Preorder is always the Root**: Root = `A`.
 2. Find `A` in the Inorder sequence:
-   * Left of `A` in Inorder: `[ D, B, E ]` $\implies$ Left Subtree.
-   * Right of `A` in Inorder: `[ F, C ]` $\implies$ Right Subtree.
+   * Left of `A` in Inorder: `[ D, B, E ]` ⇒ Left Subtree.
+   * Right of `A` in Inorder: `[ F, C ]` ⇒ Right Subtree.
 3. Next element in Preorder is `B`: Root of left subtree = `B`.
    * In Inorder `[ D, B, E ]`: `D` is left child of `B`, `E` is right child of `B`.
 4. Next element in Preorder for right subtree is `C`: Root of right subtree = `C`.
@@ -109,12 +109,12 @@ RECONSTRUCTED BINARY TREE:
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
-> 1. Tree traversal visits every node in the tree exactly once with **$O(N)$ time complexity**.
+> 1. Tree traversal visits every node in the tree exactly once with **O(N) time complexity**.
 > 2. **Preorder (Root, Left, Right):** Visits root first; used for tree cloning.
 > 3. **Inorder (Left, Root, Right):** On a BST, outputs keys in **sorted ascending order**.
 > 4. **Postorder (Left, Right, Root):** Visits root last; used for bottom-up node deletion.
 > 5. **Level Order:** Breadth-first traversal implemented using an auxiliary **FIFO Queue**.
-> 6. Auxiliary recursion stack memory is $O(h)$ where $h$ is the tree height.
+> 6. Auxiliary recursion stack memory is O(h) where h is the tree height.
 > 7. A unique tree requires **Inorder + Preorder** (or Inorder + Postorder) to resolve left/right child assignments.
 
 ---

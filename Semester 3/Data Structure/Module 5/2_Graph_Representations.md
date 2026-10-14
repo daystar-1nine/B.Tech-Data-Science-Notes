@@ -114,7 +114,7 @@ void addEdgeList(struct Graph* graph, int src, int dest) {
 | **Add a Vertex** | **$O(V^2)$** (Requires reallocating 2D array) | **$O(1)$** (Append new pointer to array) |
 | **Add an Edge** | **$O(1)$** | **$O(1)$** (Insert at head of list) |
 | **Remove an Edge** | **$O(1)$** | **$O(\text{deg}(u))$** |
-| **Ideal Graph Type** | **Dense Graphs** ($|E| \approx |V|^2$) | **Sparse Graphs** ($|E| \ll |V|^2$) |
+| **Ideal Graph Type** | **Dense Graphs** (\|E\| ≈ \|V\|²) | **Sparse Graphs** (\|E\| ≪ \|V\|²) |
 
 ---
 

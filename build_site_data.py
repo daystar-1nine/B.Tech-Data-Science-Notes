@@ -265,6 +265,51 @@ def get_clean_title(filename, content, is_qa_file, subject, module):
     t = re.sub(r'\s*[\u2014\u2013\-]\s*(MPCA|DBMS|Data Structures?|Power BI|Module\s*\d+|Day\s*\d+).*$', '', t, flags=re.IGNORECASE).strip()
     return t
 
+def clean_markdown_for_html(text):
+    if not text:
+        return ""
+    lines = text.split('\n')
+    processed = []
+    in_code = False
+    for line in lines:
+        if line.strip().startswith('```'):
+            in_code = not in_code
+            processed.append(line)
+            continue
+        if in_code:
+            processed.append(line)
+            continue
+        
+        # Overlines
+        line = re.sub(r'\\overline\{([^{}]+)\}', r'<span class="overline-text">\1</span>', line)
+        line = re.sub(r'\\overline([A-Za-z0-9_]+)', r'<span class="overline-text">\1</span>', line)
+        
+        # Common Math & LaTeX Symbols
+        line = re.sub(r'\\rightarrow', '→', line)
+        line = re.sub(r'\\leftarrow', '←', line)
+        line = re.sub(r'\\implies', '⇒', line)
+        line = re.sub(r'\\le\b', '≤', line)
+        line = re.sub(r'\\ge\b', '≥', line)
+        line = re.sub(r'\\approx\b', '≈', line)
+        line = re.sub(r'\\times\b', '×', line)
+        line = re.sub(r'\\in\b', '∈', line)
+        line = re.sub(r'\\lceil\s*(.*?)\s*\\rceil', r'⌈\1⌉', line)
+        line = re.sub(r'\\lfloor\s*(.*?)\s*\\rfloor', r'⌊\1⌋', line)
+        line = re.sub(r'\\text\{([^}]+)\}', r'\1', line)
+        line = re.sub(r'\\mathbf\{([^}]+)\}', r'**\1**', line)
+        line = re.sub(r'\\log_2\b', 'log₂', line)
+
+        # Standalone $$...$$ formula lines into blockquotes
+        if re.match(r'^\s*\$\$(.+?)\$\$\s*$', line):
+            inner = re.match(r'^\s*\$\$(.+?)\$\$\s*$', line).group(1).strip()
+            line = f'> **{inner}**'
+
+        # Inline math $...$
+        line = re.sub(r'\$([^$]+?)\$', r'\1', line)
+
+        processed.append(line)
+    return '\n'.join(processed)
+
 def parse_markdown_file(filepath):
     rel_path = os.path.relpath(filepath, BASE_DIR).replace('\\', '/')
     pdf_rel_path = f"PDF_Notes/{rel_path[:-3]}.pdf"
@@ -367,7 +412,8 @@ def parse_markdown_file(filepath):
         quick_recall = re.sub(r'^`+|`+$', '', quick_recall).strip()
         quick_recall = re.sub(r'\s+', ' ', quick_recall).strip()
 
-    html = markdown.markdown(content, extensions=['tables', 'fenced_code', 'nl2br', 'sane_lists'])
+    cleaned_content = clean_markdown_for_html(content)
+    html = markdown.markdown(cleaned_content, extensions=['tables', 'fenced_code', 'nl2br', 'sane_lists'])
 
     return {
         "id": rel_path.replace('/', '-').replace('.md', ''),

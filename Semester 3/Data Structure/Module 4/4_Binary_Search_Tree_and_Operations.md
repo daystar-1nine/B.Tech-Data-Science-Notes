@@ -5,13 +5,13 @@
 ---
 
 > 📌 **Definition to Remember**
-> A **Binary Search Tree (BST)** is a binary tree with the ordering property: for every node $X$, all keys in $X$'s left subtree are strictly **less than** $X.\text{key}$, and all keys in $X$'s right subtree are strictly **greater than** $X.\text{key}$. Duplicate keys are typically not allowed.
+> A **Binary Search Tree (BST)** is a binary tree with the ordering property: for every node X, all keys in X's left subtree are strictly **less than** X.key, and all keys in X's right subtree are strictly **greater than** X.key. Duplicate keys are typically not allowed.
 
 ---
 
 ### 1. BST Property & Visual Structure
 
-$$\text{Left Subtree Keys} < \mathbf{\text{Node Key}} < \text{Right Subtree Keys}$$
+**Left Subtree Keys < Node Key < Right Subtree Keys**
 
 ```
                      [ 50 ]
@@ -136,22 +136,22 @@ struct Node* deleteNode(struct Node* root, int key) {
 
 | Operation | Average Case (Balanced) | Worst Case (Skewed) | Reason for Degradation |
 | :--- | :---: | :---: | :--- |
-| **Search** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Tree degenerates into a singly linked list if keys inserted in sorted order |
-| **Insert** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Traverses down the full height $h = N$ |
-| **Delete** | $\mathbf{O(\log N)}$ | $\mathbf{O(N)}$ | Successor lookup takes $O(h)$ |
+| **Search** | **O(log N)** | **O(N)** | Tree degenerates into a singly linked list if keys inserted in sorted order |
+| **Insert** | **O(log N)** | **O(N)** | Traverses down the full height h = N |
+| **Delete** | **O(log N)** | **O(N)** | Successor lookup takes O(h) |
 
-* **Solution to Worst Case:** Self-balancing trees like **AVL Trees** and **Red-Black Trees** strictly guarantee $O(\log N)$ worst-case time.
+* **Solution to Worst Case:** Self-balancing trees like **AVL Trees** and **Red-Black Trees** strictly guarantee O(log N) worst-case time.
 
 ---
 
 > ⭐ **Must-Write Points (for 10 marks)**
 > 1. BST rule: **Left Subtree Keys < Root Key < Right Subtree Keys** at every node.
 > 2. **Inorder traversal of a BST always yields sorted ascending output**.
-> 3. Search and insertion take **$O(\log N)$ on average**, but degrade to **$O(N)$** in skewed trees.
+> 3. Search and insertion take **O(log N) on average**, but degrade to **O(N)** in skewed trees.
 > 4. **Deletion Case 1 (Leaf):** Free node, set parent pointer to `NULL`.
 > 5. **Deletion Case 2 (1 Child):** Replace target node with its only child.
 > 6. **Deletion Case 3 (2 Children):** Replace target value with **Inorder Successor** (min in right subtree), then delete successor.
-> 7. Worst-case $O(N)$ occurs when keys are inserted in strictly sorted order, creating a degenerate tree.
+> 7. Worst-case O(N) occurs when keys are inserted in strictly sorted order, creating a degenerate tree.
 
 ---
 
