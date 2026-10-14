@@ -34,6 +34,88 @@
     clock: `<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 16 14 14"></polyline></svg>`
   };
 
+  // ==========================================================================
+  // Topic Classification & Context-Aware Sequential Navigation Helpers
+  // ==========================================================================
+  function isQATopic(item) {
+    if (!item) return false;
+    return item.contentType === 'qa' ||
+           item.isQA === true ||
+           item.module === 'Question & Answers Bank' ||
+           /\b(2M|3M|5M|10M)\.md$/i.test(item.filename || '') ||
+           /\b\d+-Mark\b/i.test(item.title || '');
+  }
+
+  function isWorkshopTopic(item) {
+    if (!item) return false;
+    return item.contentType === 'workshop' || item.semester === 'Skill Workshop';
+  }
+
+  function isProgrammingTopic(item) {
+    if (!item) return false;
+    return item.contentType === 'programming' || item.semester === 'Programming Skills';
+  }
+
+  function getSequentialContextList(currentTopic) {
+    if (!window.NOTES_DATA || !currentTopic) return [];
+
+    if (isQATopic(currentTopic)) {
+      const getMarkVal = (item) => {
+        const m = (item.marksCategory || '').match(/(\d+)/) || (item.filename || '').match(/(\d+)M/i) || (item.title || '').match(/(\d+)-Mark/i);
+        return m ? parseInt(m[1], 10) : 0;
+      };
+
+      const getModuleNum = (item) => {
+        const m = (item.module || '').match(/Module\s*(\d+)/i) || (item.title || '').match(/Module\s*(\d+)/i);
+        return m ? parseInt(m[1], 10) : 999;
+      };
+
+      return window.NOTES_DATA
+        .filter(item => isQATopic(item) && item.subject === currentTopic.subject)
+        .sort((a, b) => {
+          const modA = getModuleNum(a);
+          const modB = getModuleNum(b);
+          if (modA !== modB) return modA - modB;
+          return getMarkVal(a) - getMarkVal(b);
+        });
+    }
+
+    if (isWorkshopTopic(currentTopic)) {
+      const getDayNum = (item) => {
+        const m = (item.filename || '').match(/Day_(\d+)/i) || (item.title || '').match(/Day\s*(\d+)/i);
+        return m ? parseInt(m[1], 10) : 0;
+      };
+      return window.NOTES_DATA
+        .filter(item => isWorkshopTopic(item) && item.subject === currentTopic.subject)
+        .sort((a, b) => getDayNum(a) - getDayNum(b));
+    }
+
+    if (isProgrammingTopic(currentTopic)) {
+      const getModNum = (item) => {
+        const m = (item.filename || '').match(/(?:C_|CPP_|^)(\d+)_/i) || (item.module || '').match(/Module\s*(\d+)/i);
+        return m ? parseInt(m[1], 10) : 0;
+      };
+      return window.NOTES_DATA
+        .filter(item => isProgrammingTopic(item) && item.subject === currentTopic.subject)
+        .sort((a, b) => getModNum(a) - getModNum(b));
+    }
+
+    return window.NOTES_DATA.filter(item => !isQATopic(item) && !isWorkshopTopic(item) && !isProgrammingTopic(item) && item.subject === currentTopic.subject);
+  }
+
+  window.isQATopic = isQATopic;
+  window.openQATopic = function (id, subject) {
+    selectedContentType = 'qa';
+    if (subject) {
+      selectedSubject = subject;
+      qaSelectedSubject = subject;
+      openSubjects[subject] = true;
+    }
+    renderSidebarTypeToggleUI();
+    renderSidebarTabs();
+    window.switchView('reader', subject, id);
+  };
+
   // DOM Elements
   const themeToggle = document.getElementById('themeToggle');
   const themeToggleMobile = document.getElementById('themeToggleMobile');
@@ -239,7 +321,8 @@
     renderSidebarTree();
 
     if (window.NOTES_DATA) {
-      const firstItem = window.NOTES_DATA.find(i => i.subject === sub);
+      const firstItem = window.NOTES_DATA.find(i => i.subject === sub && (selectedContentType === 'qa' ? isQATopic(i) : !isQATopic(i))) ||
+                        window.NOTES_DATA.find(i => i.subject === sub);
       if (firstItem) {
         selectTopic(firstItem.id);
       }
@@ -277,6 +360,7 @@
       }
     } else if (viewId === 'qa') {
       selectedContentType = 'qa';
+      if (subject) qaSelectedSubject = subject;
       renderSidebarTypeToggleUI();
       initQABankView();
     } else if (viewId === 'workshop') {
@@ -337,7 +421,8 @@
     const filterContainer = document.getElementById('qaFilterBar');
     if (!filterContainer || !window.NOTES_DATA) return;
 
-    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    const qaSubjects = Array.from(new Set(window.NOTES_DATA.filter(isQATopic).map(i => i.subject))).sort();
+    const subjects = ['All', ...qaSubjects];
     const markTypes = ['All', '2 Marks', '3 Marks', '5 Marks', '10 Marks'];
 
     let html = `<div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">`;
@@ -374,15 +459,15 @@
     if (!gridContainer || !window.NOTES_DATA) return;
 
     const qaFiles = window.NOTES_DATA.filter(item => {
-      const isQA = item.contentType === 'qa' || item.isQA || item.module === 'Question & Answers Bank' || item.filename.endsWith('M.md');
+      const isQA = isQATopic(item);
       const matchSub = qaSelectedSubject === 'All' || item.subject === qaSelectedSubject;
       
       let matchMark = true;
       if (qaSelectedMarks !== 'All') {
         const markNum = qaSelectedMarks.split(' ')[0];
         matchMark = (item.marksCategory && item.marksCategory.startsWith(markNum)) ||
-                    item.filename.toLowerCase().startsWith(`${markNum}m`) || 
-                    item.title.includes(`${markNum}-Mark`);
+                    (item.filename && item.filename.toLowerCase().startsWith(`${markNum}m`)) || 
+                    (item.title && item.title.includes(`${markNum}-Mark`));
       }
 
       return isQA && matchSub && matchMark;
@@ -393,10 +478,27 @@
       return;
     }
 
+    // Sort cards cleanly by subject, module, then marks
+    const getMarkVal = (item) => {
+      const m = (item.marksCategory || '').match(/(\d+)/) || (item.filename || '').match(/(\d+)M/i) || (item.title || '').match(/(\d+)-Mark/i);
+      return m ? parseInt(m[1], 10) : 0;
+    };
+    const getModuleNum = (item) => {
+      const m = (item.module || '').match(/Module\s*(\d+)/i) || (item.title || '').match(/Module\s*(\d+)/i);
+      return m ? parseInt(m[1], 10) : 999;
+    };
+    qaFiles.sort((a, b) => {
+      if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
+      const modA = getModuleNum(a);
+      const modB = getModuleNum(b);
+      if (modA !== modB) return modA - modB;
+      return getMarkVal(a) - getMarkVal(b);
+    });
+
     let html = '';
     qaFiles.forEach(item => {
       const markBadge = item.marksCategory && item.marksCategory !== 'All' ? ` • ${item.marksCategory}` : '';
-      html += `<div class="subject-card" onclick="window.selectSpotlightTopic('${item.id}')">
+      html += `<div class="subject-card" onclick="window.openQATopic('${item.id}', '${item.subject}')">
         <div class="subject-header">
           <div class="subject-logo">
             <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
@@ -440,8 +542,18 @@
   // Sidebar Subject Tabs
   function renderSidebarTabs() {
     if (!sidebarSubTabs || !window.NOTES_DATA) return;
-    const subjects = ['All', ...Array.from(new Set(window.NOTES_DATA.map(i => i.subject))).sort()];
+    let relevantItems = window.NOTES_DATA;
+    if (selectedContentType === 'qa') {
+      relevantItems = window.NOTES_DATA.filter(isQATopic);
+    } else if (selectedContentType === 'notes') {
+      relevantItems = window.NOTES_DATA.filter(item => !isQATopic(item));
+    }
+    const subjects = ['All', ...Array.from(new Set(relevantItems.map(i => i.subject))).sort()];
     
+    if (selectedSubject !== 'All' && !subjects.includes(selectedSubject)) {
+      selectedSubject = 'All';
+    }
+
     let html = '';
     subjects.forEach(s => {
       const active = selectedSubject === s ? 'active' : '';
@@ -483,9 +595,9 @@
       
       let matchType = true;
       if (selectedContentType === 'notes') {
-        matchType = item.contentType === 'notes' || (!item.isQA && item.module !== 'Question & Answers Bank');
+        matchType = !isQATopic(item);
       } else if (selectedContentType === 'qa') {
-        matchType = item.contentType === 'qa' || item.isQA || item.module === 'Question & Answers Bank';
+        matchType = isQATopic(item);
       }
 
       const q = (searchQuery || '').toLowerCase();
@@ -605,8 +717,10 @@
     closeMobileSidebar();
     
     // Automatically set correct content type ('notes' or 'qa') based on selected topic
-    selectedContentType = topic.module === 'Question & Answers Bank' ? 'qa' : 'notes';
+    const isQA = isQATopic(topic);
+    selectedContentType = isQA ? 'qa' : 'notes';
     renderSidebarTypeToggleUI();
+    renderSidebarTabs();
 
     openSubjects[topic.subject] = true;
     openModules[`${topic.subject}-${topic.module}`] = true;
@@ -622,28 +736,80 @@
 
     const readTime = calculateReadTime(topic.content);
 
-    // Find Previous & Next Topics for sequential reading
-    const currentIndex = window.NOTES_DATA.findIndex(t => t.id === id);
-    const prevTopic = currentIndex > 0 ? window.NOTES_DATA[currentIndex - 1] : null;
-    const nextTopic = currentIndex < window.NOTES_DATA.length - 1 ? window.NOTES_DATA[currentIndex + 1] : null;
+    // Find Previous & Next Topics strictly within sequential context
+    const contextList = getSequentialContextList(topic);
+    const currentIndex = contextList.findIndex(t => t.id === id);
+    const prevTopic = currentIndex > 0 ? contextList[currentIndex - 1] : null;
+    const nextTopic = (currentIndex >= 0 && currentIndex < contextList.length - 1) ? contextList[currentIndex + 1] : null;
 
     let paginationHtml = `<div class="topic-pagination">`;
     if (prevTopic) {
-      paginationHtml += `<button class="btn-secondary" onclick="window.selectTopic('${prevTopic.id}')">&larr; ${prevTopic.title}</button>`;
+      paginationHtml += `
+        <button class="btn-secondary pagination-btn prev-btn" onclick="window.selectTopic('${prevTopic.id}')" title="${prevTopic.title}">
+          <span class="pagination-arrow">&larr;</span>
+          <div class="pagination-btn-text">
+            <span class="pagination-sub-label">${isQA ? 'Previous Question Bank' : 'Previous Topic'}</span>
+            <span class="pagination-title">${prevTopic.title}</span>
+          </div>
+        </button>
+      `;
     } else {
-      paginationHtml += `<div></div>`;
+      paginationHtml += `
+        <div class="pagination-btn-disabled prev-disabled">
+          <span class="pagination-sub-label">${isQA ? 'First Question Bank' : 'First Topic'}</span>
+          <span class="pagination-title">Start of ${topic.subject}</span>
+        </div>
+      `;
     }
     if (nextTopic) {
-      paginationHtml += `<button class="btn-primary" onclick="window.selectTopic('${nextTopic.id}')">${nextTopic.title} &rarr;</button>`;
+      paginationHtml += `
+        <button class="btn-primary pagination-btn next-btn" onclick="window.selectTopic('${nextTopic.id}')" title="${nextTopic.title}">
+          <div class="pagination-btn-text">
+            <span class="pagination-sub-label">${isQA ? 'Next Question Bank' : 'Next Topic'}</span>
+            <span class="pagination-title">${nextTopic.title}</span>
+          </div>
+          <span class="pagination-arrow">&rarr;</span>
+        </button>
+      `;
+    } else {
+      paginationHtml += `
+        <div class="pagination-btn-disabled next-disabled">
+          <span class="pagination-sub-label">${isQA ? 'All Modules Completed!' : 'Subject Completed!'}</span>
+          <span class="pagination-title">${isQA ? 'End of Q&A Bank' : 'End of Subject Notes'}</span>
+        </div>
+      `;
     }
     paginationHtml += `</div>`;
 
+    // Top Reader Context Bar
+    const markBadge = isQA && topic.marksCategory && topic.marksCategory !== 'All' ? 
+      `<span class="qa-marks-badge">${topic.marksCategory}</span>` : '';
+
+    const contextBarHtml = `
+      <div class="reader-context-bar">
+        <div class="reader-context-left">
+          <span class="reader-mode-pill ${isQA ? 'qa-pill' : 'notes-pill'}">
+            ${isQA ? '📚 Solved Q&A Bank' : '📖 Lecture Notes'}
+          </span>
+          <div class="reader-breadcrumb">
+            <span>${topic.semester}</span>
+            <span class="bc-sep">&rsaquo;</span>
+            <span class="bc-subject">${topic.subject}</span>
+            <span class="bc-sep">&rsaquo;</span>
+            <span class="bc-module">${topic.module}</span>
+            ${markBadge}
+          </div>
+        </div>
+        <div class="reader-context-right">
+          <span class="reader-read-time">${ICONS.clock} ${readTime} min read</span>
+          ${isQA ? `<button class="reader-context-btn" onclick="window.switchView('qa', '${topic.subject}')" title="Return to Q&A Hub">&larr; Q&A Hub</button>` : `<button class="reader-context-btn" onclick="window.switchView('home')" title="Return to Home">&larr; Home</button>`}
+        </div>
+      </div>
+    `;
+
     // Article Content
     readerArticle.innerHTML = `
-      <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
-        <span>${topic.semester} &rsaquo; ${topic.subject} &rsaquo; ${topic.module}</span>
-        <span>${ICONS.clock} ${readTime} min read</span>
-      </div>
+      ${contextBarHtml}
       ${topic.html}
       ${paginationHtml}
     `;
@@ -787,6 +953,16 @@
 
   window.selectSpotlightTopic = function (id) {
     closeSpotlight();
+    if (window.NOTES_DATA) {
+      const item = window.NOTES_DATA.find(t => t.id === id);
+      if (item) {
+        selectedContentType = isQATopic(item) ? 'qa' : 'notes';
+        renderSidebarTypeToggleUI();
+        renderSidebarTabs();
+        switchView('reader', item.subject, id);
+        return;
+      }
+    }
     switchView('reader', null, id);
   };
 
@@ -1102,6 +1278,9 @@
   window.openWorkshopDayNote = function (fileStem) {
     if (!window.NOTES_DATA) return;
     const match = window.NOTES_DATA.find(i => i.filename && i.filename.includes(fileStem));
+    selectedContentType = 'notes';
+    renderSidebarTypeToggleUI();
+    renderSidebarTabs();
     if (match) {
       window.switchView('reader', 'Power BI', match.id);
     } else {
@@ -1245,6 +1424,9 @@
   };
 
   window.openProgrammingNote = function (noteId, subject) {
+    selectedContentType = 'notes';
+    renderSidebarTypeToggleUI();
+    renderSidebarTabs();
     window.switchView('reader', subject, noteId);
   };
 
